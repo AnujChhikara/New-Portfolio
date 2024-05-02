@@ -26,13 +26,17 @@ export default function Home() {
      <ContactMe/>
     </div>
    {/* Tech/framworks */}
-  <Tech/>
+      <div className="px-20">
+    <h2 className="text-2xl underline font-semibold mb-8">Languages and Framworks</h2>
+      
+      <Tech/>
+      </div>
   {/* Projects */}
     <Projects/>
 
   {/* footer */}
 
- <footer className="fixed bottom-0 w-full text-center py-4">
+ <footer className=" w-full text-center py-4">
     <p className="text-[#a3a3a3]">&copy; 2024 Anuj Chhhikara. All rights reserved.</p>
 </footer>
    </main>
