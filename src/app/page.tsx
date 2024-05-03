@@ -5,9 +5,9 @@ import Tech from "@/components/Tech";
 
 export default function Home() {
   return (
-   <main className="flex flex-col space-y-12 h-screen ">
+   <main className="flex flex-col space-y-12 h-screen  ">
     {/* main section */}
-    <div className="bg-black bg-grid-small-white/[0.2] pb-8  px-20 pt-20">
+    <div className="bg-black pb-8 px-20 pt-20">
     <div className="flex flex-col justify-start space-y-4">
       {/* image */}
       <div className="w-20 h-20 rounded-full text-black text-center bg-white">
