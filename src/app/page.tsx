@@ -5,7 +5,7 @@ import Tech from "@/components/Tech";
 
 export default function Home() {
   return (
-   <main className="flex flex-col space-y-12 h-screen  ">
+   <main className="flex flex-col space-y-32 h-screen  ">
     {/* main section */}
     <div className="bg-black pb-8 px-20 pt-20">
     <div className="flex flex-col justify-start space-y-4">
@@ -26,11 +26,11 @@ export default function Home() {
      <ContactMe/>
     </div>
    {/* Tech/framworks */}
-      <div className="px-20">
-    <h2 className="text-2xl underline font-semibold mb-8">Languages and Framworks</h2>
-      
-      <Tech/>
-      </div>
+   <div className="px-20">
+  <h2 className="text-3xl font-semibold mb-8">{'<Languages & Frameworks>'}</h2>
+  
+  <Tech/>
+</div>
   {/* Projects */}
     <Projects/>
 
