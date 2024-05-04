@@ -3,9 +3,9 @@ import ProjectCard from './ProjectCard'
 
 export default function Projects() {
   return (
-    <div className='px-20 flex flex-col items-start space-y-4'>
+    <div className='md:px-20 sm:px-4 flex flex-col items-start space-y-4'>
         <h3 className=' text-2xl  font-semibold'>{'<Projects>'}</h3>
-        <div className='grid grid-cols-2 gap-8'>
+        <div className='md:grid md:grid-cols-2 sm:grid sm:grid-cols-1 gap-8'>
 
         <ProjectCard ProjectName='Vidloom' 
         Brief='The objective of this project is to develop a video sharing platform similar to YouTube, where users can upload their videos and watch videos uploaded by other users. '

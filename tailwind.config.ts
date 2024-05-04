@@ -13,6 +13,13 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+       screens: {
+        sm: "300px",
+
+        md: "720px",
+
+        lg: "1040px",
+      },
      
     },
   },
