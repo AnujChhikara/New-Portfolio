@@ -33,8 +33,8 @@ export default function Projects() {
 
          <ProjectCard ProjectName='DevVault' 
         Brief=' Your go-to platform for accessing and sharing reusable code snippets effortlessly. Join now and streamline your development process!'
-        GithubLink='https://github.com/AnujChhikara/DevVault'
-        LiveLink='/'
+        GithubLink='https://github.com/AnujChhikara/Vault'
+        LiveLink='https://www.devvault.xyz/'
         Tech={["NextJS","Redux","Aceternity UI","MongoDB"]}
         VideoUrl='notalf '
         />
