@@ -14,7 +14,7 @@ export default function ProjectCard({
   LiveLink: string;
 }) {
   return (
-    <div className='md:w-[660px] md:h-[300px]  sm:flex sm:flex-col md:flex md:flex-row border border-[#1b1b1b] rounded-xl'>
+    <div className='md:w-[660px] md:h-[300px] bg-zinc-900 sm:flex sm:flex-col md:flex md:flex-row border border-[#414141] rounded-xl'>
       <div className='md:w-1/2 sm:w-full md:flex md:items-start px-4 py-4'>
         <video className='rounded-xl' controls>
           <source src={VideoUrl} type='video/mp4' />
@@ -29,7 +29,7 @@ export default function ProjectCard({
             {Tech.map((item: any) => (
               <li
                 key={item}
-                className='bg-[#1b1b1b] px-2 py-1 text-sm rounded-md'
+                className='bg-[#070707] px-2 py-1 text-sm rounded-md'
               >
                 {item}
               </li>
@@ -37,7 +37,7 @@ export default function ProjectCard({
           </ul>
         </div>
         <div className='flex justify-between space-x-2 text-sm font-semibold'>
-          <div className='bg-[#1b1b1b] px-2 py-2 rounded-md flex items-center space-x-2'>
+          <div className='bg-[#070707]  hover:bg-[#252525] duration-300 px-2 py-2 rounded-md flex items-center space-x-2'>
             <svg
               className=' w-6 '
               fill='white'
@@ -48,7 +48,7 @@ export default function ProjectCard({
             </svg>
             <a href={GithubLink}>Github Repo</a>
           </div>
-          <div className='bg-[#1b1b1b] px-2 py-1 rounded-md flex items-center space-x-2'>
+          <div className='bg-[#070707]  hover:bg-[#252525] duration-300 px-2 py-1 rounded-md flex items-center space-x-2'>
             <svg
               className='w-6'
               viewBox='0 0 24 24'

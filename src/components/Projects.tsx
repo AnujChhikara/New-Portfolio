@@ -4,8 +4,8 @@ import ProjectCard from "./ProjectCard";
 export default function Projects() {
   return (
     <div className='md:px-20 sm:px-4  flex flex-col items-center py-16 space-y-4'>
-      <h3 className=' text-6xl pb-4  font-semibold'>Projects</h3>
-      <div className='md:grid md:grid-cols-2 sm:grid sm:grid-cols-1 gap-8'>
+      <h3 className='md:text-6xl sm:text-4xl font-semibold mb-6'>Projects</h3>
+      <div className='md:grid md:grid-cols-1 lg:grid-cols-2 sm:grid sm:grid-cols-1 gap-8'>
         <ProjectCard
           ProjectName='Vidloom'
           Brief='The objective of this project is to develop a video sharing platform similar to YouTube, where users can upload their videos and watch videos uploaded by other users. '
@@ -39,7 +39,7 @@ export default function Projects() {
           GithubLink='https://github.com/AnujChhikara/Vault'
           LiveLink='https://www.devvault.xyz/'
           Tech={["NextJS", "Redux", "Aceternity UI", "MongoDB"]}
-          VideoUrl='notalf '
+          VideoUrl='https://youtu.be/-wPtxzWMmcc'
         />
       </div>
     </div>

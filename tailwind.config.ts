@@ -1,5 +1,3 @@
-
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -13,14 +11,13 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-       screens: {
+      screens: {
         sm: "300px",
 
         md: "720px",
 
-        lg: "1040px",
+        lg: "1370px",
       },
-     
     },
   },
   plugins: [],
