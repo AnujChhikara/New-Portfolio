@@ -21,7 +21,7 @@ export default function Projects() {
           GithubLink='https://github.com/AnujChhikara/speedexClone'
           LiveLink='https://speedex-clone.vercel.app/'
           Tech={["React", "Redux", "Tailwind CSS"]}
-          VideoUrl='notalf '
+          VideoUrl='https://res.cloudinary.com/dlahahicg/video/upload/v1719840308/speedex_ayeqh6.mp4'
         />
 
         <ProjectCard
@@ -39,7 +39,7 @@ export default function Projects() {
           GithubLink='https://github.com/AnujChhikara/Vault'
           LiveLink='https://www.devvault.xyz/'
           Tech={["NextJS", "Redux", "Aceternity UI", "MongoDB"]}
-          VideoUrl='https://youtu.be/-wPtxzWMmcc'
+          VideoUrl='https://res.cloudinary.com/dlahahicg/video/upload/v1719840437/Untitled__Jun_24_2024_08_12_AM_dyefph.webm'
         />
       </div>
     </div>
