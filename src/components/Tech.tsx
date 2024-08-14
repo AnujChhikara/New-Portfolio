@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Tech() {
   return (
-    <div className='flex flex-wrap gap-6 mt-10 md:w-2/3'>
+    <div className='flex flex-wrap  gap-6 mt-10 md:w-2/3'>
       <div className=' bg-white font-bold  hover:shadow md:p-4 sm:p-2 md:w-24 md:h-24 sm:w-16 sm:h-16 flex flex-col  hover:scale-105 duration-700 items-center rounded-xl'>
         <svg
           className='w-20'

@@ -32,8 +32,11 @@ body {
   }
 }
 
-html{
-  scrollbar-color: #222121 #111111; 
+html {
+  scrollbar-color: #222121 #111111;
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: #18181b;
+}

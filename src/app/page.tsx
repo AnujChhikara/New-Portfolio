@@ -1,11 +1,12 @@
 import ContactMe from "@/components/ContactMe";
 import Projects from "@/components/Projects";
 import Tech from "@/components/Tech";
+import { Github, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className='flex flex-col bg-gradient-to-b from-zinc-800 to-black  h-screen'>
+    <main className='flex flex-col bg-[#18181b] h-screen'>
       {/* main section */}
       <div className=' pb-8 md:px-20 flex flex-col space-y-4 items-center justify-center sm:px-2 text-center md:pt-20 sm:pt-12 '>
         {/* image */}
@@ -24,11 +25,15 @@ export default function Home() {
           </div>
 
           <div className='text-[#c7c7c7]'>
+            <div className='brushBg'>
+              <p className=''>I&apos;m a Full Stack Web Developer</p>
+            </div>
+
             <p className='md:w-[800px] sm:text-sm md:text-base'>
-              I&apos;m a Full Stack Web Developer. I&apos;ve been honing my
-              coding skills for a couple of years now, diving deep into various
-              technologies to craft seamless digital experiences. My toolkit
-              primarily includes <span className='underline'>React</span>,{" "}
+              I&apos;ve been honing my coding skills for a couple of years now,
+              diving deep into various technologies to craft seamless digital
+              experiences. My toolkit primarily includes{" "}
+              <span className='underline'>React</span>,{" "}
               <span className='underline'>Next.js</span>, and{" "}
               <span className='underline'>Node.js</span>, with occasional
               adventures in <span className='underline'>Python</span>. Whether
@@ -44,7 +49,7 @@ export default function Home() {
         <ContactMe />
       </div>
       {/* Tech/framworks */}
-      <div className='md:px-20 sm:px-4 flex flex-col items-center justify-center py-20'>
+      <div className='md:px-20 bg-[#18181b] sm:px-4 flex flex-col items-center justify-center py-20'>
         <h2 className='md:text-6xl sm:text-4xl font-semibold mb-2'>
           Skills and Tools
         </h2>
@@ -59,11 +64,55 @@ export default function Home() {
 
       {/* footer */}
 
-      <footer className=' w-full text-center pt-16 pb-4 '>
-        <p className='text-[#a3a3a3]'>
-          &copy; 2024 Anuj Chhhikara. All rights reserved.
+      <div className='flex flex-col space-y-2 pt-8 sm:px-4 md:px-0 justify-center items-center'>
+        <p className='text-3xl text-zinc-300 font-bold'>
+          Let&lsquo;s Collaborate
         </p>
-      </footer>
+        <p className='text-zinc-400 pb-10 text-center'>
+          Hey there! Want to collaborate with me? Let&lsquo;s join forces and
+          make magic happen! 💫
+        </p>
+        <button className=' p-2 rounded-lg shadow-inner shadow-white font-semibold bg-gradient-to-r from-stone-500 via-stone-600 to-stone-900 '>
+          <a href='mailTo:anujchhikara07@gmail.com'>Contact Me</a>
+        </button>
+        <div className='mt-10 w-auto flex flex-row justify-center'>
+          <div>
+            <hr className='my-3' />
+            <div className='flex h-5 items-center md:space-x-4 sm:space-x-1.5 text-sm'>
+              <a href='https://anujchhikara.vercel.app/'>Portfolio</a>
+              <hr className='rotate-90 w-5 bg-white' />
+              <a
+                className='flex items-center space-x-1'
+                href='https://twitter.com/AnujChhikara07'
+              >
+                <Twitter />
+                <p>Twitter</p>
+              </a>
+              <hr className='rotate-90 w-5 bg-white' />
+              <a
+                className='flex items-center space-x-1'
+                href='https://github.com/AnujChhikara'
+              >
+                {" "}
+                <Github />
+                <p>Github</p>{" "}
+              </a>
+              <hr className='rotate-90 w-5 bg-white' />
+              <a
+                className='flex items-end space-x-1'
+                href='https://in.linkedin.com/in/anuj-chhikara-webdeveloper'
+              >
+                <Linkedin />
+                <p>LinkedIn</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className='text-sm text-zinc-400 pt-4 pb-4'>
+          All Rights Reserved &copy; 2024
+        </div>
+      </div>
     </main>
   );
 }
