@@ -1,10 +1,17 @@
 import ContactMe from "@/components/ContactMe";
 import Projects from "@/components/Projects";
 import Tech from "@/components/Tech";
+import { FlipWords } from "../components/ui/flip-words";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
+  const words = [
+    "User-Friendly",
+    "Purpose-Built",
+    "Highly Interactive",
+    "Experience-Centric",
+  ];
   return (
     <main className='flex flex-col bg-[#18181b] h-screen'>
       {/* main section */}
@@ -13,23 +20,25 @@ export default function Home() {
         <div className=' flex flex-col space-y-4 justify-center items-center'>
           <div className='flex flex-col items-center justify-center'>
             <Image
-              width={128}
-              className='rounded-full bg-[#5f5f5f] p-0.5  w-32'
-              height={128}
+              width={150}
+              className='rounded-full bg-[#5f5f5f] p-0.5  w-36'
+              height={150}
               src='https://res.cloudinary.com/dlahahicg/image/upload/v1712917455/zman4v8yaqtvixmnthmi.jpg'
               alt='avatar img'
             />
-            <h2 className='font-semibold text-3xl  text-white tracking-widest'>
-              I&apos;m Anuj{" "}
-            </h2>
           </div>
 
-          <div className='text-[#c7c7c7]'>
-            <div className='brushBg'>
-              <p className=''>I&apos;m a Full Stack Web Developer</p>
-            </div>
+          <div className='text-[#fafafa]'>
+            <h2 className='font-semibold text-3xl mb-4  text-white'>
+              Hi, I&apos;m Anuj{" "}
+            </h2>
+            <p className=''>I&apos;m a Full Stack Developer</p>
+            <p>
+              passionate about creating websites that are{" "}
+              <FlipWords words={words} /> <br />
+            </p>
 
-            <p className='md:w-[800px] sm:text-sm md:text-base'>
+            {/* <p className='md:w-[800px] sm:text-sm md:text-base'>
               I&apos;ve been honing my coding skills for a couple of years now,
               diving deep into various technologies to craft seamless digital
               experiences. My toolkit primarily includes{" "}
@@ -43,7 +52,7 @@ export default function Home() {
               tackling complex technical challenges, I&apos;m here to make it
               happen. Let&apos;s collaborate and build some truly awesome stuff
               together! 🚀
-            </p>
+            </p> */}
           </div>
         </div>
         <ContactMe />
@@ -64,7 +73,7 @@ export default function Home() {
 
       {/* footer */}
 
-      <div className='flex flex-col space-y-2 pt-8 sm:px-4 md:px-0 justify-center items-center'>
+      <div className='flex flex-col bg-[#18181b] space-y-2 pt-8 sm:px-4 md:px-0 justify-center items-center'>
         <p className='text-3xl text-zinc-300 font-bold'>
           Let&lsquo;s Collaborate
         </p>
@@ -78,7 +87,7 @@ export default function Home() {
         <div className='mt-10 w-auto flex flex-row justify-center'>
           <div>
             <hr className='my-3' />
-            <div className='flex h-5 items-center md:space-x-4 sm:space-x-1.5 text-sm'>
+            <div className='flex h-5 items-center md:space-x-4  text-sm'>
               <a href='https://anujchhikara.vercel.app/'>Portfolio</a>
               <hr className='rotate-90 w-5 bg-white' />
               <a
