@@ -3,7 +3,7 @@ import ProjectCard from "./ProjectCard";
 
 export default function Projects() {
   return (
-    <div className='md:px-20 sm:px-4 bg-[#18181b]  flex flex-col items-center py-16 space-y-4'>
+    <div className='md:px-20 sm:px-4 bg-[#18181b]  flex flex-col items-center md:py-16 sm:pb-8  space-y-4'>
       <h3 className='md:text-6xl sm:text-4xl font-semibold mb-6'>Projects</h3>
       <div className='md:grid md:grid-cols-1 lg:grid-cols-2 sm:grid sm:grid-cols-1 gap-8'>
         <ProjectCard

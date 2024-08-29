@@ -28,14 +28,18 @@ export default function Home() {
             />
           </div>
 
-          <div className='text-[#fafafa]'>
-            <h2 className='font-semibold text-3xl mb-4  text-white'>
-              Hi, I&apos;m Anuj{" "}
-            </h2>
-            <p className=''>I&apos;m a Full Stack Developer</p>
+          <div className='text-[#fafafa] flex flex-col items-start'>
+            <p className='font-semibold text-white'>
+              <span>• </span>Hi, I&apos;m Anuj{" "}
+            </p>
+            <p className=''>
+              <span>• </span>I&apos;m a Full Stack Developer
+            </p>
+            <p className='text-[15px]'>
+              <span>• </span>Passionate about creating websites that are
+            </p>
             <p>
-              passionate about creating websites that are{" "}
-              <FlipWords words={words} /> <br />
+              <span>• </span> <FlipWords words={words} /> <br />
             </p>
 
             {/* <p className='md:w-[800px] sm:text-sm md:text-base'>

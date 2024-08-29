@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ContactMe() {
   return (
-    <div className=' pt-6 sm:grid sm:grid-cols-3 gap-4 md:grid-cols-5'>
+    <div className=' pt-6 sm:grid sm:grid-cols-3 md:gap-4 sm:gap-3 md:grid-cols-5'>
       <a
         href='https://github.com/AnujChhikara'
         className='bg-[#1b1b1b]  md:w-32 sm:w-28 border border-zinc-700  hover:border-zinc-800  px-4 py-2 hover:bg-[#262626] duration-700 rounded-lg font-semibold flex space-x-2 items-center'

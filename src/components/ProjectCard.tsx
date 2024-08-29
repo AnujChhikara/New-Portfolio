@@ -16,13 +16,20 @@ export default function ProjectCard({
   return (
     <div className='md:w-[660px] md:h-[300px] bg-[#242425] sm:flex sm:flex-col md:flex md:flex-row border border-[#414141] rounded-xl'>
       <div className='md:w-1/2 sm:w-full md:flex md:items-start px-4 py-4'>
-        <video className='rounded-xl' controls>
-          <source src={VideoUrl} type='video/mp4' />
-          Your browser does not support the video tag.
-        </video>
+        <div>
+          <h4 className='font-semibold underline mb-2 md:hidden sm:block'>
+            {ProjectName}
+          </h4>
+          <video className='rounded-xl' controls>
+            <source src={VideoUrl} type='video/mp4' />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
       <div className='md:w-1/2 flex flex-col justify-around space-y-4 px-4 py-4'>
-        <h4 className='font-semibold underline'>{ProjectName}</h4>
+        <h4 className='font-semibold underline sm:hidden md:block'>
+          {ProjectName}
+        </h4>
         <p className='text-[#a3a3a3] text-sm'>{Brief}</p>
         <div>
           <ul className='flex flex-wrap gap-2'>
