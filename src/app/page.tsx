@@ -19,15 +19,15 @@ export default function Home() {
             alt='avatar img'
           />
           <div className='md:w-96 sm:w-80 flex flex-col  justify-center space-y-2'>
-            <p className=' text-left  rounded-lg items-center font-bold text-transparent bg-clip-text text-xl contrast-125 from-gray-200 to-gray-100 bg-gradient-to-r '>
+            <h1 className=' text-left  rounded-lg items-center font-bold text-transparent bg-clip-text text-xl contrast-125 from-gray-200 to-gray-100 bg-gradient-to-r '>
               Anuj | Full Stack Developer
-            </p>
+            </h1>
             <hr className=' w-64 border-gray-500' />
-            <p className='text-md text-gray-300 text-left'>
+            <h2 className='text-md text-gray-300 text-left'>
               I love building websites and programming. My goal is to create
               efficient, user-centric web solutions that excel in both design
               and performance.
-            </p>
+            </h2>
           </div>
         </div>
 
