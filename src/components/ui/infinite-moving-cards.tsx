@@ -79,14 +79,14 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+          " flex min-w-full shrink-0 md:gap-4 py-4 w-max flex-nowrap",
           start && "animate-scroll ",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
         {items.map((item, idx) => (
           <li
-            className='w-32 relative rounded-2xl   border-zinc-400 px-4 py-4 md:w-32'
+            className='sm:w-24 md:w-32 relative rounded-2xl   border-zinc-400 px-4 py-4'
             style={{
               background:
                 "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
@@ -98,7 +98,7 @@ export const InfiniteMovingCards = ({
                 aria-hidden='true'
                 className='user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]'
               ></div>
-              <span className='w-20 grayscale-[40%] flex flex-col items-center justify-center  relative z-20 text-sm leading-[1.6] space-y-2 text-gray-100 font-normal'>
+              <span className='grayscale-[40%] flex flex-col items-center justify-center  relative z-20 text-sm leading-[1.6] space-y-2 text-gray-100 font-normal'>
                 {item.svg}
                 {item.name}
               </span>

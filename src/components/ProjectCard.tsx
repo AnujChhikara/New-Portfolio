@@ -14,7 +14,7 @@ export default function ProjectCard({
   LiveLink: string;
 }) {
   return (
-    <div className='md:w-[660px] md:h-[300px] bg-[#242425] sm:flex sm:flex-col md:flex md:flex-row border border-[#414141] rounded-xl'>
+    <div className='md:w-[660px] md:h-[300px]  duration-500 bg-[#242425] sm:flex sm:flex-col md:flex md:flex-row border border-[#414141] rounded-xl'>
       <div className='md:w-1/2 sm:w-full md:flex md:items-start px-4 py-4'>
         <div>
           <h4 className='font-semibold underline mb-2 md:hidden sm:block'>
@@ -57,7 +57,7 @@ export default function ProjectCard({
               Github Repo
             </a>
           </div>
-          <div className='bg-[#181818]  hover:bg-[#252525] duration-300 px-2 py-1 rounded-md flex items-center space-x-2'>
+          <div className='hover:contrast-125 from-gray-900 to-gray-600 bg-gradient-to-r duration-300 px-2 py-1 rounded-md flex items-center space-x-2'>
             <svg
               className='w-6'
               viewBox='0 0 24 24'

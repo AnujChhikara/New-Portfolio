@@ -8,24 +8,25 @@ export default function Home() {
   return (
     <main className='flex flex-col bg-[#18181b] h-screen'>
       {/* main section */}
-      <div className=' pb-8 md:px-20 flex flex-col space-y-4 items-center justify-center sm:px-2 text-center md:pt-20 sm:pt-12 '>
+      <div className='pb-8 md:px-20 flex flex-col space-y-4 items-center justify-center sm:px-2 text-center md:pt-20 sm:pt-12 '>
         {/* image */}
-        <div className=' flex flex-row-reverse  space-x-4 pb-20 pt-12'>
+        <div className=' flex sm:flex-col md:flex-row-reverse sm:space-y-6 md:space-y-0   sm:pb-4 sm:pt-4  md:pb-12 md:pt-12'>
           <Image
             width={150}
-            className=' bg-[#5f5f5f] p-0.5  w-36'
+            className=' bg-[#5f5f5f] p-0.5 hover:bg-zinc-400 duration-1000 md:mx-12 rounded-2xl shadow-lg shadow-white w-24  md:w-36'
             height={150}
             src='https://res.cloudinary.com/dlahahicg/image/upload/v1712917455/zman4v8yaqtvixmnthmi.jpg'
             alt='avatar img'
           />
-          <div className='w-96 flex flex-col  justify-center space-y-4'>
-            <p className='text-lg text-left underline-offset-8 underline '>
+          <div className='md:w-96 sm:w-80 flex flex-col  justify-center space-y-2'>
+            <p className=' text-left  rounded-lg items-center font-bold text-transparent bg-clip-text text-xl contrast-125 from-gray-200 to-gray-100 bg-gradient-to-r '>
               Anuj | Full Stack Developer
             </p>
+            <hr className=' w-64 border-gray-500' />
             <p className='text-md text-gray-300 text-left'>
-              I love building websites and programming. Bridging design and
-              functionality, I create robust, user-focused sites that meet
-              modern standards.
+              I love building websites and programming. My goal is to create
+              efficient, user-centric web solutions that excel in both design
+              and performance.
             </p>
           </div>
         </div>
@@ -58,17 +59,15 @@ export default function Home() {
           Hey there! Want to collaborate with me? Let&lsquo;s join forces and
           make magic happen! 💫
         </p>
-        <button className=' p-2 rounded-lg shadow-inner shadow-white font-semibold bg-gradient-to-r from-stone-500 via-stone-600 to-stone-900 '>
+        <button className=' p-2 rounded-lg shadow-inner hover:opacity-80  duration-500 shadow-white font-semibold bg-gradient-to-r from-stone-500 via-stone-600 to-stone-900 '>
           <a href='mailTo:anujchhikara07@gmail.com'>Contact Me</a>
         </button>
         <div className='mt-10 w-auto flex flex-row justify-center'>
           <div>
             <hr className='my-3' />
-            <div className='flex h-5 items-center md:space-x-4  text-sm'>
-              <a href='https://anujchhikara.vercel.app/'>Portfolio</a>
-              <hr className='rotate-90 w-5 bg-white' />
+            <div className='flex h-5 items-center md:space-x-4   text-sm'>
               <a
-                className='flex items-center space-x-1'
+                className='flex items-center space-x-1 hover:text-gray-300 duration-500 hover:underline-offset-2 hover:underline'
                 href='https://twitter.com/AnujChhikara07'
               >
                 <Twitter />
@@ -76,7 +75,7 @@ export default function Home() {
               </a>
               <hr className='rotate-90 w-5 bg-white' />
               <a
-                className='flex items-center space-x-1'
+                className='flex items-center space-x-1 hover:text-gray-300 duration-500 hover:underline-offset-2 hover:underline'
                 href='https://github.com/AnujChhikara'
               >
                 {" "}
@@ -85,7 +84,7 @@ export default function Home() {
               </a>
               <hr className='rotate-90 w-5 bg-white' />
               <a
-                className='flex items-end space-x-1'
+                className='flex items-end space-x-1 hover:text-gray-300 duration-500 hover:underline-offset-2 hover:underline'
                 href='https://in.linkedin.com/in/anuj-chhikara-webdeveloper'
               >
                 <Linkedin />

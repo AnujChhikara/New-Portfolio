@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ContactMe() {
   return (
-    <div className=' pt-6 sm:grid sm:grid-cols-3 md:gap-4 sm:gap-3 md:grid-cols-5'>
+    <div className=' md:pt-6 sm:grid sm:grid-cols-3 md:gap-4 sm:gap-3 md:grid-cols-5'>
       <a
         target='_blank'
         href='https://github.com/AnujChhikara'

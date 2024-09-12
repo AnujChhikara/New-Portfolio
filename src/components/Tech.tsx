@@ -4,7 +4,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -66,7 +66,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -82,7 +82,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -99,7 +99,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20 fill-white'
+        className='md:20 sm:16 fill-white'
         xmlns='http://www.w3.org/2000/svg'
         fill='#000000'
         viewBox='0 0 128 128'
@@ -112,7 +112,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -127,7 +127,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -142,7 +142,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -157,7 +157,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -173,7 +173,7 @@ const tech = [
     svg: (
       <svg
         fill='#ffffff'
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -185,7 +185,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -292,7 +292,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -313,7 +313,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -325,7 +325,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 128 128'
       >
@@ -340,7 +340,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         viewBox='0 0 16 16'
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
@@ -356,7 +356,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         viewBox='0 0 32 32'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
@@ -380,7 +380,7 @@ const tech = [
   {
     svg: (
       <svg
-        className='w-20'
+        className='md:20 sm:16'
         viewBox='0 0 16 16'
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
@@ -412,7 +412,7 @@ const tech = [
 ];
 export default function Tech() {
   return (
-    <div className='flex flex-wrap  gap-6 mt-10 md:w-2/3'>
+    <div className='sm:w-[350px] gap-6 mt-10 md:w-2/3'>
       <InfiniteMovingCards items={tech} direction='right' speed='slow' />
     </div>
   );
