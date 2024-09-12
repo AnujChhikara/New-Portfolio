@@ -1,66 +1,41 @@
 import ContactMe from "@/components/ContactMe";
 import Projects from "@/components/Projects";
 import Tech from "@/components/Tech";
-import { FlipWords } from "../components/ui/flip-words";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
-  const words = [
-    "User-Friendly",
-    "Purpose-Built",
-    "Highly Interactive",
-    "Experience-Centric",
-  ];
   return (
     <main className='flex flex-col bg-[#18181b] h-screen'>
       {/* main section */}
       <div className=' pb-8 md:px-20 flex flex-col space-y-4 items-center justify-center sm:px-2 text-center md:pt-20 sm:pt-12 '>
         {/* image */}
-        <div className=' flex flex-col space-y-4 justify-center items-center'>
-          <div className='flex flex-col items-center justify-center'>
-            <Image
-              width={150}
-              className='rounded-full bg-[#5f5f5f] p-0.5  w-36'
-              height={150}
-              src='https://res.cloudinary.com/dlahahicg/image/upload/v1712917455/zman4v8yaqtvixmnthmi.jpg'
-              alt='avatar img'
-            />
-          </div>
-
-          <div className='text-[#fafafa] flex flex-col items-start'>
-            <p className='font-semibold text-white'>
-              <span>• </span>Hi, I&apos;m Anuj{" "}
+        <div className=' flex flex-row-reverse  space-x-4 pb-20 pt-12'>
+          <Image
+            width={150}
+            className=' bg-[#5f5f5f] p-0.5  w-36'
+            height={150}
+            src='https://res.cloudinary.com/dlahahicg/image/upload/v1712917455/zman4v8yaqtvixmnthmi.jpg'
+            alt='avatar img'
+          />
+          <div className='w-96 flex flex-col  justify-center space-y-4'>
+            <p className='text-lg text-left underline-offset-8 underline '>
+              Anuj | Full Stack Developer
             </p>
-            <p className=''>
-              <span>• </span>I&apos;m a Full Stack Developer
+            <p className='text-md text-gray-300 text-left'>
+              I love building websites and programming. Bridging design and
+              functionality, I create robust, user-focused sites that meet
+              modern standards.
             </p>
-            <p className='text-[15px]'>
-              <span>• </span>Passionate about creating websites that are
-            </p>
-            <p>
-              <span>• </span> <FlipWords words={words} /> <br />
-            </p>
-
-            {/* <p className='md:w-[800px] sm:text-sm md:text-base'>
-              I&apos;ve been honing my coding skills for a couple of years now,
-              diving deep into various technologies to craft seamless digital
-              experiences. My toolkit primarily includes{" "}
-              <span className='underline'>React</span>,{" "}
-              <span className='underline'>Next.js</span>, and{" "}
-              <span className='underline'>Node.js</span>, with occasional
-              adventures in <span className='underline'>Python</span>. Whether
-              it&apos;s crafting captivating front-end interfaces or
-              architecting robust back-end systems, I thrive on making things
-              work smoothly. . Whether it&apos;s bringing your vision to life or
-              tackling complex technical challenges, I&apos;m here to make it
-              happen. Let&apos;s collaborate and build some truly awesome stuff
-              together! 🚀
-            </p> */}
           </div>
         </div>
+
         <ContactMe />
       </div>
+
+      {/* Projects */}
+      <Projects />
+
       {/* Tech/framworks */}
       <div className='md:px-20 bg-[#18181b] sm:px-4 flex flex-col items-center justify-center py-20'>
         <h2 className='md:text-6xl sm:text-4xl font-semibold mb-2'>
@@ -72,8 +47,6 @@ export default function Home() {
 
         <Tech />
       </div>
-      {/* Projects */}
-      <Projects />
 
       {/* footer */}
 
