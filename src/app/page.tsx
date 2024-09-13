@@ -13,7 +13,7 @@ export default function Home() {
         <div className=' flex sm:flex-col md:flex-row-reverse sm:space-y-6 md:space-y-0   sm:pb-4 sm:pt-4  md:pb-12 md:pt-12'>
           <Image
             width={150}
-            className=' bg-[#5f5f5f] p-0.5 hover:bg-zinc-400 duration-1000 md:mx-12 rounded-2xl shadow-lg shadow-white w-24  md:w-36'
+            className=' bg-[#5f5f5f] p-0.5 hover:bg-zinc-400 duration-1000 md:mx-12 rounded-2xl shadow-md shadow-white w-24  md:w-36'
             height={150}
             src='https://res.cloudinary.com/dlahahicg/image/upload/v1712917455/zman4v8yaqtvixmnthmi.jpg'
             alt='avatar img'
