@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className='flex flex-col bg-[#18181b] h-screen'>
       {/* main section */}
-      <div className='pb-8 md:px-20 flex flex-col space-y-4 items-center justify-center sm:px-2 text-center md:pt-20 sm:pt-12 '>
+      <section className='pb-8 md:px-20 flex flex-col space-y-4 items-center justify-center sm:px-2 text-center md:pt-20 sm:pt-12 '>
         {/* image */}
         <div className=' flex sm:flex-col md:flex-row-reverse sm:space-y-6 md:space-y-0   sm:pb-4 sm:pt-4  md:pb-12 md:pt-12'>
           <Image
@@ -32,13 +32,13 @@ export default function Home() {
         </div>
 
         <ContactMe />
-      </div>
+      </section>
 
       {/* Projects */}
       <Projects />
 
       {/* Tech/framworks */}
-      <div className='md:px-20 bg-[#18181b] sm:px-4 flex flex-col items-center justify-center py-20'>
+      <section className='md:px-20 bg-[#18181b] sm:px-4 flex flex-col items-center justify-center py-20'>
         <h2 className='md:text-6xl sm:text-4xl font-semibold mb-2'>
           Skills and Tools
         </h2>
@@ -47,11 +47,11 @@ export default function Home() {
         </p>
 
         <Tech />
-      </div>
+      </section>
 
       {/* footer */}
 
-      <div className='flex flex-col bg-[#18181b] space-y-2 pt-8 sm:px-4 md:px-0 justify-center items-center'>
+      <footer className='flex flex-col bg-[#18181b] space-y-2 pt-8 sm:px-4 md:px-0 justify-center items-center'>
         <p className='text-3xl text-zinc-300 font-bold'>
           Let&lsquo;s Collaborate
         </p>
@@ -97,7 +97,7 @@ export default function Home() {
         <div className='text-sm text-zinc-400 pt-4 pb-4'>
           All Rights Reserved &copy; 2024
         </div>
-      </div>
+      </footer>
     </main>
   );
 }
