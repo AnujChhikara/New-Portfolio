@@ -16,6 +16,14 @@ export default function Projects() {
         />
 
         <ProjectCard
+          ProjectName='DevVault'
+          Brief=' Your go-to platform for accessing and sharing reusable code snippets effortlessly. Join now and streamline your development process!'
+          GithubLink='https://github.com/AnujChhikara/Vault'
+          LiveLink='https://www.devvault.xyz/'
+          Tech={["NextJS", "Redux", "Aceternity UI", "MongoDB"]}
+          VideoUrl='https://res.cloudinary.com/dlahahicg/video/upload/v1719840437/Untitled__Jun_24_2024_08_12_AM_dyefph.webm'
+        />
+        <ProjectCard
           ProjectName='Speedexx'
           Brief='The objective of this project is to develop an engaging and user-friendly e-commerce website. '
           GithubLink='https://github.com/AnujChhikara/speedexClone'
@@ -31,15 +39,6 @@ export default function Projects() {
           LiveLink='/'
           Tech={["React", "Redux", "Socket.io", "Express", "MongoDB"]}
           VideoUrl='notalf '
-        />
-
-        <ProjectCard
-          ProjectName='DevVault'
-          Brief=' Your go-to platform for accessing and sharing reusable code snippets effortlessly. Join now and streamline your development process!'
-          GithubLink='https://github.com/AnujChhikara/Vault'
-          LiveLink='https://www.devvault.xyz/'
-          Tech={["NextJS", "Redux", "Aceternity UI", "MongoDB"]}
-          VideoUrl='https://res.cloudinary.com/dlahahicg/video/upload/v1719840437/Untitled__Jun_24_2024_08_12_AM_dyefph.webm'
         />
       </div>
     </div>
