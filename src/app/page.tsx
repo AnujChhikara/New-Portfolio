@@ -59,9 +59,12 @@ export default function Home() {
           Hey there! Want to collaborate with me? Let&lsquo;s join forces and
           make magic happen! 💫
         </p>
-        <button className=' p-2 rounded-lg shadow-inner hover:opacity-80  duration-500 shadow-white font-semibold bg-gradient-to-r from-stone-500 via-stone-600 to-stone-900 '>
-          <a href='mailTo:anujchhikara07@gmail.com'>Contact Me</a>
-        </button>
+        <a
+          href='mailTo:anujchhikara07@gmail.com'
+          className=' p-2 rounded-lg shadow-inner hover:opacity-80  duration-500 shadow-white font-semibold bg-gradient-to-r from-stone-500 via-stone-600 to-stone-900 '
+        >
+          Contact Me
+        </a>
         <div className='mt-10 w-auto flex flex-row justify-center'>
           <div>
             <hr className='my-3' />

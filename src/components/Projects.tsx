@@ -38,7 +38,7 @@ export default function Projects() {
           GithubLink='https://github.com/AnujChhikara/Chess'
           LiveLink='/'
           Tech={["React", "Redux", "Socket.io", "Express", "MongoDB"]}
-          VideoUrl='notalf '
+          VideoUrl='/'
         />
       </div>
     </div>

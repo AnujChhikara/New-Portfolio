@@ -1,12 +1,15 @@
 import React from "react";
 
+const Class =
+  "px-2 py-2 md:w-32 sm:w-28 flex justify-center items-center space-x-2  hover:bg-[#292929] border border-r-0 border-b-0 border-zinc-600 bg-[#1b1b1b] text-white transition duration-500 font-bold text-sm shadow-[1px_1px_rgba(80,80,80),1px_1px_rgba(80,80,80),3px_3px_rgba(80,80,80),4px_4px_rgba(80,80,80)] ";
+
 export default function ContactMe() {
   return (
     <div className=' md:pt-6 sm:grid sm:grid-cols-3 md:gap-4 sm:gap-3 md:grid-cols-5'>
       <a
         target='_blank'
         href='https://github.com/AnujChhikara'
-        className='bg-[#1b1b1b]  md:w-32 sm:w-28 border border-zinc-700  hover:border-zinc-800  px-4 py-2 hover:bg-[#262626] duration-700 rounded-lg font-semibold flex space-x-2 items-center'
+        className={`${Class}`}
         aria-label='Github'
       >
         <svg
@@ -22,7 +25,7 @@ export default function ContactMe() {
       <a
         target='_blank'
         href='https://twitter.com/AnujChhikara07'
-        className='bg-[#1b1b1b]  md:w-32 sm:w-28 border border-zinc-700  hover:border-zinc-800 px-4 py-2 hover:bg-[#262626] duration-700 rounded-lg font-semibold flex space-x-2 items-center'
+        className={`${Class}`}
         aria-label='Twitter'
       >
         <svg
@@ -41,7 +44,7 @@ export default function ContactMe() {
       <a
         target='_blank'
         href='https://www.linkedin.com/in/anuj-chhikara-webdeveloper/'
-        className='bg-[#1b1b1b]  md:w-32 sm:w-28 border border-zinc-700  hover:border-zinc-800 px-4 py-2 hover:bg-[#262626] duration-700 rounded-lg font-semibold flex space-x-2 items-center'
+        className={`${Class}`}
         aria-label='Linkedin'
       >
         <svg
@@ -60,7 +63,7 @@ export default function ContactMe() {
       <a
         target='_blank'
         href='mailto:anujchhikara07@gmail.com'
-        className='bg-[#1b1b1b]  md:w-32 sm:w-28 border border-zinc-700  hover:border-zinc-800 px-4 py-2 hover:bg-[#262626] duration-700 rounded-lg font-semibold flex space-x-2 items-center'
+        className={`${Class}`}
         aria-label='Email'
       >
         <svg
@@ -102,7 +105,7 @@ export default function ContactMe() {
       <a
         target='_blank'
         href='https://peerlist.io/anujchhikara'
-        className='bg-[#1b1b1b]  md:w-32 sm:w-28 border border-zinc-700  hover:border-zinc-800 px-4 py-2 hover:bg-[#262626] duration-700 rounded-lg font-semibold flex space-x-2 items-center'
+        className={`${Class}`}
         aria-label='Peerlist'
       >
         <svg
