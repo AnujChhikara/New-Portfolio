@@ -5,11 +5,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Anuj Chhikara | Full Stack Developer",
+  title: "Anuj Chhikara",
   description:
     "Full Stack Developer with a passion for building user-centric, efficient web solutions. Specializing in both design and performance.",
   openGraph: {
-    title: "Anuj Chhikara | Full Stack Developer",
+    title: "Anuj Chhikara",
     description:
       "Full Stack Developer passionate about web solutions that blend design and functionality.",
     url: "https://www.anujchhikara.com",
@@ -25,7 +25,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@AnujChhikara07", // Replace with your actual Twitter handle
-    title: "Anuj Chhikara | Full Stack Developer",
+    title: "Anuj Chhikara",
     description: "Building modern, efficient, and user-friendly websites.",
     images: [
       {

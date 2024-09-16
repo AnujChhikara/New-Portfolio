@@ -1,9 +1,6 @@
-# *
+# Allow all web crawlers access to everything
 User-agent: *
 Allow: /
 
-# Host
-Host: https://anujchhikara.com
-
-# Sitemaps
+# Sitemap location
 Sitemap: https://www.anujchhikara.com/sitemap.xml
