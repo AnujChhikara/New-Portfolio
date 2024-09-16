@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.devvault.xyz
+Host: https://anujchhikara.com
 
 # Sitemaps
-Sitemap: https://www.devvault.xyz/sitemap.xml
+Sitemap: https://www.anujchhikara.com/sitemap.xml
