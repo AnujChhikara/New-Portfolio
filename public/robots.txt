@@ -1,6 +1,0 @@
-# Allow all web crawlers access to everything
-User-agent: *
-Allow: /
-
-# Sitemap location
-Sitemap: https://www.anujchhikara.com/sitemap.xml

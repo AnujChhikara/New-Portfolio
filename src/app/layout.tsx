@@ -1,37 +1,25 @@
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Anuj Chhikara",
-  description:
-    "Full Stack Developer with a passion for building user-centric, efficient web solutions. Specializing in both design and performance.",
-  openGraph: {
-    title: "Anuj Chhikara",
-    description:
-      "Full Stack Developer passionate about web solutions that blend design and functionality.",
-    url: "https://www.anujchhikara.com",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dlahahicg/image/upload/v1712917455/zman4v8yaqtvixmnthmi.jpg",
-        width: 800,
-        height: 600,
-        alt: "Anuj Chhikara",
-      },
-    ],
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.anujchhikara.com"),
+  keywords:
+    "anuj , anuj chhikara, anuj dev, anuj developer, anuj devloper, anuj developer, anuj coder, anuj code, anuj coding, anuj web developer, anuj web developer, web developer, web developer",
+  title: {
+    default: "Anuj Chhikara",
+    template: "%s | Anuj Chhikara",
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@AnujChhikara07", // Replace with your actual Twitter handle
-    title: "Anuj Chhikara",
-    description: "Building modern, efficient, and user-friendly websites.",
+  description:
+    "Anuj Chhikara is a web developer and open source contributor. He is passionate about building and maintaining open source projects.",
+  openGraph: {
     images: [
       {
-        url: "https://res.cloudinary.com/dlahahicg/image/upload/v1712917455/zman4v8yaqtvixmnthmi.jpg",
-        width: 800,
-        height: 600,
+        url: "https://www.anujchhikara.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdlahahicg%2Fimage%2Fupload%2Fv1712917455%2Fzman4v8yaqtvixmnthmi.jpg&w=256&q=75",
+        width: 1200,
+        height: 630,
         alt: "Anuj Chhikara",
       },
     ],
