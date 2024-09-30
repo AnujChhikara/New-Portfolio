@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Metadata } from "next";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -33,6 +34,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
+      <Head>
+        <link rel='canonical' href='https://www.anujchhikara.com' />{" "}
+        {/* Add canonical tag */}
+      </Head>
       <body className={inter.className}>
         <main>{children}</main>
         <Analytics />
