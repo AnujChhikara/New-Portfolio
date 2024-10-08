@@ -1,12 +1,42 @@
+"use client";
 import ContactMe from "@/components/ContactMe";
 import Projects from "@/components/Projects";
 import Tech from "@/components/Tech";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Moon, Sun, Twitter } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [isDark, setIsDark] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+    // Here you would typically update your app's theme
+    // For example: document.documentElement.classList.toggle('dark')
+  };
   return (
     <main className='flex flex-col bg-[#18181b] h-screen'>
+      <div className='flex items-center justify-end p-4'>
+        <button
+          onClick={toggleTheme}
+          className={`relative w-12 h-7 rounded-full p-1 transition-colors duration-300 ease-in-out ${
+            isDark ? "bg-zinc-800" : "bg-white"
+          }`}
+          aria-label='Toggle theme'
+        >
+          <span
+            className={`absolute inset-0.5 w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300 ease-in-out ${
+              isDark ? "bg-zinc-900 translate-x-5" : "bg-yellow-400"
+            }`}
+          >
+            {isDark ? (
+              <Moon className='w-3 h-3 text-white' />
+            ) : (
+              <Sun className='w-3 h-3 text-white' />
+            )}
+          </span>
+        </button>
+      </div>
       {/* main section */}
       <section className='pb-8 md:px-20 flex flex-col space-y-4 items-center justify-center sm:px-2 text-center md:pt-20 sm:pt-12 '>
         {/* image */}
