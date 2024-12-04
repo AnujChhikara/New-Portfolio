@@ -12,3 +12,7 @@ html {
   scrollbar-color: #222121 #111111;
   scroll-behavior: smooth;
 }
+body {
+  overflow-x: hidden;
+  background-color: black;
+}

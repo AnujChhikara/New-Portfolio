@@ -7,7 +7,7 @@ export default function Projects({ isDark }: { isDark: boolean }) {
       className={`md:px-20 sm:px-4  flex flex-col items-center md:py-16 sm:pb-8  space-y-4 text-inherit bg-inherit`}
     >
       <h3 className="md:text-6xl sm:text-4xl font-semibold mb-6">Projects</h3>
-      <div className="md:grid md:grid-cols-1 lg:grid-cols-2 sm:grid sm:grid-cols-1 gap-8">
+      <div className=" md:grid-cols-2 sm:grid sm:grid-cols-1 gap-8">
         <ProjectCard
           isDark={isDark}
           ProjectName="Vidloom"
@@ -39,12 +39,12 @@ export default function Projects({ isDark }: { isDark: boolean }) {
 
         <ProjectCard
           isDark={isDark}
-          ProjectName="Chess"
-          Brief="The aim of this project is to create an immersive and user-centric online chess platform."
-          GithubLink="https://github.com/AnujChhikara/Chess"
-          LiveLink="/"
-          Tech={["React", "Redux", "Socket.io", "Express", "MongoDB"]}
-          VideoUrl="/"
+          ProjectName="Reqium"
+          Brief="A Chrome extension for efficient REST API testing, featuring Bulk Mode to send multiple requests simultaneously for streamlined testing."
+          GithubLink="https://github.com/AnujChhikara/ReqiumAPI"
+          LiveLink="https://reqium.vercel.app/"
+          Tech={["React", "Tailwind CSS"]}
+          VideoUrl="https://res.cloudinary.com/dlahahicg/video/upload/v1733330655/videoplayback_yzh7n1.mp4"
         />
       </div>
     </div>
