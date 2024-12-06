@@ -2,6 +2,7 @@
 import ContactMe from "@/components/ContactMe";
 import Projects from "@/components/Projects";
 import Tech from "@/components/Tech";
+import { Spotlight } from "@/components/ui/spotlight";
 import { Github, Linkedin, Moon, Sun, Twitter } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -14,16 +15,13 @@ export default function Home() {
   };
   return (
     <main
-      className={`flex relative flex-col h-screen transition-colors duration-500 ease-in-out ${
+      className={`flex flex-col h-screen transition-colors duration-500 ease-in-out ${
         isDark ? "bg-[#000000] text-white" : "bg-[#c4c4c4] text-zinc-900"
       }`}
     >
-      <div
-        className="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 25%, transparent 70%)",
-        }}
+      <Spotlight
+        className="-top-40 left-0 md:left-60 md:-top-20"
+        fill={isDark ? "white" : "none"}
       />
       <div className="flex items-center justify-end p-4 pb-0">
         <button
