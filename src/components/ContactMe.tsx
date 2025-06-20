@@ -104,7 +104,7 @@ export default function ContactMe() {
 
       <a
         target="_blank"
-        href="https://peerlist.io/anujchhikara"
+        href="https://peerlist.io/anujx"
         className={`${Class}`}
         aria-label="Peerlist"
       >
