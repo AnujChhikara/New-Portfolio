@@ -43,7 +43,7 @@ export default function ContactMe() {
 
       <a
         target="_blank"
-        href="https://www.linkedin.com/in/anuj-chhikara-webdeveloper/"
+        href="https://www.linkedin.com/in/anujchhikara20"
         className={`${Class}`}
         aria-label="Linkedin"
       >
