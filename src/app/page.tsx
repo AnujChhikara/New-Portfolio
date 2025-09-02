@@ -4,6 +4,7 @@ import { MacOSDock } from "@/components/dock";
 import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
 import Tech from "@/components/Tech";
+import WorkExperience from "@/components/WorkExperience";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -48,7 +49,7 @@ export default function Home() {
               className="text-4xl rounded-lg items-center font-bold"
               initial={{ opacity: 0, filter: "blur(15px)", y: 0 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
               Anuj Kumar
             </motion.h1>
@@ -57,7 +58,7 @@ export default function Home() {
               className="text-lg text-neutral-300"
               initial={{ opacity: 0, filter: "blur(12px)", y: 0 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 1.2, delay: 0.6 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
             >
               Full Stack Developer
             </motion.p>
@@ -66,7 +67,7 @@ export default function Home() {
               className="text-md text-neutral-300 text-left"
               initial={{ opacity: 0, filter: "blur(10px)", y: 0 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 1.6, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
               Passionate about building modern, user-friendly web apps that
               combine great design with high performance.
@@ -86,6 +87,9 @@ export default function Home() {
         <section id="projects">
           <Projects />
         </section>
+
+        {/* Work Experience */}
+        <WorkExperience />
 
         {/* Tech/frameworks */}
         <section
