@@ -35,8 +35,8 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 20;
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: 400px;
   position: relative;
   right: 5em;
 }
@@ -51,8 +51,8 @@ body {
   position: absolute;
   top: 200px;
   left: 100px;
-  height: 200px;
-  width: 200px;
+  height: 140px;
+  width: 140px;
 
   animation: yellow 8s infinite ease;
 }
@@ -62,8 +62,8 @@ body {
   position: absolute;
   top: 80px;
   right: -20px;
-  height: 200px;
-  width: 250px;
+  height: 140px;
+  width: 175px;
 
   animation: green 8s infinite ease;
 }
@@ -73,8 +73,8 @@ body {
   position: absolute;
   right: 0;
   top: 300px;
-  height: 250px;
-  width: 200px;
+  height: 175px;
+  width: 140px;
 
   animation: red 8s infinite linear;
 }
