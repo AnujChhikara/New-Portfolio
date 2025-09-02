@@ -35,12 +35,12 @@ export default function Projects() {
         />
 
         <ProjectCard
-          ProjectName="Reqium"
-          Brief="A Chrome extension for efficient REST API testing, featuring Bulk Mode to send multiple requests simultaneously for streamlined testing."
-          GithubLink="https://github.com/AnujChhikara/ReqiumAPI"
-          LiveLink="https://reqium.vercel.app/"
-          Tech={["React", "Tailwind CSS"]}
-          VideoUrl="https://res.cloudinary.com/dlahahicg/video/upload/v1733330655/videoplayback_yzh7n1.mp4"
+          ProjectName="Extensionhub"
+          Brief="Marketplace for niche browser extension requests, enabling users to submit ideas and developers to build them."
+          GithubLink="https://github.com/AnujChhikara/Extensionhub"
+          LiveLink="https://extensionhub-lilac.vercel.app/"
+          Tech={["NextJS", "Appwrite"]}
+          VideoUrl="https://res.cloudinary.com/dlahahicg/video/upload/v1756836113/Screen_Recording_2025-09-02_at_11.28.57_PM_yjedfx.mov"
         />
       </div>
     </div>

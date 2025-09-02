@@ -1,4 +1,5 @@
 import ContactMe from "@/components/ContactMe";
+import { MacOSDock } from "@/components/dock";
 import Projects from "@/components/Projects";
 import Tech from "@/components/Tech";
 import { Github, Linkedin, Twitter } from "lucide-react";
@@ -16,37 +17,37 @@ export default function Home() {
         <div className="green blob"></div>
       </div>
       {/* main section */}
-      <section className="pb-8 md:px-20 flex flex-col space-y-4 items-center justify-center sm:px-2 text-center md:pt-20 sm:pt-8 ">
-        {/* image */}
-        <div className=" flex sm:flex-col md:flex-row-reverse sm:space-y-6 md:space-y-0   sm:pb-4 sm:pt-4  md:pb-12 md:pt-12">
-          <Image
-            width={150}
-            className=" bg-[#5f5f5f] p-0.5 hover:bg-zinc-400 duration-1000 md:mx-12 rounded-2xl shadow-md shadow-white w-24  md:w-36"
-            height={150}
-            src="https://res.cloudinary.com/dlahahicg/image/upload/v1712917455/zman4v8yaqtvixmnthmi.jpg"
-            alt="avatar img"
-          />
-          <div className="md:w-96 sm:w-80 flex flex-col  justify-center space-y-2">
-            <h1 className=" text-left  rounded-lg items-center font-bold ">
-              Anuj | Full Stack Developer
-            </h1>
-            <hr className=" w-64 border-gray-500" />
-            <h2 className={`text-md text-gray-300 text-left`}>
-              I love building websites and programming. My goal is to create
-              efficient, user-centric web solutions that excel in both design
-              and performance.
-            </h2>
-          </div>
+      <MacOSDock />
+      <section
+        id="home"
+        className="pb-8 md:px-20 flex flex-col space-y-4 items-center justify-center sm:px-2 text-center md:pt-20 sm:pt-8 "
+      >
+        <div className="max-w-2xl flex flex-col py-20  justify-start items-start space-y-2">
+          <h1 className=" text-4xl rounded-lg items-center font-bold ">
+            Anuj Kumar
+          </h1>
+
+          <p className="text-lg text-neutral-300">Full Stack Developer</p>
+
+          <h2 className={`text-md text-neutral-300 text-left`}>
+            Passionate about building modern, user-friendly web apps that
+            combine great design with high performance.
+          </h2>
         </div>
 
         <ContactMe />
       </section>
 
       {/* Projects */}
-      <Projects />
+      <section id="projects">
+        <Projects />
+      </section>
 
       {/* Tech/frameworks */}
-      <section className="md:px-20 bg-inherit text-inherit sm:px-4 flex flex-col items-center justify-center py-20">
+      <section
+        id="skills"
+        className="md:px-20 bg-inherit text-inherit sm:px-4 flex flex-col items-center justify-center py-20"
+      >
         <h2 className="md:text-6xl sm:text-4xl font-semibold mb-2">
           Skills and Tools
         </h2>

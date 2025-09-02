@@ -206,3 +206,58 @@ body {
     right: 10px;
   }
 }
+
+.macos-dock {
+  padding: 8px;
+  height: 58px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.dock-items {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0 8px;
+}
+
+.dock-item {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  background: #2d2d2d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  top: 0;
+  position: relative;
+  transition: all 0.2s ease-out;
+}
+
+.dock-item::before {
+  content: attr(data-tooltip);
+  display: block;
+  position: absolute;
+  top: -28px;
+  font-size: 10px;
+  border-radius: 4px;
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: #282828;
+  padding: 3px 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.1s ease-out opacity;
+}
+
+.dock-item:hover::before {
+  opacity: 1;
+}
+
+.dock-item > svg {
+  width: 50%;
+  color: #f0f0f0;
+}
