@@ -3,6 +3,7 @@ import ContactMe from "@/components/ContactMe";
 import { MacOSDock } from "@/components/dock";
 import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
+import RecentContributions from "@/components/RecentContributions";
 import Tech from "@/components/Tech";
 import WorkExperience from "@/components/WorkExperience";
 import { motion } from "framer-motion";
@@ -88,9 +89,6 @@ export default function Home() {
           <Projects />
         </section>
 
-        {/* Work Experience */}
-        <WorkExperience />
-
         {/* Tech/frameworks */}
         <section
           id="skills"
@@ -105,6 +103,12 @@ export default function Home() {
 
           <Tech />
         </section>
+
+        {/* Work Experience */}
+        <WorkExperience />
+
+        {/* Recent Contributions */}
+        <RecentContributions />
 
         {/* Footer */}
         <Footer />

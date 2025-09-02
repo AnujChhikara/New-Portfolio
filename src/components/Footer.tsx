@@ -101,10 +101,7 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          <motion.div
-            className="space-y-4 md:text-right text-left"
-            variants={itemVariants}
-          >
+          <motion.div className="space-y-4  text-left" variants={itemVariants}>
             <h4 className="text-lg font-semibold text-white">
               Let&apos;s Connect
             </h4>
