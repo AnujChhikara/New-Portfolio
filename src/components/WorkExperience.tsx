@@ -70,14 +70,15 @@ export default function WorkExperience() {
 
   const lineVariants = {
     hidden: { opacity: 0, x: -20 },
-    visible: {
+    visible: (custom: number) => ({
       opacity: 1,
       x: 0,
       transition: {
         duration: 0.5,
         ease: "easeOut",
+        delay: custom * 0.1, // 0.1s delay between each line
       },
-    },
+    }),
   };
 
   return (

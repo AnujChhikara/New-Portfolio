@@ -58,7 +58,7 @@ export default function Footer() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="max-w-7xl mx-auto px-6 py-16 pt-28">
-        <div className="flex justify-between gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12">
           <motion.div className="space-y-4 max-w-md" variants={itemVariants}>
             <h3 className="text-2xl font-bold text-white text-left">
               Anuj Kumar
@@ -101,12 +101,14 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* Contact Section */}
-          <motion.div className="space-y-4" variants={itemVariants}>
-            <h4 className="text-lg font-semibold text-white text-left">
+          <motion.div
+            className="space-y-4 md:text-right text-left"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold text-white">
               Let&apos;s Connect
             </h4>
-            <p className="text-zinc-400 text-sm leading-relaxed text-left">
+            <p className="text-zinc-400 text-sm leading-relaxed">
               Ready to collaborate on your next project? Let&apos;s build
               something amazing together! 🚀
             </p>

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://www.anujchhikara.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdlahahicg%2Fimage%2Fupload%2Fv1712917455%2Fzman4v8yaqtvixmnthmi.jpg&w=256&q=75",
+        url: "https://pbs.twimg.com/profile_images/1921460669129363456/MefH_yDv_400x400.jpg",
         width: 1200,
         height: 630,
         alt: "Anuj Chhikara",
@@ -33,9 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <Head>
-        <link rel='canonical' href='https://www.anujchhikara.com' />{" "}
+        <link rel="canonical" href="https://www.anujchhikara.com" />{" "}
         {/* Add canonical tag */}
       </Head>
       <body className={inter.className}>

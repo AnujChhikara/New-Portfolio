@@ -18,7 +18,7 @@ export default function Home() {
         <div className="red blob"></div>
         <div className="green blob"></div>
       </div>
-      <div className="min-h-screen w-full bg-black relative">
+      <div className="md:min-h-screen w-full bg-black relative">
         {/* Dark Noise Colored Background */}
         <div
           className="absolute inset-0 z-0"
@@ -37,10 +37,10 @@ export default function Home() {
         <MacOSDock />
         <section
           id="home"
-          className="pb-8 md:px-20 flex min-h-screen flex-col space-y-4 items-center justify-start sm:px-2 text-center md:pt-20 sm:pt-8 "
+          className="pb-8 md:px-20 flex  md:min-h-screen sm:mb-20 md:mb-0 flex-col space-y-4 items-center md:justify-start sm:px-2 text-center md:pt-20 sm:pt-8 "
         >
           <motion.div
-            className="max-w-2xl flex pt-20 pb-10 flex-col mr-8  justify-start items-start space-y-2"
+            className="max-w-2xl flex ml-6 md:ml-0 pt-20 pb-10 flex-col mr-8  justify-start items-start space-y-2"
             initial={{ opacity: 0, filter: "blur(20px)", y: 0 }}
             animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
@@ -96,7 +96,7 @@ export default function Home() {
           id="skills"
           className="md:px-20 bg-inherit text-inherit sm:px-4 flex flex-col items-center justify-center py-20"
         >
-          <h2 className="md:text-6xl sm:text-4xl font-semibold mb-2">
+          <h2 className="md:text-6xl sm:text-3xl font-semibold mb-2">
             Technologies and Tools
           </h2>
           <p className={`text-[#a3a3a3] text-sm font-semibold text-center`}>
