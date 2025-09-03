@@ -65,7 +65,7 @@ export default function Home() {
             </motion.p>
 
             <motion.h2
-              className="text-md text-neutral-300 text-left"
+              className="text-md sm:w-80 md:w-full text-neutral-300 text-left"
               initial={{ opacity: 0, filter: "blur(10px)", y: 0 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -106,9 +106,10 @@ export default function Home() {
 
         {/* Work Experience */}
         <WorkExperience />
-
+        <section id="contributions" className="hidden md:block">
+          <RecentContributions />
+        </section>
         {/* Recent Contributions */}
-        <RecentContributions />
 
         {/* Footer */}
         <Footer />
