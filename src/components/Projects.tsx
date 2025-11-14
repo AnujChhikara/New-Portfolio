@@ -6,33 +6,33 @@ export default function Projects() {
   return (
     <motion.div
       className={`md:px-20 sm:px-4 flex flex-col items-center md:pb-16 sm:pb-8 space-y-4 text-inherit bg-inherit`}
-      initial={{ opacity: 0, filter: "blur(20px)", y: 50 }}
-      whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
       <motion.h3
         className="md:text-6xl sm:text-4xl font-semibold mb-6"
-        initial={{ opacity: 0, filter: "blur(15px)", y: 30 }}
-        whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.2 }}
       >
         Projects
       </motion.h3>
 
       <motion.div
         className="md:grid-cols-2 sm:grid sm:grid-cols-1 gap-8"
-        initial={{ opacity: 0, filter: "blur(12px)", y: 40 }}
-        whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.2 }}
       >
         <motion.div
-          initial={{ opacity: 0, filter: "blur(10px)", y: 25 }}
-          whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.2 }}
         >
           <ProjectCard
             ProjectName="Vidloom"
@@ -45,10 +45,10 @@ export default function Projects() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, filter: "blur(10px)", y: 25 }}
-          whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.4, delay: 0.4 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.2 }}
         >
           <ProjectCard
             ProjectName="DevVault"
@@ -61,10 +61,10 @@ export default function Projects() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, filter: "blur(10px)", y: 25 }}
-          whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.4, delay: 0.5 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.2 }}
         >
           <ProjectCard
             ProjectName="Speedexx"
@@ -77,10 +77,10 @@ export default function Projects() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, filter: "blur(10px)", y: 25 }}
-          whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.4, delay: 0.6 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.2 }}
         >
           <ProjectCard
             ProjectName="Extensionhub"

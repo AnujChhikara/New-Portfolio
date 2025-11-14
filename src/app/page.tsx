@@ -20,7 +20,7 @@ export default function Home() {
         <div className="green blob"></div>
       </div>
       <div className="md:min-h-screen w-full bg-black relative">
-        {/* Dark Noise Colored Background */}
+        {/* Dark Noise Colored Background
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -33,8 +33,7 @@ export default function Home() {
             backgroundSize: "20px 20px, 30px 30px, 25px 25px",
             backgroundPosition: "0 0, 10px 10px, 15px 5px",
           }}
-        />
-
+        /> */}
         <MacOSDock />
         <section
           id="home"
@@ -83,12 +82,10 @@ export default function Home() {
             <ContactMe />
           </motion.div>
         </section>
-
         {/* Projects */}
         <section id="projects">
           <Projects />
         </section>
-
         {/* Tech/frameworks */}
         <section
           id="skills"
@@ -103,14 +100,12 @@ export default function Home() {
 
           <Tech />
         </section>
-
         {/* Work Experience */}
         <WorkExperience />
-        <section id="contributions" className="hidden md:block">
+        <section id="contributions">
           <RecentContributions />
         </section>
         {/* Recent Contributions */}
-
         {/* Footer */}
         <Footer />
       </div>
