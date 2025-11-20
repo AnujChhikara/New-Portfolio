@@ -1,6 +1,4 @@
-import React from "react";
-import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
-const tech = [
+export const tech = [
   {
     svg: (
       <svg
@@ -410,10 +408,3 @@ const tech = [
     name: "Figma",
   },
 ];
-export default function Tech() {
-  return (
-    <div className='sm:w-[350px] gap-6 bg-inherit mt-10 md:w-2/3'>
-      <InfiniteMovingCards items={tech} direction='right' speed='slow' />
-    </div>
-  );
-}

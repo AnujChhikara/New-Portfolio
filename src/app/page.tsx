@@ -1,114 +1,334 @@
 "use client";
-import ContactMe from "@/components/ContactMe";
-import { MacOSDock } from "@/components/dock";
-import Footer from "@/components/Footer";
-import Projects from "@/components/Projects";
-import RecentContributions from "@/components/RecentContributions";
-import Tech from "@/components/Tech";
-import WorkExperience from "@/components/WorkExperience";
+
+import { Quicksand } from "next/font/google";
+import { InfiniteMovingPRCards } from "@/components/ui/infinite-moving-pr-cards";
+import { StarField } from "@/components/ui/star-field";
+import { TextReveal } from "@/components/ui/text-reveal";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { Skills } from "@/components/skills";
+import { getRecentPRs, type GithubPR } from "@/lib/github";
 import { motion } from "framer-motion";
+import { ArrowUpRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const signatureFont = Quicksand({ subsets: ["latin"], weight: "600" });
+
+const projects = [
+  {
+    title: "Vidloom",
+    description:
+      "A video sharing platform similar to YouTube with upload and playback capabilities.",
+    tech: ["React", "Redux", "Shadcn Ui", "Express", "MongoDB"],
+    link: "https://vidloom.vercel.app/",
+    github: "https://github.com/AnujChhikara/frontend-yt",
+  },
+  {
+    title: "DevVault",
+    description:
+      "Platform for accessing and sharing reusable code snippets effortlessly.",
+    tech: ["NextJS", "Redux", "Aceternity UI", "MongoDB"],
+    link: "https://devvault.vercel.app/",
+    github: "https://github.com/AnujChhikara/Vault",
+  },
+  {
+    title: "Extensionhub",
+    description:
+      "Marketplace for niche browser extension requests and development.",
+    tech: ["NextJS", "Appwrite"],
+    link: "https://extensionhub-lilac.vercel.app/",
+    github: "https://github.com/AnujChhikara/Extensionhub",
+  },
+  {
+    title: "Speedexx",
+    description: "Engaging and user-friendly e-commerce website clone.",
+    tech: ["React", "Redux", "Tailwind CSS"],
+    link: "https://speedex-clone.vercel.app/",
+    github: "https://github.com/AnujChhikara/speedexClone",
+  },
+];
+
+const experience = [
+  {
+    company: "Real Dev Squad",
+    role: "Full Stack Developer",
+    period: "Sep 2024 — Present",
+    description:
+      "Building and maintaining full stack features for a large-scale open-source platform using React, Node.js, and MongoDB.",
+  },
+  {
+    company: "SpeedexInd Private Limited",
+    role: "UI/UX Designer & Developer",
+    period: "Sep 2022 — Jul 2025",
+    description:
+      "Designed responsive interfaces and delivered high-fidelity screens using Figma and HTML/CSS.",
+  },
+];
+
+const socialLinks = [
+  { name: "GitHub", href: "https://github.com/AnujChhikara", icon: Github },
+  { name: "Twitter", href: "https://x.com/anujchhikara07", icon: Twitter },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/anuj-chhikara-789685229/",
+    icon: Linkedin,
+  },
+  { name: "Email", href: "mailto:anujchhikara777@gmail.com", icon: Mail },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
 export default function Home() {
-  return (
-    <main
-      className={`flex flex-col text-white h-screen transition-colors duration-500 ease-in-out
-      }`}
-    >
-      <div className="blob-cont">
-        <div className="yellow blob"></div>
-        <div className="red blob"></div>
-        <div className="green blob"></div>
-      </div>
-      <div className="md:min-h-screen w-full bg-black relative">
-        {/* Dark Noise Colored Background
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: "#000000",
-            backgroundImage: `
-        radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.2) 1px, transparent 0),
-        radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.18) 1px, transparent 0),
-        radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.15) 1px, transparent 0)
-      `,
-            backgroundSize: "20px 20px, 30px 30px, 25px 25px",
-            backgroundPosition: "0 0, 10px 10px, 15px 5px",
-          }}
-        /> */}
-        <MacOSDock />
-        <section
-          id="home"
-          className="pb-8 md:px-20 flex  md:min-h-screen sm:mb-20 md:mb-0 flex-col space-y-4 items-center md:justify-start sm:px-2 text-center md:pt-20 sm:pt-8 "
-        >
-          <motion.div
-            className="max-w-2xl flex ml-6 md:ml-0 pt-20 pb-10 flex-col mr-8  justify-start items-start space-y-2"
-            initial={{ opacity: 0, filter: "blur(20px)", y: 0 }}
-            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-          >
-            <motion.h1
-              className="text-4xl rounded-lg items-center font-bold"
-              initial={{ opacity: 0, filter: "blur(15px)", y: 0 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Anuj Kumar
-            </motion.h1>
+  const [prs, setPrs] = useState<GithubPR[]>([]);
 
-            <motion.p
-              className="text-lg text-neutral-300"
-              initial={{ opacity: 0, filter: "blur(12px)", y: 0 }}
+  useEffect(() => {
+    getRecentPRs("AnujChhikara").then(setPrs);
+  }, []);
+
+  return (
+    <div className="min-h-screen w-full font-sans selection:bg-primary/20">
+      <StarField />
+
+      <div className="mx-auto max-w-4xl px-6 py-12 md:py-20">
+        {/* Header */}
+        <motion.header
+          className="flex items-center justify-between mb-16 md:mb-24"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <div className="flex flex-col space-y-1">
+            <motion.h1
+              className={`${signatureFont.className} text-2xl font-extrabold tracking-tight text-foreground`}
+              initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              Full Stack Developer
+              Anuj Chhikara
+            </motion.h1>
+            <motion.p
+              className="text-sm text-muted-foreground"
+              initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
+              Software Engineer
+            </motion.p>
+          </div>
+          <ThemeToggle />
+        </motion.header>
+
+        <motion.main
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="space-y-16 md:space-y-24"
+        >
+          {/* Intro */}
+          <motion.section variants={item} className="space-y-6">
+            <TextReveal
+              text="Designing and engineering digital experiences with clarity, precision, and purpose."
+              highlightWords={["precision", "purpose"]}
+              highlightConfig={{
+                precision:
+                  "px-3 py-1 bg-gradient-to-r from-purple-500/20 to-violet-500/20 dark:from-purple-500/30 dark:to-violet-500/30 rounded-lg font-semibold text-purple-700 dark:text-violet-300",
+                purpose:
+                  "px-3 py-1 bg-gradient-to-r from-amber-500/20 to-orange-500/20 dark:from-amber-500/30 dark:to-orange-500/30 rounded-lg font-semibold text-amber-700 dark:text-orange-300",
+              }}
+              className="text-3xl md:text-4xl font-medium leading-tight text-foreground"
+            />
+            <motion.p
+              className="text-base md:text-lg text-muted-foreground max-w-2xl"
+              initial={{ opacity: 0, filter: "blur(5px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              I&apos;m a developer passionate about building modern,
+              user-friendly web applications. Currently exploring the
+              intersection of design systems and performance.
             </motion.p>
 
-            <motion.h2
-              className="text-md sm:w-80 md:w-full text-neutral-300 text-left"
-              initial={{ opacity: 0, filter: "blur(10px)", y: 0 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+            <motion.div
+              className="flex items-center gap-4 pt-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.2 }}
             >
-              Passionate about building modern, user-friendly web apps that
-              combine great design with high performance.
-            </motion.h2>
-          </motion.div>
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 hover:scale-110"
+                  aria-label={link.name}
+                >
+                  <link.icon className="h-5 w-5" />
+                </a>
+              ))}
+            </motion.div>
+          </motion.section>
 
-          <motion.div
-            initial={{ opacity: 0, filter: "blur(8px)", y: 0 }}
-            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <ContactMe />
-          </motion.div>
-        </section>
-        {/* Projects */}
-        <section id="projects">
-          <Projects />
-        </section>
-        {/* Tech/frameworks */}
-        <section
-          id="skills"
-          className="md:px-20 bg-inherit text-inherit sm:px-4 flex flex-col items-center justify-center py-20"
+          {/* Skills */}
+          <Skills />
+
+          {/* Projects */}
+          <motion.section variants={item} className="space-y-8">
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+                Selected Projects
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {projects.map((project) => (
+                <motion.div
+                  key={project.title}
+                  className="group flex flex-col space-y-3 rounded-lg border border-border/50 bg-card/50 p-6 transition-all hover:bg-card hover:border-border hover:shadow-lg hover:shadow-primary/5 relative overflow-hidden"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="flex items-center justify-between relative z-10">
+                    <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h4>
+                    <div className="flex gap-3">
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110"
+                        >
+                          <Github className="h-4 w-4" />
+                        </a>
+                      )}
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110"
+                      >
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed relative z-10">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-2 relative z-10">
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="text-xs px-2 py-1 rounded-md bg-secondary/50 text-secondary-foreground font-medium border border-transparent group-hover:border-border/50 transition-colors"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* Experience */}
+          <motion.section variants={item} className="space-y-8">
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+                Experience
+              </h3>
+            </div>
+
+            <div className="space-y-8">
+              {experience.map((job) => (
+                <div
+                  key={job.company}
+                  className="flex flex-col md:flex-row md:justify-between md:gap-8 space-y-2 md:space-y-0"
+                >
+                  <div className="md:w-1/4">
+                    <span className="text-sm text-muted-foreground font-mono">
+                      {job.period}
+                    </span>
+                  </div>
+                  <div className="md:w-3/4 space-y-2">
+                    <h4 className="font-medium text-foreground">
+                      {job.role}{" "}
+                      <span className="text-muted-foreground">
+                        @ {job.company}
+                      </span>
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {job.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* Open Source / PRs */}
+          {prs.length > 0 && (
+            <motion.section
+              variants={item}
+              className="space-y-8 overflow-hidden"
+            >
+              <div className="flex items-center justify-between border-b border-border pb-4">
+                <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+                  Recent Open Source Contributions
+                </h3>
+              </div>
+              <div className="-mx-6 md:-mx-0">
+                <InfiniteMovingPRCards
+                  items={prs}
+                  direction="left"
+                  speed="slow"
+                />
+              </div>
+            </motion.section>
+          )}
+
+          {/* Contact */}
+          <motion.section variants={item} className="space-y-8 pb-16">
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+                Get in Touch
+              </h3>
+            </div>
+            <div className="flex flex-col space-y-4">
+              <p className="text-muted-foreground max-w-lg">
+                I&apos;m always open to new opportunities and collaborations.
+                Feel free to reach out if you want to build something together.
+              </p>
+              <a
+                href="mailto:anujchhikara777@gmail.com"
+                className="inline-flex items-center text-foreground font-medium hover:text-primary/80 transition-colors"
+              >
+                Say Hello <ArrowUpRight className="ml-1 h-4 w-4" />
+              </a>
+            </div>
+          </motion.section>
+        </motion.main>
+
+        <motion.footer
+          variants={item}
+          className="flex justify-between items-center pt-8 border-t border-border/50 text-xs text-muted-foreground"
         >
-          <h2 className="md:text-6xl sm:text-3xl font-semibold mb-2">
-            Technologies and Tools
-          </h2>
-          <p className={`text-[#a3a3a3] text-sm font-semibold text-center`}>
-            Technologies and Tools I Use to Bring Products to Life.
-          </p>
-
-          <Tech />
-        </section>
-        {/* Work Experience */}
-        <WorkExperience />
-        <section id="contributions">
-          <RecentContributions />
-        </section>
-        {/* Recent Contributions */}
-        {/* Footer */}
-        <Footer />
+          <p>© {new Date().getFullYear()} Anuj Chhikara</p>
+        </motion.footer>
       </div>
-    </main>
+    </div>
   );
 }

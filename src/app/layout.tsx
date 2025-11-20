@@ -2,9 +2,11 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Metadata } from "next";
-import Head from "next/head";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
 
 const inter = Inter({ subsets: ["latin"] });
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.anujchhikara.com"),
   keywords:
@@ -33,14 +35,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <Head>
-        <link rel="canonical" href="https://www.anujchhikara.com" />{" "}
-        {/* Add canonical tag */}
-      </Head>
-      <body className={inter.className}>
-        <main>{children}</main>
-        <Analytics />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased selection:bg-foreground selection:text-background`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SmoothScrollProvider>
+            {children}
+          </SmoothScrollProvider>
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );
