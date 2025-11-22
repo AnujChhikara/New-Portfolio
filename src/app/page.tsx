@@ -2,7 +2,6 @@
 
 import { Quicksand } from "next/font/google";
 import { InfiniteMovingPRCards } from "@/components/ui/infinite-moving-pr-cards";
-import { StarField } from "@/components/ui/star-field";
 import { TextReveal } from "@/components/ui/text-reveal";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Skills } from "@/components/skills";
@@ -100,8 +99,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full font-sans selection:bg-primary/20">
-      <StarField />
-
       <div className="mx-auto max-w-4xl px-6 py-12 md:py-20">
         {/* Header */}
         <motion.header

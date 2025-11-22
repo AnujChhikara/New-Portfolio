@@ -21,7 +21,7 @@ export function Skills() {
 
       {/* Infinite Moving Cards */}
       <div className=" md:-mx-0">
-        <InfiniteMovingSkills items={tech} direction="left" speed="slow" />
+        <InfiniteMovingSkills items={tech} direction="left" speed="normal" />
       </div>
     </motion.section>
   );
