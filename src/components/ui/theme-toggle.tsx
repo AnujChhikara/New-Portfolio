@@ -31,14 +31,3 @@ export function ThemeToggle() {
     </button>
   );
 }
-
-// Add TypeScript support for startViewTransition
-declare global {
-  interface Document {
-    startViewTransition?: (callback: () => void) => {
-      ready: Promise<void>;
-      finished: Promise<void>;
-      updateCallbackDone: Promise<void>;
-    };
-  }
-}

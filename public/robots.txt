@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.anujchhikara.com
+
+# Sitemaps
+Sitemap: https://www.anujchhikara.com/sitemap.xml
