@@ -1,6 +1,7 @@
 "use client";
 
 import { Quicksand } from "next/font/google";
+import { ProjectCard } from "@/components/project-card";
 import { InfiniteMovingPRCards } from "@/components/ui/infinite-moving-pr-cards";
 import { TextReveal } from "@/components/ui/text-reveal";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
@@ -9,8 +10,6 @@ import { getRecentPRs, type GithubPR } from "@/lib/github";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const signatureFont = Quicksand({ subsets: ["latin"], weight: "600" });
 
 const projects = [
   {
@@ -68,7 +67,7 @@ const socialLinks = [
   { name: "Twitter", href: "https://x.com/anujchhikara07", icon: Twitter },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/anuj-chhikara-789685229/",
+    href: "https://www.linkedin.com/in/anujchhikara20/",
     icon: Linkedin,
   },
   { name: "Email", href: "mailto:anujchhikara777@gmail.com", icon: Mail },
@@ -109,7 +108,7 @@ export default function Home() {
         >
           <div className="flex flex-col space-y-1">
             <motion.h1
-              className={`${signatureFont.className} text-2xl font-extrabold tracking-tight text-foreground`}
+              className={` text-2xl font-bold tracking-tight text-foreground`}
               initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -137,12 +136,12 @@ export default function Home() {
           {/* Intro */}
           <motion.section variants={item} className="space-y-6">
             <TextReveal
-              text="Designing and engineering digital experiences with clarity, precision, and purpose."
-              highlightWords={["precision", "purpose"]}
+              text="Creating fast, intuitive digital experiences at the intersection of design and engineering."
+              highlightWords={["design", "engineering"]}
               highlightConfig={{
-                precision:
+                design:
                   "px-3 py-1 bg-gradient-to-r from-purple-500/20 to-violet-500/20 dark:from-purple-500/30 dark:to-violet-500/30 rounded-lg font-semibold text-purple-700 dark:text-violet-300",
-                purpose:
+                engineering:
                   "px-3 py-1 bg-gradient-to-r from-amber-500/20 to-orange-500/20 dark:from-amber-500/30 dark:to-orange-500/30 rounded-lg font-semibold text-amber-700 dark:text-orange-300",
               }}
               className="text-3xl md:text-4xl font-medium leading-tight text-foreground"
@@ -153,9 +152,9 @@ export default function Home() {
               animate={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              I&apos;m a developer passionate about building modern,
-              user-friendly web applications. Currently exploring the
-              intersection of design systems and performance.
+              I&apos;m an engineer who enjoys building with modern web tools. I
+              focus on solving real problems, keeping things simple and
+              reliable, and improving a little with every project.
             </motion.p>
 
             <motion.div
@@ -192,51 +191,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project) => (
-                <motion.div
-                  key={project.title}
-                  className="group flex flex-col space-y-3 rounded-lg border border-border/50 bg-card/50 p-6 transition-all hover:bg-card hover:border-border hover:shadow-lg hover:shadow-primary/5 relative overflow-hidden"
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  <div className="flex items-center justify-between relative z-10">
-                    <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h4>
-                    <div className="flex gap-3">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110"
-                        >
-                          <Github className="h-4 w-4" />
-                        </a>
-                      )}
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110"
-                      >
-                        <ArrowUpRight className="h-4 w-4" />
-                      </a>
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed relative z-10">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 pt-2 relative z-10">
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="text-xs px-2 py-1 rounded-md bg-secondary/50 text-secondary-foreground font-medium border border-transparent group-hover:border-border/50 transition-colors"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
+                <ProjectCard key={project.title} project={project} />
               ))}
             </div>
           </motion.section>

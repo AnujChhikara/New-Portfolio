@@ -22,16 +22,33 @@ export const InfiniteMovingPRCards = ({
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
   const [start, setStart] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted || items.length === 0) return;
+
     function addAnimation() {
       if (containerRef.current && scrollerRef.current) {
+        // Reset cloned state when items change
+        scrollerRef.current.removeAttribute("data-cloned");
+        
+        // Remove any existing cloned items
+        const existingClones = scrollerRef.current.querySelectorAll('[data-clone="true"]');
+        existingClones.forEach(clone => clone.remove());
+
         const scrollerContent = Array.from(scrollerRef.current.children);
 
-        if (scrollerRef.current.getAttribute("data-cloned") === "true") return;
+        // Only proceed if we have items and haven't cloned yet
+        if (scrollerContent.length === 0) return;
 
+        // Clone items for seamless infinite scroll
         scrollerContent.forEach((item) => {
-          const duplicatedItem = item.cloneNode(true);
+          const duplicatedItem = item.cloneNode(true) as HTMLElement;
+          duplicatedItem.setAttribute("data-clone", "true");
           if (scrollerRef.current) {
             scrollerRef.current.appendChild(duplicatedItem);
           }
@@ -75,15 +92,25 @@ export const InfiniteMovingPRCards = ({
       }
     }
 
-    addAnimation();
-  }, [items, direction, speed]);
+    // Use double requestAnimationFrame to ensure DOM is fully updated
+    let rafId1: number;
+    let rafId2: number;
+    
+    rafId1 = requestAnimationFrame(() => {
+      rafId2 = requestAnimationFrame(() => {
+        addAnimation();
+      });
+    });
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+    return () => {
+      if (rafId1) cancelAnimationFrame(rafId1);
+      if (rafId2) cancelAnimationFrame(rafId2);
+    };
+  }, [items, direction, speed, mounted]);
 
-  if (!mounted) return null;
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <div
@@ -105,16 +132,16 @@ export const InfiniteMovingPRCards = ({
           const isMerged =
             item.pull_request?.merged_at || item.state === "closed"; // Ideally check merged_at specifically, but search API is a bit different. Actually search API returns `pull_request` obj.
           // Simpler check:
-          const status = item.pull_request.merged_at ? "merged" : item.state;
+          const status = item.pull_request?.merged_at ? "merged" : item.state;
 
           // Extract repo name from URL if possible, or just show title
           // repository_url: "https://api.github.com/repos/owner/repo"
-          const repoName = item.repository_url.split("/").slice(-2).join("/");
+          const repoName = item.repository_url?.split("/").slice(-2).join("/") || "Unknown";
 
           return (
             <li
               className="w-[350px] max-w-full relative rounded-xl border border-border bg-card px-8 py-6 flex-shrink-0"
-              key={item.id}
+              key={`${item.id}-${idx}`}
             >
               <a
                 href={item.html_url}
@@ -154,9 +181,9 @@ export const InfiniteMovingPRCards = ({
                   </div>
 
                   <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
-                    <span>#{item.id}</span>
+                    <span>#{item.number || item.id}</span>
                     <span>
-                      {new Date(item.created_at).toLocaleDateString()}
+                      {item.created_at ? new Date(item.created_at).toLocaleDateString() : ""}
                     </span>
                   </div>
                 </div>
