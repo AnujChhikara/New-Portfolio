@@ -1,0 +1,6 @@
+# Cloudflare Pages configuration
+# This file is optional but can be used for advanced configuration
+
+[env.production]
+name = "portfolio"
+

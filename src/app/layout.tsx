@@ -1,5 +1,4 @@
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -36,17 +35,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased selection:bg-foreground selection:text-background`}>
+      <body
+        className={`${inter.className} antialiased selection:bg-foreground selection:text-background`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <SmoothScrollProvider>
-            {children}
-          </SmoothScrollProvider>
-          <Analytics />
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>
