@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
 
 interface Project {
@@ -17,10 +16,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <motion.div
-      className="group relative flex flex-col justify-between rounded-xl border border-border/50 bg-card/40 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/20 hover:bg-card/60 hover:shadow-xl hover:shadow-primary/5"
-      whileHover={{ y: -5 }}
-    >
+    <div className="group relative flex flex-col justify-between rounded-xl border border-border/50 bg-card/40 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/20 hover:bg-card/60 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
 
       <div className="relative z-10 flex flex-col space-y-4">
@@ -67,7 +63,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </span>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 

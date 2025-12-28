@@ -4,13 +4,11 @@ import { ProjectCard } from "@/components/project-card";
 import { InfiniteMovingPRCards } from "@/components/ui/infinite-moving-pr-cards";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Skills } from "@/components/skills";
+import { GithubCalendar } from "@/components/github-calendar";
 import { getRecentPRs, type GithubPR } from "@/lib/github";
-import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { GitHubCalendar } from "react-github-calendar";
-import "react-github-calendar/tooltips.css";
 
 const projects = [
   {
@@ -74,22 +72,6 @@ const socialLinks = [
   { name: "Email", href: "mailto:anujchhikara777@gmail.com", icon: Mail },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
-
 export default function Home() {
   const [prs, setPrs] = useState<GithubPR[]>([]);
   const { theme } = useTheme();
@@ -109,58 +91,26 @@ export default function Home() {
     >
       <div className="mx-auto max-w-4xl px-6">
         {/* Header */}
-        <motion.header
-          className="flex items-center justify-between mb-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        <header className="flex items-center justify-between mb-4">
           <div className="flex flex-col space-y-1">
-            <motion.h1
-              className={` text-2xl font-bold tracking-tight text-foreground`}
-              initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">
               Anuj Chhikara
-            </motion.h1>
-            <motion.p
-              className="text-sm text-muted-foreground"
-              initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            >
-              Software Engineer
-            </motion.p>
+            </h1>
+            <p className="text-sm text-muted-foreground">Software Engineer</p>
           </div>
           <ThemeToggle />
-        </motion.header>
+        </header>
 
-        <motion.main
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="space-y-12"
-        >
+        <main className="space-y-12">
           {/* Intro */}
-          <motion.section variants={item} className="space-y-6 mb-16">
-            <motion.p
-              className="text-base md:text-lg text-muted-foreground max-w-2xl"
-              initial={{ opacity: 0, filter: "blur(5px)" }}
-              animate={{ opacity: 1, filter: "blur(0px)" }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
+          <section className="space-y-6 mb-16">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
               I&apos;m an engineer who enjoys building with modern web tools. I
               focus on solving real problems, keeping things simple and
               reliable, and improving a little with every project.
-            </motion.p>
+            </p>
 
-            <motion.div
-              className="flex items-center gap-4 pt-2"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
-            >
+            <div className="flex items-center gap-4 pt-2">
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
@@ -173,71 +123,17 @@ export default function Home() {
                   <link.icon className="h-5 w-5" />
                 </a>
               ))}
-            </motion.div>
-          </motion.section>
+            </div>
+          </section>
 
           {/* GitHub Contributions */}
-          <motion.section variants={item} className="space-y-6">
-            <div className="flex items-center justify-between border-b border-border pb-4">
-              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
-                GitHub Contributions
-              </h3>
-            </div>
-            <div className="flex justify-center py-4">
-              <div className="w-full max-w-4xl overflow-x-auto">
-                <GitHubCalendar
-                  username="AnujChhikara"
-                  year="last"
-                  colorScheme={theme === "dark" ? "dark" : "light"}
-                  theme={{
-                    light: [
-                      "#fafafa",
-                      "#e4e4e7",
-                      "#a1a1aa",
-                      "#71717a",
-                      "#3f3f46",
-                    ],
-                    dark: [
-                      "#18181b",
-                      "#27272a",
-                      "#3f3f46",
-                      "#52525b",
-                      "#71717a",
-                    ],
-                  }}
-                  blockSize={12}
-                  blockMargin={4}
-                  blockRadius={2}
-                  fontSize={14}
-                  showWeekdayLabels={false}
-                  showMonthLabels={true}
-                  showTotalCount={true}
-                  showColorLegend={true}
-                  labels={{
-                    totalCount: "{{count}} contributions in {{year}}",
-                  }}
-                  tooltips={{
-                    activity: {
-                      text: (activity) =>
-                        `${activity.count} contribution${
-                          activity.count !== 1 ? "s" : ""
-                        } on ${activity.date}`,
-                      placement: "top",
-                      offset: 8,
-                      hoverRestMs: 150,
-                      withArrow: true,
-                    },
-                  }}
-                />
-              </div>
-            </div>
-          </motion.section>
+          <GithubCalendar />
 
           {/* Skills */}
           <Skills />
 
           {/* Projects */}
-          <motion.section variants={item} className="space-y-8">
+          <section className="space-y-8">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
                 Selected Projects
@@ -249,10 +145,10 @@ export default function Home() {
                 <ProjectCard key={project.title} project={project} />
               ))}
             </div>
-          </motion.section>
+          </section>
 
           {/* Experience */}
-          <motion.section variants={item} className="space-y-8">
+          <section className="space-y-8">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
                 Experience
@@ -284,14 +180,11 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </motion.section>
+          </section>
 
           {/* Open Source / PRs */}
           {prs.length > 0 && (
-            <motion.section
-              variants={item}
-              className="space-y-8 overflow-hidden"
-            >
+            <section className="space-y-8 overflow-hidden">
               <div className="flex items-center justify-between border-b border-border pb-4">
                 <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
                   Recent Open Source Contributions
@@ -304,11 +197,11 @@ export default function Home() {
                   speed="slow"
                 />
               </div>
-            </motion.section>
+            </section>
           )}
 
           {/* Contact */}
-          <motion.section variants={item} className="space-y-8 pb-16">
+          <section className="space-y-8 pb-16">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
                 Get in Touch
@@ -326,15 +219,12 @@ export default function Home() {
                 Say Hello <ArrowUpRight className="ml-1 h-4 w-4" />
               </a>
             </div>
-          </motion.section>
-        </motion.main>
+          </section>
+        </main>
 
-        <motion.footer
-          variants={item}
-          className="flex justify-between items-center pt-8 border-t border-border/50 text-xs text-muted-foreground"
-        >
+        <footer className="flex justify-between items-center pt-8 border-t border-border/50 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Anuj Chhikara</p>
-        </motion.footer>
+        </footer>
       </div>
     </div>
   );
