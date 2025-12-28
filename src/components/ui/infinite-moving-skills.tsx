@@ -110,13 +110,13 @@ export const InfiniteMovingSkills = ({
               </div>
             ) : skill.icon ? (
               <skill.icon
-                className="h-8 w-8 text-foreground"
+                className="text-foreground h-8 w-8"
                 strokeWidth={1.5}
               />
             ) : null}
 
             {/* Name */}
-            <h3 className="whitespace-nowrap text-sm font-medium text-foreground">
+            <h3 className="text-foreground text-sm font-medium whitespace-nowrap">
               {skill.name || skill.title}
             </h3>
           </li>
