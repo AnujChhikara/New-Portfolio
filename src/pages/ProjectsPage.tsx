@@ -1,22 +1,7 @@
-import { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/data/site";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Projects",
-  description: `Explore ${siteConfig.name}'s portfolio of web development projects including full-stack applications, open-source contributions, and side projects built with React, Next.js, and Node.js.`,
-  alternates: {
-    canonical: `${siteConfig.url}/projects`,
-  },
-  openGraph: {
-    title: `Projects | ${siteConfig.name}`,
-    description: `Explore ${siteConfig.name}'s portfolio of web development projects.`,
-    url: `${siteConfig.url}/projects`,
-    type: "website",
-  },
-};
 
 export default function ProjectsPage() {
   return (
@@ -24,7 +9,7 @@ export default function ProjectsPage() {
       <div className="mx-auto max-w-4xl px-6">
         {/* Back link */}
         <Link
-          href="/"
+          to="/"
           className="mb-8 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -53,7 +38,7 @@ export default function ProjectsPage() {
 
                 <div className="relative z-10 flex flex-col space-y-4">
                   <div className="flex items-start justify-between">
-                    <Link href={`/projects/${project.slug}`}>
+                    <Link to={`/projects/${project.slug}`}>
                       <h2 className="text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary">
                         {project.title}
                       </h2>
@@ -99,7 +84,7 @@ export default function ProjectsPage() {
                 </div>
 
                 <Link
-                  href={`/projects/${project.slug}`}
+                  to={`/projects/${project.slug}`}
                   className="mt-4 inline-flex items-center text-sm font-medium text-primary transition-colors hover:underline"
                 >
                   View Details
@@ -119,4 +104,3 @@ export default function ProjectsPage() {
     </div>
   );
 }
-

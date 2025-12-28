@@ -1,74 +1,18 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { Link, useParams } from "react-router-dom";
 import {
   projects,
   getProjectBySlug,
-  getAllProjectSlugs,
 } from "@/data/projects";
 import { siteConfig } from "@/data/site";
-import { ArrowLeft, ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import NotFoundPage from "./NotFoundPage";
 
-interface ProjectPageProps {
-  params: { slug: string };
-}
-
-// Generate static paths for all projects
-export async function generateStaticParams() {
-  return getAllProjectSlugs().map((slug) => ({
-    slug,
-  }));
-}
-
-// Generate dynamic metadata for each project
-export async function generateMetadata({
-  params,
-}: ProjectPageProps): Promise<Metadata> {
-  const project = getProjectBySlug(params.slug);
+export default function ProjectDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const project = slug ? getProjectBySlug(slug) : undefined;
 
   if (!project) {
-    return {
-      title: "Project Not Found",
-    };
-  }
-
-  const title = `${project.title} - ${project.tech.slice(0, 3).join(", ")} Project`;
-  const description = project.longDescription || project.description;
-
-  return {
-    title,
-    description,
-    keywords: [
-      project.title,
-      ...project.tech,
-      "web development",
-      "portfolio project",
-      siteConfig.name,
-    ],
-    alternates: {
-      canonical: `${siteConfig.url}/projects/${project.slug}`,
-    },
-    openGraph: {
-      title: `${project.title} | ${siteConfig.name}`,
-      description,
-      url: `${siteConfig.url}/projects/${project.slug}`,
-      type: "article",
-      authors: [siteConfig.name],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${project.title} | ${siteConfig.name}`,
-      description,
-      creator: siteConfig.author.twitter,
-    },
-  };
-}
-
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getProjectBySlug(params.slug);
-
-  if (!project) {
-    notFound();
+    return <NotFoundPage />;
   }
 
   // Get related projects (excluding current)
@@ -110,7 +54,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
               <li>
                 <Link
-                  href="/"
+                  to="/"
                   className="transition-colors hover:text-foreground"
                 >
                   Home
@@ -119,7 +63,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               <li>/</li>
               <li>
                 <Link
-                  href="/projects"
+                  to="/projects"
                   className="transition-colors hover:text-foreground"
                 >
                   Projects
@@ -211,7 +155,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 {relatedProjects.map((relatedProject) => (
                   <Link
                     key={relatedProject.slug}
-                    href={`/projects/${relatedProject.slug}`}
+                    to={`/projects/${relatedProject.slug}`}
                     className="group rounded-xl border border-border/50 bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:bg-card/60"
                   >
                     <h3 className="mb-2 font-semibold text-foreground transition-colors group-hover:text-primary">
@@ -229,7 +173,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           {/* Back link */}
           <div className="mt-12">
             <Link
-              href="/projects"
+              to="/projects"
               className="inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />

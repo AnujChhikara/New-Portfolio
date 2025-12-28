@@ -1,13 +1,10 @@
-"use client";
-
 import { memo, useEffect, useState, lazy, Suspense } from "react";
 import { useTheme } from "next-themes";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 
 import { ProjectCard } from "@/components/project-card";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { getRecentPRs, type GithubPR } from "@/lib/github";
 import { projects } from "@/data/projects";
 import { socialLinks } from "@/data/social";
 import { siteConfig } from "@/data/site";
@@ -19,11 +16,6 @@ const GithubCalendar = lazy(() =>
 );
 const Skills = lazy(() =>
   import("@/components/skills").then((mod) => ({ default: mod.Skills }))
-);
-const InfiniteMovingPRCards = lazy(() =>
-  import("@/components/ui/infinite-moving-pr-cards").then((mod) => ({
-    default: mod.InfiniteMovingPRCards,
-  }))
 );
 
 const SectionSkeleton = memo(function SectionSkeleton({
@@ -62,7 +54,7 @@ const ProjectCardWithLink = memo(function ProjectCardWithLink({
     <div className="group relative">
       <ProjectCard project={project} />
       <Link
-        href={`/projects/${project.slug}`}
+        to={`/projects/${project.slug}`}
         className="absolute inset-0 z-20"
         aria-label={`View ${project.title} details`}
       />
@@ -71,13 +63,11 @@ const ProjectCardWithLink = memo(function ProjectCardWithLink({
 });
 
 export function HomePage() {
-  const [prs, setPrs] = useState<GithubPR[]>([]);
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    getRecentPRs(siteConfig.author.github).then(setPrs);
   }, []);
 
   const featuredProjects = projects.slice(0, 4);
@@ -126,7 +116,7 @@ export function HomePage() {
                 Selected Projects
               </h2>
               <Link
-                href="/projects"
+                to="/projects"
                 className="inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 View All
@@ -140,28 +130,6 @@ export function HomePage() {
               ))}
             </div>
           </section>
-
-          {prs.length > 0 && (
-            <section
-              className="space-y-8 overflow-hidden"
-              aria-label="Open Source Contributions"
-            >
-              <div className="flex items-center justify-between border-b border-border pb-4">
-                <h2 className="text-sm font-medium uppercase tracking-wider text-foreground">
-                  Recent Open Source Contributions
-                </h2>
-              </div>
-              <div className="-mx-6 md:-mx-0">
-                <Suspense fallback={<SectionSkeleton height="h-32" />}>
-                  <InfiniteMovingPRCards
-                    items={prs}
-                    direction="left"
-                    speed="slow"
-                  />
-                </Suspense>
-              </div>
-            </section>
-          )}
 
           <section className="space-y-8 pb-16" aria-label="Contact">
             <div className="flex items-center justify-between border-b border-border pb-4">
@@ -190,7 +158,7 @@ export function HomePage() {
           </p>
           <nav aria-label="Footer navigation">
             <Link
-              href="/projects"
+              to="/projects"
               className="transition-colors hover:text-foreground"
             >
               Projects

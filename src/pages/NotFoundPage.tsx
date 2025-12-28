@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { ArrowLeft, Home } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
@@ -18,14 +18,14 @@ export default function NotFound() {
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
-            href="/"
+            to="/"
             className="inline-flex items-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <Home className="mr-2 h-4 w-4" />
             Back to Home
           </Link>
           <Link
-            href="/projects"
+            to="/projects"
             className="inline-flex items-center rounded-lg border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -42,4 +42,3 @@ export default function NotFound() {
     </div>
   );
 }
-
