@@ -10,7 +10,7 @@ export function GithubCalendar() {
   return (
     <section className="space-y-6">
       <div className="flex items-center justify-between border-b border-border pb-4">
-        <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+        <h3 className="text-sm font-medium uppercase tracking-wider text-foreground">
           GitHub Contributions
         </h3>
       </div>

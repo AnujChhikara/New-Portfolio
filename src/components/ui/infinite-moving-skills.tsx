@@ -93,7 +93,7 @@ export const InfiniteMovingSkills = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -101,22 +101,22 @@ export const InfiniteMovingSkills = ({
         {items.map((skill, idx) => (
           <li
             key={(skill.name || skill.title || `skill-${idx}`) + idx}
-            className="flex-shrink-0 flex flex-row items-center justify-center gap-2 px-4"
+            className="flex flex-shrink-0 flex-row items-center justify-center gap-2 px-4"
           >
             {/* Icon */}
             {skill.svg ? (
-              <div className="w-8 h-8 flex items-center justify-center">
+              <div className="flex h-8 w-8 items-center justify-center">
                 {skill.svg}
               </div>
             ) : skill.icon ? (
               <skill.icon
-                className="w-8 h-8 text-foreground"
+                className="h-8 w-8 text-foreground"
                 strokeWidth={1.5}
               />
             ) : null}
 
             {/* Name */}
-            <h3 className="text-sm font-medium text-foreground whitespace-nowrap">
+            <h3 className="whitespace-nowrap text-sm font-medium text-foreground">
               {skill.name || skill.title}
             </h3>
           </li>

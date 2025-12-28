@@ -35,10 +35,12 @@ export const InfiniteMovingPRCards = ({
       if (containerRef.current && scrollerRef.current) {
         // Reset cloned state when items change
         scrollerRef.current.removeAttribute("data-cloned");
-        
+
         // Remove any existing cloned items
-        const existingClones = scrollerRef.current.querySelectorAll('[data-clone="true"]');
-        existingClones.forEach(clone => clone.remove());
+        const existingClones = scrollerRef.current.querySelectorAll(
+          '[data-clone="true"]'
+        );
+        existingClones.forEach((clone) => clone.remove());
 
         const scrollerContent = Array.from(scrollerRef.current.children);
 
@@ -95,7 +97,7 @@ export const InfiniteMovingPRCards = ({
     // Use double requestAnimationFrame to ensure DOM is fully updated
     let rafId1: number;
     let rafId2: number;
-    
+
     rafId1 = requestAnimationFrame(() => {
       rafId2 = requestAnimationFrame(() => {
         addAnimation();
@@ -123,7 +125,7 @@ export const InfiniteMovingPRCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -136,11 +138,12 @@ export const InfiniteMovingPRCards = ({
 
           // Extract repo name from URL if possible, or just show title
           // repository_url: "https://api.github.com/repos/owner/repo"
-          const repoName = item.repository_url?.split("/").slice(-2).join("/") || "Unknown";
+          const repoName =
+            item.repository_url?.split("/").slice(-2).join("/") || "Unknown";
 
           return (
             <li
-              className="w-[350px] max-w-full relative rounded-xl border border-border bg-card px-8 py-6 flex-shrink-0"
+              className="relative w-[350px] max-w-full flex-shrink-0 rounded-xl border border-border bg-card px-8 py-6"
               key={`${item.id}-${idx}`}
             >
               <a
@@ -149,41 +152,43 @@ export const InfiniteMovingPRCards = ({
                 rel="noopener noreferrer"
                 className="block h-full"
               >
-                <div className="flex flex-col h-full justify-between space-y-4">
+                <div className="flex h-full flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-medium text-muted-foreground font-mono">
+                      <span className="font-mono text-xs font-medium text-muted-foreground">
                         {repoName}
                       </span>
                       <div
                         className={cn(
-                          "flex items-center gap-1 text-xs px-2 py-0.5 rounded-full font-medium",
+                          "flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium",
                           status === "merged"
                             ? "bg-purple-500/10 text-purple-500"
                             : status === "open"
-                            ? "bg-green-500/10 text-green-500"
-                            : "bg-red-500/10 text-red-500"
+                              ? "bg-green-500/10 text-green-500"
+                              : "bg-red-500/10 text-red-500"
                         )}
                       >
                         {status === "merged" ? (
-                          <GitMerge className="w-3 h-3" />
+                          <GitMerge className="h-3 w-3" />
                         ) : (
-                          <GitPullRequest className="w-3 h-3" />
+                          <GitPullRequest className="h-3 w-3" />
                         )}
                         <span className="capitalize">
                           {status === "merged" ? "Merged" : status}
                         </span>
                       </div>
                     </div>
-                    <h3 className="text-sm font-semibold text-foreground line-clamp-2 leading-relaxed">
+                    <h3 className="line-clamp-2 text-sm font-semibold leading-relaxed text-foreground">
                       {item.title}
                     </h3>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
+                  <div className="mt-auto flex items-center justify-between text-xs text-muted-foreground">
                     <span>#{item.number || item.id}</span>
                     <span>
-                      {item.created_at ? new Date(item.created_at).toLocaleDateString() : ""}
+                      {item.created_at
+                        ? new Date(item.created_at).toLocaleDateString()
+                        : ""}
                     </span>
                   </div>
                 </div>

@@ -42,4 +42,3 @@ export async function getRecentPRs(username: string): Promise<GithubPR[]> {
     return [];
   }
 }
-

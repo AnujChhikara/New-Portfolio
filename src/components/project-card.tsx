@@ -16,12 +16,12 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="group relative flex flex-col justify-between rounded-xl border border-border/50 bg-card/40 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/20 hover:bg-card/60 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+    <div className="group relative flex flex-col justify-between rounded-xl border border-border/50 bg-card/40 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:bg-card/60 hover:shadow-xl hover:shadow-primary/5">
+      <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       <div className="relative z-10 flex flex-col space-y-4">
         <div className="flex items-start justify-between">
-          <h4 className="text-lg font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors">
+          <h4 className="text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary">
             {project.title}
           </h4>
           <div className="flex items-center gap-3">
@@ -30,7 +30,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground/60 hover:text-foreground transition-colors hover:scale-110"
+                className="text-muted-foreground/60 transition-colors hover:scale-110 hover:text-foreground"
                 aria-label={`View ${project.title} on GitHub`}
               >
                 <Github className="h-5 w-5" />
@@ -40,7 +40,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground/60 hover:text-foreground transition-colors hover:scale-110"
+              className="text-muted-foreground/60 transition-colors hover:scale-110 hover:text-foreground"
               aria-label={`Visit ${project.title}`}
             >
               <ArrowUpRight className="h-5 w-5" />
@@ -66,4 +66,3 @@ export function ProjectCard({ project }: ProjectCardProps) {
     </div>
   );
 }
-

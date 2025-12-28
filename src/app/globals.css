@@ -60,7 +60,9 @@
 
   body {
     @apply bg-background text-foreground;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
   }
 
   /* Custom Scrollbar */
@@ -104,7 +106,9 @@
   padding: 0.5em 0.75em;
   border-radius: 0.375rem;
   font-size: 13px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
   border: 1px solid hsl(var(--border));
   z-index: 50;
   background-color: hsl(var(--popover));
@@ -115,22 +119,24 @@
   fill: hsl(var(--popover));
 }
 
-.react-activity-calendar__tooltip[data-color-scheme='light'] {
+.react-activity-calendar__tooltip[data-color-scheme="light"] {
   background-color: hsl(var(--popover));
   color: hsl(var(--popover-foreground));
   border-color: hsl(var(--border));
 }
 
-.react-activity-calendar__tooltip[data-color-scheme='light'] .react-activity-calendar__tooltip-arrow {
+.react-activity-calendar__tooltip[data-color-scheme="light"]
+  .react-activity-calendar__tooltip-arrow {
   fill: hsl(var(--popover));
 }
 
-.react-activity-calendar__tooltip[data-color-scheme='dark'] {
+.react-activity-calendar__tooltip[data-color-scheme="dark"] {
   background-color: hsl(var(--popover));
   color: hsl(var(--popover-foreground));
   border-color: hsl(var(--border));
 }
 
-.react-activity-calendar__tooltip[data-color-scheme='dark'] .react-activity-calendar__tooltip-arrow {
+.react-activity-calendar__tooltip[data-color-scheme="dark"]
+  .react-activity-calendar__tooltip-arrow {
   fill: hsl(var(--popover));
 }

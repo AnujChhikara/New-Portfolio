@@ -13,7 +13,7 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className="w-10 h-10" />; // Placeholder to avoid hydration mismatch
+    return <div className="h-10 w-10" />; // Placeholder to avoid hydration mismatch
   }
 
   const toggleTheme = () => {

@@ -8,13 +8,13 @@ export function Skills() {
     <section className="space-y-2">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border pb-4">
-        <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+        <h3 className="text-sm font-medium uppercase tracking-wider text-foreground">
           Skills
         </h3>
       </div>
 
       {/* Infinite Moving Cards */}
-      <div className=" md:-mx-0">
+      <div className="md:-mx-0">
         <InfiniteMovingSkills items={tech} direction="left" speed="normal" />
       </div>
     </section>

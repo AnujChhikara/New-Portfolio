@@ -82,7 +82,7 @@ export default function Home() {
 
   return (
     <div
-      className="min-h-screen w-full font-sans selection:bg-primary/20 py-32"
+      className="min-h-screen w-full py-32 font-sans selection:bg-primary/20"
       style={{
         backgroundImage: `url(${
           theme === "dark" ? "/noise-black.webp" : "white"
@@ -91,7 +91,7 @@ export default function Home() {
     >
       <div className="mx-auto max-w-4xl px-6">
         {/* Header */}
-        <header className="flex items-center justify-between mb-4">
+        <header className="mb-4 flex items-center justify-between">
           <div className="flex flex-col space-y-1">
             <h1 className="text-2xl font-bold tracking-tight text-foreground">
               Anuj Chhikara
@@ -103,8 +103,8 @@ export default function Home() {
 
         <main className="space-y-12">
           {/* Intro */}
-          <section className="space-y-6 mb-16">
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
+          <section className="mb-16 space-y-6">
+            <p className="max-w-2xl text-base text-muted-foreground md:text-lg">
               I&apos;m an engineer who enjoys building with modern web tools. I
               focus on solving real problems, keeping things simple and
               reliable, and improving a little with every project.
@@ -117,7 +117,7 @@ export default function Home() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 hover:scale-110"
+                  className="text-muted-foreground transition-colors duration-200 hover:scale-110 hover:text-foreground"
                   aria-label={link.name}
                 >
                   <link.icon className="h-5 w-5" />
@@ -135,12 +135,12 @@ export default function Home() {
           {/* Projects */}
           <section className="space-y-8">
             <div className="flex items-center justify-between border-b border-border pb-4">
-              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+              <h3 className="text-sm font-medium uppercase tracking-wider text-foreground">
                 Selected Projects
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {projects.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}
@@ -150,7 +150,7 @@ export default function Home() {
           {/* Experience */}
           <section className="space-y-8">
             <div className="flex items-center justify-between border-b border-border pb-4">
-              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+              <h3 className="text-sm font-medium uppercase tracking-wider text-foreground">
                 Experience
               </h3>
             </div>
@@ -159,21 +159,21 @@ export default function Home() {
               {experience.map((job) => (
                 <div
                   key={job.company}
-                  className="flex flex-col md:flex-row md:justify-between md:gap-8 space-y-2 md:space-y-0"
+                  className="flex flex-col space-y-2 md:flex-row md:justify-between md:gap-8 md:space-y-0"
                 >
                   <div className="md:w-1/4">
-                    <span className="text-sm text-muted-foreground font-mono">
+                    <span className="font-mono text-sm text-muted-foreground">
                       {job.period}
                     </span>
                   </div>
-                  <div className="md:w-3/4 space-y-2">
+                  <div className="space-y-2 md:w-3/4">
                     <h4 className="font-medium text-foreground">
                       {job.role}{" "}
                       <span className="text-muted-foreground">
                         @ {job.company}
                       </span>
                     </h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                       {job.description}
                     </p>
                   </div>
@@ -186,7 +186,7 @@ export default function Home() {
           {prs.length > 0 && (
             <section className="space-y-8 overflow-hidden">
               <div className="flex items-center justify-between border-b border-border pb-4">
-                <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+                <h3 className="text-sm font-medium uppercase tracking-wider text-foreground">
                   Recent Open Source Contributions
                 </h3>
               </div>
@@ -203,18 +203,18 @@ export default function Home() {
           {/* Contact */}
           <section className="space-y-8 pb-16">
             <div className="flex items-center justify-between border-b border-border pb-4">
-              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
+              <h3 className="text-sm font-medium uppercase tracking-wider text-foreground">
                 Get in Touch
               </h3>
             </div>
             <div className="flex flex-col space-y-4">
-              <p className="text-muted-foreground max-w-lg">
+              <p className="max-w-lg text-muted-foreground">
                 I&apos;m always open to new opportunities and collaborations.
                 Feel free to reach out if you want to build something together.
               </p>
               <a
                 href="mailto:anujchhikara777@gmail.com"
-                className="inline-flex items-center text-foreground font-medium hover:text-primary/80 transition-colors"
+                className="inline-flex items-center font-medium text-foreground transition-colors hover:text-primary/80"
               >
                 Say Hello <ArrowUpRight className="ml-1 h-4 w-4" />
               </a>
@@ -222,7 +222,7 @@ export default function Home() {
           </section>
         </main>
 
-        <footer className="flex justify-between items-center pt-8 border-t border-border/50 text-xs text-muted-foreground">
+        <footer className="flex items-center justify-between border-t border-border/50 pt-8 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Anuj Chhikara</p>
         </footer>
       </div>
