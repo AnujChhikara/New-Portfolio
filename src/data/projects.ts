@@ -71,3 +71,4 @@ export function getAllProjectSlugs(): string[] {
 export function getFeaturedProjects(): Project[] {
   return projects.filter((project) => project.featured);
 }
+

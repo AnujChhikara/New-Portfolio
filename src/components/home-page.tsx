@@ -12,7 +12,6 @@ import { projects } from "@/data/projects";
 import { socialLinks } from "@/data/social";
 import { siteConfig } from "@/data/site";
 
-// Lazy load heavy components
 const GithubCalendar = lazy(() =>
   import("@/components/github-calendar").then((mod) => ({
     default: mod.GithubCalendar,
@@ -27,7 +26,6 @@ const InfiniteMovingPRCards = lazy(() =>
   }))
 );
 
-// Loading skeleton for sections
 const SectionSkeleton = memo(function SectionSkeleton({
   height = "h-32",
 }: {
@@ -36,7 +34,6 @@ const SectionSkeleton = memo(function SectionSkeleton({
   return <div className={`${height} animate-pulse rounded-lg bg-muted/50`} />;
 });
 
-// Memoized social links component
 const SocialLinks = memo(function SocialLinks() {
   return (
     <div className="flex items-center gap-4 pt-2">
@@ -56,7 +53,6 @@ const SocialLinks = memo(function SocialLinks() {
   );
 });
 
-// Memoized project card with link
 const ProjectCardWithLink = memo(function ProjectCardWithLink({
   project,
 }: {
@@ -84,7 +80,6 @@ export function HomePage() {
     getRecentPRs(siteConfig.author.github).then(setPrs);
   }, []);
 
-  // Featured projects for homepage (limit to 4)
   const featuredProjects = projects.slice(0, 4);
 
   return (
@@ -95,8 +90,7 @@ export function HomePage() {
           mounted && theme === "dark" ? `url(/noise-black.webp)` : undefined,
       }}
     >
-      <div className="mx-auto max-w-4xl px-6">
-        {/* Header */}
+      <div className="mx-auto max-w-3xl px-6">
         <header className="mb-4 flex items-center justify-between">
           <div className="flex flex-col space-y-1">
             <h1 className="text-2xl font-bold tracking-tight text-foreground">
@@ -108,7 +102,6 @@ export function HomePage() {
         </header>
 
         <main className="space-y-12">
-          {/* Intro */}
           <section className="mb-16 space-y-6" aria-label="Introduction">
             <p className="max-w-2xl text-base text-muted-foreground md:text-lg">
               I&apos;m an engineer who enjoys building with modern web tools. I
@@ -119,17 +112,14 @@ export function HomePage() {
             <SocialLinks />
           </section>
 
-          {/* GitHub Contributions - Lazy loaded */}
           <Suspense fallback={<SectionSkeleton height="h-40" />}>
             <GithubCalendar />
           </Suspense>
 
-          {/* Skills - Lazy loaded */}
           <Suspense fallback={<SectionSkeleton height="h-24" />}>
             <Skills />
           </Suspense>
 
-          {/* Projects */}
           <section className="space-y-8" aria-label="Selected Projects">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <h2 className="text-sm font-medium uppercase tracking-wider text-foreground">
@@ -151,7 +141,6 @@ export function HomePage() {
             </div>
           </section>
 
-          {/* Open Source / PRs - Lazy loaded */}
           {prs.length > 0 && (
             <section
               className="space-y-8 overflow-hidden"
@@ -174,7 +163,6 @@ export function HomePage() {
             </section>
           )}
 
-          {/* Contact */}
           <section className="space-y-8 pb-16" aria-label="Contact">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <h2 className="text-sm font-medium uppercase tracking-wider text-foreground">

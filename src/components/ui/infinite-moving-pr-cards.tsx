@@ -33,10 +33,8 @@ export const InfiniteMovingPRCards = ({
 
     function addAnimation() {
       if (containerRef.current && scrollerRef.current) {
-        // Reset cloned state when items change
         scrollerRef.current.removeAttribute("data-cloned");
 
-        // Remove any existing cloned items
         const existingClones = scrollerRef.current.querySelectorAll(
           '[data-clone="true"]'
         );
@@ -44,10 +42,8 @@ export const InfiniteMovingPRCards = ({
 
         const scrollerContent = Array.from(scrollerRef.current.children);
 
-        // Only proceed if we have items and haven't cloned yet
         if (scrollerContent.length === 0) return;
 
-        // Clone items for seamless infinite scroll
         scrollerContent.forEach((item) => {
           const duplicatedItem = item.cloneNode(true) as HTMLElement;
           duplicatedItem.setAttribute("data-clone", "true");
@@ -94,7 +90,6 @@ export const InfiniteMovingPRCards = ({
       }
     }
 
-    // Use double requestAnimationFrame to ensure DOM is fully updated
     let rafId1: number;
     let rafId2: number;
 
@@ -132,12 +127,9 @@ export const InfiniteMovingPRCards = ({
       >
         {items.map((item, idx) => {
           const isMerged =
-            item.pull_request?.merged_at || item.state === "closed"; // Ideally check merged_at specifically, but search API is a bit different. Actually search API returns `pull_request` obj.
-          // Simpler check:
+            item.pull_request?.merged_at || item.state === "closed";
           const status = item.pull_request?.merged_at ? "merged" : item.state;
 
-          // Extract repo name from URL if possible, or just show title
-          // repository_url: "https://api.github.com/repos/owner/repo"
           const repoName =
             item.repository_url?.split("/").slice(-2).join("/") || "Unknown";
 
