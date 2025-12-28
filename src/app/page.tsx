@@ -1,9 +1,7 @@
 "use client";
 
-import { Quicksand } from "next/font/google";
 import { ProjectCard } from "@/components/project-card";
 import { InfiniteMovingPRCards } from "@/components/ui/infinite-moving-pr-cards";
-import { TextReveal } from "@/components/ui/text-reveal";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Skills } from "@/components/skills";
 import { getRecentPRs, type GithubPR } from "@/lib/github";
@@ -97,11 +95,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full font-sans selection:bg-primary/20">
-      <div className="mx-auto max-w-4xl px-6 py-12 md:py-20">
+    <div className="min-h-screen w-full font-sans selection:bg-primary/20 py-32">
+      <div className="mx-auto max-w-4xl px-6">
         {/* Header */}
         <motion.header
-          className="flex items-center justify-between mb-16 md:mb-24"
+          className="flex items-center justify-between mb-4"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -131,21 +129,10 @@ export default function Home() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="space-y-16 md:space-y-24"
+          className="space-y-12"
         >
           {/* Intro */}
-          <motion.section variants={item} className="space-y-6">
-            <TextReveal
-              text="Creating fast, intuitive digital experiences at the intersection of design and engineering."
-              highlightWords={["design", "engineering"]}
-              highlightConfig={{
-                design:
-                  "px-3 py-1 bg-gradient-to-r from-purple-500/20 to-violet-500/20 dark:from-purple-500/30 dark:to-violet-500/30 rounded-lg font-semibold text-purple-700 dark:text-violet-300",
-                engineering:
-                  "px-3 py-1 bg-gradient-to-r from-amber-500/20 to-orange-500/20 dark:from-amber-500/30 dark:to-orange-500/30 rounded-lg font-semibold text-amber-700 dark:text-orange-300",
-              }}
-              className="text-3xl md:text-4xl font-medium leading-tight text-foreground"
-            />
+          <motion.section variants={item} className="space-y-6 mb-16">
             <motion.p
               className="text-base md:text-lg text-muted-foreground max-w-2xl"
               initial={{ opacity: 0, filter: "blur(5px)" }}
