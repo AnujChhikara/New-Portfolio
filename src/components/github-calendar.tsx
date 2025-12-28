@@ -2,10 +2,33 @@
 
 import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import "react-github-calendar/tooltips.css";
 
 export function GithubCalendar() {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <section className="space-y-6">
+        <div className="flex items-center justify-between border-b border-border pb-4">
+          <h3 className="text-sm font-medium uppercase tracking-wider text-foreground">
+            GitHub Contributions
+          </h3>
+        </div>
+        <div className="flex justify-center py-4">
+          <div className="w-full max-w-4xl overflow-x-auto">
+            <div className="h-32 animate-pulse rounded bg-muted" />
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="space-y-6">
