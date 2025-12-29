@@ -32,7 +32,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body
+        style={{
+          backgroundImage: "url(/noise-black.webp)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+          minHeight: "100vh",
+        }}
+      >
         {children}
         <ScrollRestoration />
         <Scripts />
