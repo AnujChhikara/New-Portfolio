@@ -88,11 +88,12 @@ export const LinkPreview = ({
 
   return (
     <>
-      {isMounted ? (
-        <div className="hidden">
-          <img src={src} width={width} height={height} alt="hidden image" />
+      {/* Preload image only on client to avoid hydration mismatch */}
+      {isMounted && (
+        <div className="hidden" aria-hidden="true">
+          <img src={src} width={width} height={height} alt="" />
         </div>
-      ) : null}
+      )}
 
       <div className="relative inline-block">
         <a

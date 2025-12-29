@@ -10,9 +10,9 @@ import {
 
 /**
  * Get the current year for copyright
- * Cached to prevent recalculation on each render
+ * Uses build-time year to avoid hydration mismatches
  */
-const CURRENT_YEAR = new Date().getFullYear();
+const BUILD_YEAR = new Date().getFullYear();
 
 /**
  * Footer section with contact info and links
@@ -129,7 +129,9 @@ export function FooterSection() {
                 •
               </span>
               <p>
-                <small>© {CURRENT_YEAR} All rights reserved.</small>
+                <small suppressHydrationWarning>
+                  © {BUILD_YEAR} All rights reserved.
+                </small>
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 text-center">

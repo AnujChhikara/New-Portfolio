@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { SITE_CONFIG } from "~/lib/constants";
 
@@ -27,21 +28,34 @@ const TOOLTIP_CONFIG = {
 /**
  * GitHub contribution calendar component
  * Displays user's GitHub activity with accessible labels
+ * Client-only rendering to avoid hydration mismatches
  */
 export function GithubStats() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section
       className="w-full overflow-x-auto"
       aria-label="GitHub contribution activity"
     >
       <div className="min-w-[280px]">
-        <GitHubCalendar
-          username={SITE_CONFIG.author.github}
-          showTotalCount={true}
-          fontSize={12}
-          tooltips={TOOLTIP_CONFIG}
-          theme={CALENDAR_THEME}
-        />
+        {isMounted ? (
+          <GitHubCalendar
+            username={SITE_CONFIG.author.github}
+            showTotalCount={true}
+            fontSize={12}
+            tooltips={TOOLTIP_CONFIG}
+            theme={CALENDAR_THEME}
+          />
+        ) : (
+          <div className="h-[120px] flex items-center justify-center text-neutral-400 dark:text-neutral-600">
+            Loading GitHub activity...
+          </div>
+        )}
       </div>
     </section>
   );
