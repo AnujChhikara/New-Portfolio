@@ -1,4 +1,15 @@
-export const tech = [
+/**
+ * Tech item interface for technology stack display
+ */
+export interface TechItem {
+  svg: React.ReactNode;
+  name: string;
+}
+
+/**
+ * List of technologies for the tech stack section
+ */
+export const tech: TechItem[] = [
   {
     svg: (
       <svg
