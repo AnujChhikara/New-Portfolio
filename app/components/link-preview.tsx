@@ -98,7 +98,7 @@ export const LinkPreview = ({
       <div className="relative inline-block">
         <a
           href={url}
-          className={`text-black dark:text-white ${className}`}
+          className={`text-white ${className}`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onMouseMove={handleMouseMove}
@@ -122,7 +122,7 @@ export const LinkPreview = ({
         >
           <a
             href={url}
-            className="block p-1 bg-white border-2 border-transparent shadow-xl rounded-xl hover:border-neutral-200 dark:bg-neutral-900 dark:hover:border-neutral-800"
+            className="block p-1 bg-neutral-900 border-2 border-transparent shadow-xl rounded-xl hover:border-neutral-800"
             style={{ fontSize: 0 }}
           >
             <img

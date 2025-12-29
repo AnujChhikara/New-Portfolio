@@ -44,7 +44,7 @@ const GEOGRAPHY_STYLES = {
 
 // Zoom button styles
 const ZOOM_BUTTON_CLASSES =
-  "p-1.5 sm:p-2 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors touch-manipulation";
+  "p-1.5 sm:p-2 bg-neutral-800 rounded-lg shadow-lg border border-neutral-700 hover:bg-neutral-700 transition-colors touch-manipulation";
 
 interface MapPosition {
   coordinates: [number, number];
@@ -89,7 +89,7 @@ export function LocationMap() {
 
   return (
     <div
-      className="relative w-full h-full rounded-lg overflow-hidden bg-blue-50 dark:bg-neutral-900"
+      className="relative w-full h-full rounded-lg overflow-hidden bg-neutral-900"
       role="img"
       aria-label={`Map showing location: ${LOCATION.name}`}
     >
@@ -145,7 +145,7 @@ export function LocationMap() {
           type="button"
         >
           <ZoomIn
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-700 dark:text-neutral-300"
+            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-300"
             aria-hidden="true"
           />
         </button>
@@ -156,13 +156,13 @@ export function LocationMap() {
           type="button"
         >
           <ZoomOut
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-700 dark:text-neutral-300"
+            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-300"
             aria-hidden="true"
           />
         </button>
         <button
           onClick={handleReset}
-          className={`${ZOOM_BUTTON_CLASSES} text-[10px] sm:text-xs font-medium text-neutral-700 dark:text-neutral-300`}
+          className={`${ZOOM_BUTTON_CLASSES} text-[10px] sm:text-xs font-medium text-neutral-300`}
           aria-label={`Reset map to ${LOCATION.name}`}
           type="button"
         >

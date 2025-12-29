@@ -40,25 +40,19 @@ export const links: Route.LinksFunction = () => [
  */
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html
+      lang="en"
+      className="scroll-smooth dark"
+      style={{ colorScheme: "dark" }}
+    >
       <head>
         <meta charSet="utf-8" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
-        {/* Theme color for browser UI */}
+        {/* Theme color for browser UI - always dark */}
         <meta name="theme-color" content="#030712" />
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: light)"
-          content="#ffffff"
-        />
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: dark)"
-          content="#030712"
-        />
         {/* Author information */}
         <meta name="author" content={SITE_CONFIG.author.name} />
         {/* Robots directive */}
@@ -80,6 +74,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        {/* Force dark theme - prevent system theme interference */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+              })();
+            `,
+          }}
+        />
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import { SITE_CONFIG } from "~/lib/constants";
 
 // Calendar theme configuration
 const CALENDAR_THEME = {
-  light: ["#f5f5f5", "#e5e5e5", "#d4d4d4", "#a3a3a3", "#737373"],
+  light: ["#262626", "#404040", "#525252", "#737373", "#a3a3a3"],
   dark: ["#262626", "#404040", "#525252", "#737373", "#a3a3a3"],
 };
 

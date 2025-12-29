@@ -8,11 +8,13 @@
 
 html,
 body {
-  @apply bg-white dark:bg-neutral-900;
+  @apply bg-neutral-900;
+  color-scheme: dark;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+/* Force dark theme - ignore system preferences */
+html {
+  color-scheme: dark;
 }
 
 @keyframes marquee {
