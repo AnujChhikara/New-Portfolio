@@ -51,6 +51,9 @@ importers:
       '@types/react-simple-maps':
         specifier: ^3.0.6
         version: 3.0.6
+      prettier:
+        specifier: ^3.4.2
+        version: 3.7.4
       tailwindcss:
         specifier: ^4.1.13
         version: 4.1.18

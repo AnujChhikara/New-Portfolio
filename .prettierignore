@@ -1,0 +1,55 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+build
+.output
+.vercel
+.netlify
+
+# Cache
+.cache
+.turbo
+.next
+.nuxt
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Type generation
+*.d.ts
+worker-configuration.d.ts
+
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Public assets (usually don't format)
+public/**/*.ico
+public/**/*.webp
+public/**/*.jpg
+public/**/*.png
+

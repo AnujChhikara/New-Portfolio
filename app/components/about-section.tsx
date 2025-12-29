@@ -15,7 +15,7 @@ const CARD_BASE_CLASSES =
  */
 export function AboutSection() {
   return (
-    <section className="w-full" aria-label="About and projects">
+    <section className="w-full  pt-12" aria-label="About and projects">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 auto-rows-fr">
         {/* Location Card */}
         <article
