@@ -86,28 +86,28 @@ export function LocationMap() {
       </ComposableMap>
 
       {/* Zoom Controls */}
-      <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
+      <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex flex-col gap-1.5 sm:gap-2 z-10">
         <button
           onClick={() =>
             setPosition({ ...position, zoom: Math.min(position.zoom + 0.5, 8) })
           }
-          className="p-2 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors"
+          className="p-1.5 sm:p-2 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors touch-manipulation"
           aria-label="Zoom in"
         >
-          <ZoomIn className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
+          <ZoomIn className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-700 dark:text-neutral-300" />
         </button>
         <button
           onClick={() =>
             setPosition({ ...position, zoom: Math.max(position.zoom - 0.5, 1) })
           }
-          className="p-2 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors"
+          className="p-1.5 sm:p-2 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors touch-manipulation"
           aria-label="Zoom out"
         >
-          <ZoomOut className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
+          <ZoomOut className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-700 dark:text-neutral-300" />
         </button>
         <button
           onClick={() => setPosition({ coordinates: coordinates, zoom: 2 })}
-          className="p-2 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors text-xs font-medium text-neutral-700 dark:text-neutral-300"
+          className="p-1.5 sm:p-2 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors text-[10px] sm:text-xs font-medium text-neutral-700 dark:text-neutral-300 touch-manipulation"
           aria-label="Reset to New Delhi"
         >
           Reset
@@ -115,9 +115,11 @@ export function LocationMap() {
       </div>
 
       <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent pointer-events-none" />
-      <div className="absolute bottom-4 left-4 flex items-center gap-2 pointer-events-none">
-        <MapPin className="w-4 h-4 text-white" />
-        <span className="text-white font-medium">New Delhi, India</span>
+      <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 flex items-center gap-1.5 sm:gap-2 pointer-events-none">
+        <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />
+        <span className="text-xs sm:text-sm text-white font-medium">
+          New Delhi, India
+        </span>
       </div>
     </div>
   );

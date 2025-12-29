@@ -15,8 +15,8 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <div className="min-h-screen py-8 px-4">
-      <div className="flex flex-col items-center justify-center max-w-3xl mx-auto space-y-8">
+    <div className="min-h-screen px-4">
+      <div className="flex flex-col items-center justify-center max-w-3xl mx-auto space-y-6 sm:space-y-8">
         <HeaderSection />
         <IntroSection />
         <SocialLinks />

@@ -45,11 +45,11 @@ function TechColumn({ items }: { items: typeof tech }) {
 export function TechStack() {
   return (
     <div className="relative w-full h-full overflow-hidden flex flex-col">
-      <div className="flex flex-col gap-2 px-2 pb-4">
-        <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+      <div className="flex flex-col gap-1 sm:gap-2 px-2 pb-3 sm:pb-4">
+        <h2 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100">
           Tech Stack
         </h2>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
           Technologies I've worked with and continue to use in my projects.
         </p>
       </div>

@@ -14,9 +14,9 @@ export function HeaderSection() {
           WebkitMaskComposite: "source-in",
         }}
       />
-      <div className="flex flex-row items-end justify-start space-x-6 -mt-2 w-full">
+      <div className="flex flex-row items-end justify-start space-x-4 sm:space-x-6 -mt-2 w-full">
         <div
-          className="relative group"
+          className="relative group shrink-0"
           style={{ perspective: "800px", transformStyle: "preserve-3d" }}
         >
           <div
@@ -32,7 +32,7 @@ export function HeaderSection() {
           <img
             src="/profile.jpg"
             alt="logo"
-            className="relative w-24 h-24 rounded-md transition-transform duration-300 ease-out group-hover:scale-105"
+            className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md transition-transform duration-300 ease-out group-hover:scale-105"
             style={{
               transform: "rotateY(-12deg) rotateX(6deg)",
               boxShadow: `
@@ -55,9 +55,11 @@ export function HeaderSection() {
             }}
           />
         </div>
-        <div className="flex flex-col items-start justify-start">
-          <h1 className="text-2xl font-bold">Anuj Chhikara</h1>
-          <p className="text-base text-neutral-600 dark:text-neutral-400">
+        <div className="flex flex-col items-start justify-start min-w-0">
+          <h1 className="text-xl sm:text-2xl font-bold truncate w-full">
+            Anuj Chhikara
+          </h1>
+          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
             Software Engineer
           </p>
         </div>

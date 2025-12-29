@@ -44,7 +44,7 @@ export function SocialLinks() {
 
   return (
     <div className="flex flex-col items-start justify-start w-full">
-      <div className="flex flex-row items-start justify-start gap-6 flex-wrap">
+      <div className="flex flex-row items-start justify-start gap-4 sm:gap-6 flex-wrap">
         {socialLinks.map((link) => {
           const Icon = link.icon;
           return (
@@ -54,10 +54,10 @@ export function SocialLinks() {
               width={280}
               height={175}
             >
-              <span className="flex items-center gap-2 font-medium text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-300 transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 group">
+              <span className="flex items-center gap-2 text-sm sm:text-base font-medium text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-300 transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 group">
                 <Icon
                   size={16}
-                  className="transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3"
+                  className="transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shrink-0"
                 />
                 {link.name}
               </span>
