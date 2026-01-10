@@ -2,10 +2,10 @@ import { SITE_CONFIG } from "~/lib/constants";
 
 // Styles extracted for maintainability
 const MASK_STYLE = {
-          maskImage:
-            "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to bottom, black 0%, black 85%, transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to bottom, black 0%, black 85%, transparent 100%)",
+  maskImage:
+    "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to bottom, black 0%, black 85%, transparent 100%)",
+  WebkitMaskImage:
+    "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to bottom, black 0%, black 85%, transparent 100%)",
   maskComposite: "intersect" as const,
   WebkitMaskComposite: "source-in" as const,
 };
@@ -16,15 +16,15 @@ const PROFILE_3D_STYLE = {
 };
 
 const PROFILE_SHADOW_STYLE = {
-              transform:
-                "rotateY(-12deg) rotateX(6deg) translateZ(-8px) translateX(6px) translateY(6px)",
-              background: "rgba(0,0,0,0.8)",
-              filter: "blur(12px)",
+  transform:
+    "rotateY(-12deg) rotateX(6deg) translateZ(-8px) translateX(6px) translateY(6px)",
+  background: "rgba(0,0,0,0.8)",
+  filter: "blur(12px)",
 };
 
 const PROFILE_IMAGE_STYLE = {
-              transform: "rotateY(-12deg) rotateX(6deg)",
-              boxShadow: `
+  transform: "rotateY(-12deg) rotateX(6deg)",
+  boxShadow: `
                 0 0 0 1px rgba(255,255,255,0.1),
                 4px 4px 8px rgba(0,0,0,0.6),
                 8px 8px 16px rgba(0,0,0,0.4),
@@ -34,11 +34,11 @@ const PROFILE_IMAGE_STYLE = {
 };
 
 const PROFILE_OVERLAY_STYLE = {
-              transform: "rotateY(-12deg) rotateX(6deg)",
-              background:
-                "linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 40%)",
-              borderTop: "1px solid rgba(255,255,255,0.15)",
-              borderLeft: "1px solid rgba(255,255,255,0.1)",
+  transform: "rotateY(-12deg) rotateX(6deg)",
+  background:
+    "linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 40%)",
+  borderTop: "1px solid rgba(255,255,255,0.15)",
+  borderLeft: "1px solid rgba(255,255,255,0.1)",
 };
 
 /**
@@ -96,9 +96,7 @@ export function HeaderSection() {
           <h1 className="text-xl sm:text-2xl font-bold truncate w-full text-neutral-100">
             {name}
           </h1>
-          <p className="text-sm sm:text-base text-neutral-400">
-            {role}
-          </p>
+          <p className="text-sm sm:text-base text-neutral-400">{role}</p>
         </div>
       </div>
     </header>

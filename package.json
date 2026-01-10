@@ -14,13 +14,18 @@
     "typecheck": "npm run cf-typegen && react-router typegen && tsc -b"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "@types/three": "^0.182.0",
+    "framer-motion": "^12.25.0",
     "isbot": "^5.1.31",
     "lucide-react": "^0.468.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-github-calendar": "^5.0.4",
     "react-router": "^7.10.0",
-    "react-simple-maps": "^3.0.0"
+    "react-simple-maps": "^3.0.0",
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.13.5",
