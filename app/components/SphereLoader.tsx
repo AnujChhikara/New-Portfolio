@@ -3,7 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { motion } from "framer-motion";
 
-type ShapeType = "sphere" | "cube" | "pyramid" | "torus" | "burst";
+type ShapeType = "sphere" | "cube" | "torus";
 
 function ParticleShape({ onBurst }: { onBurst: () => void }) {
   const pointsRef = useRef<THREE.Points>(null);
@@ -13,13 +13,15 @@ function ParticleShape({ onBurst }: { onBurst: () => void }) {
   // Progress tracker: 0 = current shape start, 1 = current shape end
   const progressRef = useRef(0);
   const currentShapeIndexRef = useRef(0);
+  const targetShapeIndexRef = useRef(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const onBurstRef = useRef(onBurst);
 
   // Generate geometry data
-  const { spherePos, cubePos, pyramidPos, torusPos } = useMemo(() => {
+  const { spherePos, cubePos, torusPos } = useMemo(() => {
     const count = 25000;
     const sphere = new Float32Array(count * 3);
     const cube = new Float32Array(count * 3);
-    const pyramid = new Float32Array(count * 3);
     const torus = new Float32Array(count * 3);
 
     // 1. SPHERE
@@ -81,46 +83,7 @@ function ParticleShape({ onBurst }: { onBurst: () => void }) {
       cube[i * 3 + 2] = z;
     }
 
-    // 3. PYRAMID (Tetrahedron)
-    // 4 faces. Vertices: (1,1,1), (1,-1,-1), (-1,1,-1), (-1,-1,1) * scale
-    const pSize = 1.8;
-    const v0 = [pSize, pSize, pSize];
-    const v1 = [pSize, -pSize, -pSize];
-    const v2 = [-pSize, pSize, -pSize];
-    const v3 = [-pSize, -pSize, pSize];
-    const faces = [
-      [v0, v1, v2],
-      [v0, v3, v1],
-      [v0, v2, v3],
-      [v1, v3, v2],
-    ];
-
-    for (let i = 0; i < count; i++) {
-      const fIndex = Math.floor(Math.random() * 4);
-      const faceVertices = faces[fIndex];
-      // Random point in triangle (barycentric)
-      let r1 = Math.random();
-      let r2 = Math.random();
-      if (r1 + r2 > 1) {
-        r1 = 1 - r1;
-        r2 = 1 - r2;
-      }
-      const r3 = 1 - r1 - r2;
-
-      const A = faceVertices[0];
-      const B = faceVertices[1];
-      const C = faceVertices[2];
-
-      const x = A[0] * r1 + B[0] * r2 + C[0] * r3 + (Math.random() - 0.5) * 0.1;
-      const y = A[1] * r1 + B[1] * r2 + C[1] * r3 + (Math.random() - 0.5) * 0.1;
-      const z = A[2] * r1 + B[2] * r2 + C[2] * r3 + (Math.random() - 0.5) * 0.1;
-
-      pyramid[i * 3] = x;
-      pyramid[i * 3 + 1] = y;
-      pyramid[i * 3 + 2] = z;
-    }
-
-    // 4. TORUS
+    // 3. TORUS
     const majorR = 1.5;
     const minorR = 0.6;
     for (let i = 0; i < count; i++) {
@@ -141,103 +104,116 @@ function ParticleShape({ onBurst }: { onBurst: () => void }) {
     return {
       spherePos: sphere,
       cubePos: cube,
-      pyramidPos: pyramid,
       torusPos: torus,
     };
   }, []);
 
   const shapes = useMemo(
-    () => [spherePos, cubePos, pyramidPos, torusPos],
-    [spherePos, cubePos, pyramidPos, torusPos]
+    () => [spherePos, cubePos, torusPos],
+    [spherePos, cubePos, torusPos]
   );
+
+  // Keep onBurst ref updated
+  useEffect(() => {
+    onBurstRef.current = onBurst;
+  }, [onBurst]);
 
   useEffect(() => {
     // Sequence Logic
     // Shape hold time: 0.5s
     // Morph time: 0.8s (handled in animate loop via progress speed)
 
+    // Start with sphere (index 0)
+    currentShapeIndexRef.current = 0;
+    targetShapeIndexRef.current = 0;
+    progressRef.current = 0;
+
     let step = 0;
     const cycleShapes = () => {
-      if (step >= 3) {
-        // After Torus (index 3), trigger burst
-        setTimeout(() => {
-          setTargetShape("burst");
-          onBurst();
+      step++;
+      
+      if (step > 2) {
+        // After Torus (index 2), trigger completion
+        timeoutRef.current = setTimeout(() => {
+          onBurstRef.current();
         }, 800);
         return;
       }
 
-      step++;
-      currentShapeIndexRef.current = step - 1; // Start from prev
+      // Update indices: source is previous, target is current step
+      currentShapeIndexRef.current = step - 1;
+      targetShapeIndexRef.current = step;
       progressRef.current = 0; // Reset interpolation progress
 
-      const nextShapeName = ["sphere", "cube", "pyramid", "torus"][
+      const nextShapeName = ["sphere", "cube", "torus"][
         step
       ] as ShapeType;
       setTargetShape(nextShapeName);
 
       // Schedule next cycle
       // 0.8s morph + 0.4s hold = 1.2s total per shape
-      setTimeout(cycleShapes, 1200);
+      timeoutRef.current = setTimeout(cycleShapes, 1200);
     };
 
     // Start sequence after initial load
-    const startTimer = setTimeout(cycleShapes, 1000);
+    timeoutRef.current = setTimeout(cycleShapes, 1000);
 
-    return () => clearTimeout(startTimer);
-  }, [onBurst]);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+  }, []); // Empty deps - only run once on mount
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (!pointsRef.current) return;
 
-    const time = state.clock.getElapsedTime();
     const positions = pointsRef.current.geometry.attributes.position
       .array as Float32Array;
 
-    if (targetShape !== "burst") {
-      // ROTATION
-      pointsRef.current.rotation.y += 0.008;
-      pointsRef.current.rotation.x += 0.004;
+    // ROTATION
+    pointsRef.current.rotation.y += 0.008;
+    pointsRef.current.rotation.x += 0.004;
 
-      // ANIMATION / MORPHING
-      // currentShapeIndexRef tells us "Source". targetShape tells us logic, but we implies "Source + 1"
-      const sourceIndex = currentShapeIndexRef.current;
-      const targetIndex =
-        sourceIndex + 1 < shapes.length ? sourceIndex + 1 : sourceIndex;
+    // ANIMATION / MORPHING
+    // Use explicit source and target indices to avoid calculation errors
+    const sourceIndex = currentShapeIndexRef.current;
+    const targetIndex = targetShapeIndexRef.current;
 
+    // Only animate if we're transitioning between shapes
+    if (sourceIndex !== targetIndex) {
       const sourcePos = shapes[sourceIndex];
       const targetPos = shapes[targetIndex];
 
-      // Animate progress (Morph Speed)
-      // 0 to 1 at ~0.02 per frame (~0.8s)
+      // Animate progress using delta time for frame-rate independence
+      // Target duration: 0.8s for morph
+      const morphDuration = 0.8;
       if (progressRef.current < 1) {
-        progressRef.current += 0.02;
-        if (progressRef.current > 1) progressRef.current = 1;
+        progressRef.current = Math.min(
+          1,
+          progressRef.current + delta / morphDuration
+        );
       }
 
-      // Easing (Smoothstep)
+      // Easing (Smoothstep for smooth transitions)
       const t =
         progressRef.current *
         progressRef.current *
         (3 - 2 * progressRef.current);
 
+      // Interpolate positions
       for (let i = 0; i < positions.length; i++) {
         positions[i] = sourcePos[i] + (targetPos[i] - sourcePos[i]) * t;
       }
       pointsRef.current.geometry.attributes.position.needsUpdate = true;
     } else {
-      // BURST
-      for (let i = 0; i < positions.length; i += 3) {
-        // Radial expansion
-        positions[i] *= 1.1;
-        positions[i + 1] *= 1.1;
-        positions[i + 2] *= 1.1;
+      // When transition is complete, ensure we're at the target shape
+      const targetPos = shapes[targetIndex];
+      for (let i = 0; i < positions.length; i++) {
+        positions[i] = targetPos[i];
       }
       pointsRef.current.geometry.attributes.position.needsUpdate = true;
-
-      if (pointsRef.current.material instanceof THREE.PointsMaterial) {
-        pointsRef.current.material.opacity *= 0.9;
-      }
     }
   });
 
