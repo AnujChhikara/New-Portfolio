@@ -10,15 +10,15 @@ import {
 import type { Route } from "./+types/root";
 import { SITE_CONFIG } from "./lib/constants";
 import "./app.css";
-import { useState, useEffect, lazy, Suspense } from "react";
-import { AnimatePresence } from "framer-motion";
+import { useState, useEffect} from "react";
+// import { AnimatePresence } from "framer-motion";
 
-// Lazy load SphereLoader to avoid SSR issues with Three.js/Drei
-const SphereLoader = lazy(() =>
-  import("./components/SphereLoader").then((module) => ({
-    default: module.SphereLoader,
-  }))
-);
+// // Lazy load SphereLoader to avoid SSR issues with Three.js/Drei
+// const SphereLoader = lazy(() =>
+//   import("./components/SphereLoader").then((module) => ({
+//     default: module.SphereLoader,
+//   }))
+// );
 
 /**
  * Root links function for preconnecting to external resources
@@ -87,7 +87,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           minHeight: "100vh",
         }}
       >
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {showPreloader && (
             <Suspense
               fallback={<div className="fixed inset-0 z-50 bg-black" />}
@@ -95,7 +95,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <SphereLoader onComplete={() => setShowPreloader(false)} />
             </Suspense>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
         {children}
         <ScrollRestoration />
         <Scripts />
