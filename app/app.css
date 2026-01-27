@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans:
     "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
@@ -77,7 +79,7 @@ select {
 }
 
 .animate-marquee-right-fast {
-  animation: marquee-reverse 30s linear infinite;
+  animation: marquee-reverse 15s linear infinite;
 }
 
 .animate-marquee-right-slow {

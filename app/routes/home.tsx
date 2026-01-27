@@ -3,8 +3,9 @@ import { GithubStats } from "~/components/github-stat";
 import { HeaderSection } from "~/components/header-section";
 import { SocialLinks } from "~/components/social-links";
 import { IntroSection } from "~/components/intro-section";
-import { AboutSection } from "~/components/about-section";
 import { FooterSection } from "~/components/footer-section";
+import { SkillsMarquee } from "~/components/skills-marquee";
+import { ProjectsBento } from "~/components/projects-bento";
 import { SITE_CONFIG } from "~/lib/constants";
 
 /**
@@ -61,8 +62,9 @@ export default function Home() {
         <HeaderSection />
         <IntroSection />
         <SocialLinks />
+        <SkillsMarquee />
         <GithubStats />
-        <AboutSection />
+        <ProjectsBento />
         <FooterSection />
       </div>
     </main>

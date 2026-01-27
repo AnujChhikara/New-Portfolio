@@ -119,6 +119,14 @@ export interface Project {
 
 export const PROJECTS: readonly Project[] = [
   {
+    title: "Impact Player",
+    description:
+      "Engineering impact visualized. Analyze GitHub contributions with deep metrics, AI-powered insights, and detailed visualizations of PRs, reviews, and collaboration patterns.",
+    tech: ["Next.js", "TypeScript", "GitHub API", "AI Analytics", "Tailwind CSS"],
+    link: "https://impact-player.vercel.app/",
+    github: "https://github.com/AnujChhikara/impact-player",
+  },
+  {
     title: "Vidloom",
     description:
       "A video sharing platform similar to YouTube with upload and playback capabilities.",

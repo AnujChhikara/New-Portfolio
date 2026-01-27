@@ -130,7 +130,7 @@ export function FooterSection() {
               </span>
               <p>
                 <small suppressHydrationWarning>
-                  © {BUILD_YEAR} All rights reserved.
+                  © 2026 All rights reserved.
                 </small>
               </p>
             </div>

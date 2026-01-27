@@ -1,5 +1,3 @@
-import { SITE_CONFIG } from "~/lib/constants";
-
 /**
  * Introduction section with bio
  * Uses semantic article element for better SEO
@@ -7,10 +5,16 @@ import { SITE_CONFIG } from "~/lib/constants";
 export function IntroSection() {
   return (
     <section className="w-full" aria-label="About me">
-      <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        {SITE_CONFIG.description} From architecture to deployment, I enjoy the
-        full product lifecycle and bringing concepts to life.
-      </p>
+      <div className="px-5 py-4 bg-white dark:bg-neutral-800/50 rounded-lg shadow-sm transition-all duration-300 ease-out hover:shadow-lg">
+        <p className="text-sm sm:text-base text-neutral-900 dark:text-neutral-300 leading-relaxed">
+          Product-minded software engineer focused on solving real problems
+          through well-designed systems. I care about clean abstractions,
+          thoughtful user experiences, and architecture that scales gracefully.
+          I enjoy owning features end to end - from design decisions to
+          deployment - and shipping code that's readable, reliable, and built to
+          last.
+        </p>
+      </div>
     </section>
   );
 }

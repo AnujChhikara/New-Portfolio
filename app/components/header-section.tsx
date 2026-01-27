@@ -1,4 +1,5 @@
 import { SITE_CONFIG } from "~/lib/constants";
+import { ThemeToggle } from "./theme-toggle";
 
 // Styles extracted for maintainability
 const MASK_STYLE = {
@@ -49,43 +50,39 @@ export function HeaderSection() {
         style={MASK_STYLE}
       />
 
-      <div className="flex flex-row items-end justify-start space-x-4 sm:space-x-6 -mt-2 w-full">
-        {/* Profile image with 3D effect */}
-        <figure
-          className="relative group shrink-0"
-          style={PROFILE_3D_STYLE}
-          aria-label={`Profile photo of ${name}`}
-        >
-          {/* Shadow layer */}
-          <div
-            className="absolute inset-0 rounded-md bg-black/20 dark:bg-black/40"
-            aria-hidden="true"
-            style={PROFILE_SHADOW_STYLE}
-          />
-          {/* Profile photo */}
-          <img
-            src="/profile.jpg"
-            alt={`${name} - ${role}`}
-            width={96}
-            height={96}
-            className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md transition-transform duration-300 ease-out group-hover:scale-105 shadow-[0_0_0_1px_rgba(0,0,0,0.1),4px_4px_8px_rgba(0,0,0,0.3),8px_8px_16px_rgba(0,0,0,0.2),16px_16px_32px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1),4px_4px_8px_rgba(0,0,0,0.6),8px_8px_16px_rgba(0,0,0,0.4),16px_16px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.15)]"
-            loading="eager"
-            style={PROFILE_IMAGE_STYLE}
-          />
-          {/* Light overlay for 3D effect */}
-          <div
-            className="absolute top-0 left-0 w-full h-full rounded-md pointer-events-none bg-gradient-to-br from-white/10 to-transparent dark:from-white/12 dark:to-transparent border-t border-l border-white/10 dark:border-white/15"
-            aria-hidden="true"
-            style={PROFILE_OVERLAY_STYLE}
-          />
-        </figure>
+      <div className="flex flex-row items-end justify-between space-x-4 sm:space-x-6 -mt-2 w-full">
+        <div className="flex flex-row items-end space-x-4 sm:space-x-6">
+          {/* Profile image with 3D effect */}
+          <figure
+            className="relative group shrink-0"
+            style={PROFILE_3D_STYLE}
+            aria-label={`Profile photo of ${name}`}
+          >
+            <img
+              src="https://api.dicebear.com/9.x/croodles/svg?seed=Aneka"
+              alt={`${name} - ${role}`}
+              width={96}
+              height={96}
+              className="relative 0 backdrop-blur-3xl w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 -mt-4 rounded-md border-2 border-neutral-900 dark:border-neutral-700 transition-all duration-300 ease-out group-hover:grayscale-0 shadow-lg"
+              loading="eager"
+              style={PROFILE_IMAGE_STYLE}
+            />
+          </figure>
 
-        {/* Name and title */}
-        <div className="flex flex-col items-start justify-start min-w-0">
-          <h1 className="text-xl sm:text-2xl font-bold truncate w-full text-neutral-900 dark:text-neutral-100">
-            {name}
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400">{role}</p>
+          {/* Name and title */}
+          <div className="flex flex-col items-start justify-start min-w-0">
+            <h1 className="text-xl sm:text-2xl font-bold truncate w-full text-neutral-900 dark:text-neutral-100">
+              {name}
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
+              {role}
+            </p>
+          </div>
+        </div>
+
+        {/* Theme toggle switch */}
+        <div className="flex items-end pb-1">
+          <ThemeToggle />
         </div>
       </div>
     </header>

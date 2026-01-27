@@ -9,7 +9,6 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { ThemeToggle } from "./components/theme-toggle";
 import { SITE_CONFIG } from "./lib/constants";
 
 export const links: Route.LinksFunction = () => [
@@ -38,11 +37,34 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
         <meta name="author" content={SITE_CONFIG.author.name} />
         <meta name="robots" content="index, follow" />
+        {/* Blocking script to prevent theme flash - runs before React hydration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const savedTheme = localStorage.getItem('theme');
+                  let theme = savedTheme;
+                  
+                  // If no saved theme, check system preference
+                  if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  }
+                  
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <Meta />
         <Links />
       </head>
       <body>
-        <ThemeToggle />
         {children}
         <ScrollRestoration />
         <Scripts />

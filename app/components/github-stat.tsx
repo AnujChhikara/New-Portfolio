@@ -2,10 +2,22 @@ import { useState, useEffect } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { SITE_CONFIG } from "~/lib/constants";
 
-// Calendar theme configuration
+// Calendar theme configuration - gray palette, same for both themes
 const CALENDAR_THEME = {
-  light: ["#e5e7eb", "#d1d5db", "#9ca3af", "#6b7280", "#374151"],
-  dark: ["#262626", "#404040", "#525252", "#737373", "#a3a3a3"],
+  light: [
+    "#f3f4f6", // No contributions - very light gray
+    "#d1d5db", // Low - light gray
+    "#9ca3af", // Medium - medium gray
+    "#6b7280", // High - dark gray
+    "#374151", // Very high - darkest gray
+  ],
+  dark: [
+    "#f3f4f6", // No contributions - very light gray
+    "#d1d5db", // Low - light gray
+    "#9ca3af", // Medium - medium gray
+    "#6b7280", // High - dark gray
+    "#374151", // Very high - darkest gray
+  ],
 };
 
 // Tooltip configuration
@@ -32,20 +44,9 @@ const TOOLTIP_CONFIG = {
  */
 export function GithubStats() {
   const [isMounted, setIsMounted] = useState(false);
-  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains("dark"));
-    };
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-    return () => observer.disconnect();
   }, []);
 
   return (
@@ -55,15 +56,16 @@ export function GithubStats() {
     >
       <div className="min-w-[280px]">
         {isMounted ? (
-          <GitHubCalendar
-            key={`calendar-${isDark ? "dark" : "light"}`}
-            username={SITE_CONFIG.author.github}
-            showTotalCount={true}
-            fontSize={12}
-            tooltips={TOOLTIP_CONFIG}
-            theme={CALENDAR_THEME}
-            colorScheme={isDark ? "dark" : "light"}
-          />
+          <div className="text-neutral-900 dark:text-neutral-100">
+            <GitHubCalendar
+              username={SITE_CONFIG.author.github}
+              showTotalCount={true}
+              fontSize={12}
+              tooltips={TOOLTIP_CONFIG}
+              theme={CALENDAR_THEME}
+              colorScheme="light"
+            />
+          </div>
         ) : (
           <div className="h-[120px] flex items-center justify-center text-neutral-600 dark:text-neutral-400">
             Loading GitHub activity...
