@@ -4,7 +4,7 @@ import { SITE_CONFIG } from "~/lib/constants";
 
 // Calendar theme configuration
 const CALENDAR_THEME = {
-  light: ["#262626", "#404040", "#525252", "#737373", "#a3a3a3"],
+  light: ["#e5e7eb", "#d1d5db", "#9ca3af", "#6b7280", "#374151"],
   dark: ["#262626", "#404040", "#525252", "#737373", "#a3a3a3"],
 };
 
@@ -32,9 +32,20 @@ const TOOLTIP_CONFIG = {
  */
 export function GithubStats() {
   const [isMounted, setIsMounted] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -45,14 +56,16 @@ export function GithubStats() {
       <div className="min-w-[280px]">
         {isMounted ? (
           <GitHubCalendar
+            key={`calendar-${isDark ? "dark" : "light"}`}
             username={SITE_CONFIG.author.github}
             showTotalCount={true}
             fontSize={12}
             tooltips={TOOLTIP_CONFIG}
             theme={CALENDAR_THEME}
+            colorScheme={isDark ? "dark" : "light"}
           />
         ) : (
-          <div className="h-[120px] flex items-center justify-center text-neutral-400 dark:text-neutral-600">
+          <div className="h-[120px] flex items-center justify-center text-neutral-600 dark:text-neutral-400">
             Loading GitHub activity...
           </div>
         )}

@@ -1,5 +1,5 @@
 import { MapPin, ZoomIn, ZoomOut } from "lucide-react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -20,31 +20,31 @@ const MAP_CONFIG = {
   defaultZoom: 2,
 } as const;
 
-// Geography styles for map
-const GEOGRAPHY_STYLES = {
+// Geography styles for map - will be updated dynamically based on theme
+const getGeographyStyles = (isDark: boolean) => ({
   default: {
-    fill: "#e5e7eb",
+    fill: isDark ? "#e5e7eb" : "#f3f4f6",
     stroke: "none",
     outline: "none",
     cursor: "grab",
   },
   hover: {
-    fill: "#d1d5db",
+    fill: isDark ? "#d1d5db" : "#e5e7eb",
     stroke: "none",
     outline: "none",
     cursor: "grab",
   },
   pressed: {
-    fill: "#d1d5db",
+    fill: isDark ? "#d1d5db" : "#e5e7eb",
     stroke: "none",
     outline: "none",
     cursor: "grabbing",
   },
-} as const;
+});
 
 // Zoom button styles
 const ZOOM_BUTTON_CLASSES =
-  "p-1.5 sm:p-2 bg-neutral-800 rounded-lg shadow-lg border border-neutral-700 hover:bg-neutral-700 transition-colors touch-manipulation";
+  "p-1.5 sm:p-2 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors touch-manipulation";
 
 interface MapPosition {
   coordinates: [number, number];
@@ -60,6 +60,21 @@ export function LocationMap() {
     coordinates: LOCATION.coordinates,
     zoom: MAP_CONFIG.defaultZoom,
   });
+  const [isDark, setIsDark] = useState(false);
+
+  // Check theme on mount and when it changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   // Memoized handlers for performance
   const handleMoveEnd = useCallback((newPosition: MapPosition) => {
@@ -87,9 +102,11 @@ export function LocationMap() {
     });
   }, []);
 
+  const geographyStyles = getGeographyStyles(isDark);
+
   return (
     <div
-      className="relative w-full h-full rounded-lg overflow-hidden bg-neutral-900"
+      className="relative w-full h-full rounded-lg overflow-hidden bg-neutral-100 dark:bg-neutral-900"
       role="img"
       aria-label={`Map showing location: ${LOCATION.name}`}
     >
@@ -115,9 +132,9 @@ export function LocationMap() {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={GEOGRAPHY_STYLES.default.fill}
+                  fill={geographyStyles.default.fill}
                   stroke="none"
-                  style={GEOGRAPHY_STYLES}
+                  style={geographyStyles}
                 />
               ))
             }
@@ -145,7 +162,7 @@ export function LocationMap() {
           type="button"
         >
           <ZoomIn
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-300"
+            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-700 dark:text-neutral-300"
             aria-hidden="true"
           />
         </button>
@@ -156,13 +173,13 @@ export function LocationMap() {
           type="button"
         >
           <ZoomOut
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-300"
+            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-700 dark:text-neutral-300"
             aria-hidden="true"
           />
         </button>
         <button
           onClick={handleReset}
-          className={`${ZOOM_BUTTON_CLASSES} text-[10px] sm:text-xs font-medium text-neutral-300`}
+          className={`${ZOOM_BUTTON_CLASSES} text-[10px] sm:text-xs font-medium text-neutral-700 dark:text-neutral-300`}
           aria-label={`Reset map to ${LOCATION.name}`}
           type="button"
         >
@@ -172,17 +189,17 @@ export function LocationMap() {
 
       {/* Gradient overlay */}
       <div
-        className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent pointer-events-none"
+        className="absolute inset-0 bg-linear-to-t from-black/20 dark:from-black/40 to-transparent pointer-events-none"
         aria-hidden="true"
       />
 
       {/* Location label */}
       <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 flex items-center gap-1.5 sm:gap-2 pointer-events-none">
         <MapPin
-          className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0"
+          className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-900 dark:text-white shrink-0"
           aria-hidden="true"
         />
-        <span className="text-xs sm:text-sm text-white font-medium">
+        <span className="text-xs sm:text-sm text-neutral-900 dark:text-white font-medium">
           {LOCATION.name}
         </span>
       </div>

@@ -3,9 +3,9 @@ import { tech, type TechItem } from "./tech";
 
 // Fade overlay styles for the scrolling effect
 const FADE_TOP_CLASSES =
-  "absolute top-0 left-0 right-0 h-10 bg-linear-to-b from-neutral-900 via-neutral-900/80 to-transparent z-10 pointer-events-none";
+  "absolute top-0 left-0 right-0 h-10 bg-linear-to-b from-white via-white/80 to-transparent dark:from-neutral-900 dark:via-neutral-900/80 dark:to-transparent z-10 pointer-events-none";
 const FADE_BOTTOM_CLASSES =
-  "absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-neutral-900 via-neutral-900/80 to-transparent z-10 pointer-events-none";
+  "absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-white via-white/80 to-transparent dark:from-neutral-900 dark:via-neutral-900/80 dark:to-transparent z-10 pointer-events-none";
 
 interface TechColumnProps {
   items: TechItem[];
@@ -41,7 +41,7 @@ function TechColumn({ items }: TechColumnProps) {
             >
               {item.svg}
             </div>
-            <span className="text-sm text-neutral-400 font-medium whitespace-nowrap">
+            <span className="text-sm text-neutral-600 dark:text-neutral-400 font-medium whitespace-nowrap">
               {item.name}
             </span>
           </li>
@@ -61,7 +61,7 @@ function TechColumn({ items }: TechColumnProps) {
             <div className="w-5 h-5 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity">
               {item.svg}
             </div>
-            <span className="text-[10px] text-neutral-400 font-medium whitespace-nowrap">
+            <span className="text-[10px] text-neutral-600 dark:text-neutral-400 font-medium whitespace-nowrap">
               {item.name}
             </span>
           </li>
@@ -84,11 +84,11 @@ export function TechStack() {
       <header className="flex flex-col gap-1 sm:gap-2 px-2 pb-3 sm:pb-4">
         <h2
           id="tech-stack-heading"
-          className="text-base sm:text-lg font-semibold text-neutral-100"
+          className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100"
         >
           Tech Stack
         </h2>
-        <p className="text-xs sm:text-sm text-neutral-400">
+        <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
           Technologies I've worked with and continue to use in my projects.
         </p>
       </header>

@@ -53,7 +53,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <main
-      className="min-h-screen px-4"
+      className="min-h-screen px-4 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 transition-colors duration-300"
       role="main"
       aria-label="Personal portfolio of Anuj Chhikara"
     >

@@ -15,30 +15,19 @@ const PROFILE_3D_STYLE = {
   transformStyle: "preserve-3d" as const,
 };
 
+// Theme-aware styles - will be applied via CSS classes
 const PROFILE_SHADOW_STYLE = {
   transform:
     "rotateY(-12deg) rotateX(6deg) translateZ(-8px) translateX(6px) translateY(6px)",
-  background: "rgba(0,0,0,0.8)",
   filter: "blur(12px)",
 };
 
 const PROFILE_IMAGE_STYLE = {
   transform: "rotateY(-12deg) rotateX(6deg)",
-  boxShadow: `
-                0 0 0 1px rgba(255,255,255,0.1),
-                4px 4px 8px rgba(0,0,0,0.6),
-                8px 8px 16px rgba(0,0,0,0.4),
-                16px 16px 32px rgba(0,0,0,0.3),
-                inset 0 1px 0 rgba(255,255,255,0.15)
-              `,
 };
 
 const PROFILE_OVERLAY_STYLE = {
   transform: "rotateY(-12deg) rotateX(6deg)",
-  background:
-    "linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 40%)",
-  borderTop: "1px solid rgba(255,255,255,0.15)",
-  borderLeft: "1px solid rgba(255,255,255,0.1)",
 };
 
 /**
@@ -69,7 +58,7 @@ export function HeaderSection() {
         >
           {/* Shadow layer */}
           <div
-            className="absolute inset-0 rounded-md"
+            className="absolute inset-0 rounded-md bg-black/20 dark:bg-black/40"
             aria-hidden="true"
             style={PROFILE_SHADOW_STYLE}
           />
@@ -79,13 +68,13 @@ export function HeaderSection() {
             alt={`${name} - ${role}`}
             width={96}
             height={96}
-            className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md transition-transform duration-300 ease-out group-hover:scale-105"
+            className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md transition-transform duration-300 ease-out group-hover:scale-105 shadow-[0_0_0_1px_rgba(0,0,0,0.1),4px_4px_8px_rgba(0,0,0,0.3),8px_8px_16px_rgba(0,0,0,0.2),16px_16px_32px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1),4px_4px_8px_rgba(0,0,0,0.6),8px_8px_16px_rgba(0,0,0,0.4),16px_16px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.15)]"
             loading="eager"
             style={PROFILE_IMAGE_STYLE}
           />
           {/* Light overlay for 3D effect */}
           <div
-            className="absolute top-0 left-0 w-full h-full rounded-md pointer-events-none"
+            className="absolute top-0 left-0 w-full h-full rounded-md pointer-events-none bg-gradient-to-br from-white/10 to-transparent dark:from-white/12 dark:to-transparent border-t border-l border-white/10 dark:border-white/15"
             aria-hidden="true"
             style={PROFILE_OVERLAY_STYLE}
           />
@@ -93,10 +82,10 @@ export function HeaderSection() {
 
         {/* Name and title */}
         <div className="flex flex-col items-start justify-start min-w-0">
-          <h1 className="text-xl sm:text-2xl font-bold truncate w-full text-neutral-100">
+          <h1 className="text-xl sm:text-2xl font-bold truncate w-full text-neutral-900 dark:text-neutral-100">
             {name}
           </h1>
-          <p className="text-sm sm:text-base text-neutral-400">{role}</p>
+          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400">{role}</p>
         </div>
       </div>
     </header>

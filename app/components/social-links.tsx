@@ -11,7 +11,7 @@ function SocialLinkItem({ link }: { link: SocialLink }) {
   return (
     <LinkPreview url={link.url} width={280} height={175}>
       <span
-        className="flex items-center gap-2 text-sm sm:text-base font-medium text-neutral-400 hover:text-neutral-300 transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 group"
+        className="flex items-center gap-2 text-sm sm:text-base font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-300 transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 group"
         aria-label={link.ariaLabel}
       >
         <Icon

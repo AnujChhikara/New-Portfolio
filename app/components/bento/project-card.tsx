@@ -7,10 +7,10 @@ interface ProjectCardProps {
 
 // Shared button styles for consistency
 const LINK_BUTTON_CLASSES =
-  "p-1.5 rounded-md hover:bg-neutral-800 transition-colors touch-manipulation";
+  "p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors touch-manipulation";
 
 const ICON_CLASSES =
-  "w-4 h-4 text-neutral-400 hover:text-neutral-200 transition-colors";
+  "w-4 h-4 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors";
 
 /**
  * Project card component displaying project info with links
@@ -18,9 +18,9 @@ const ICON_CLASSES =
  */
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="rounded-xl border-2 border-dotted border-neutral-600 p-4 sm:p-6 hover:shadow-lg transition-all duration-300 group flex flex-col h-full">
+    <article className="rounded-xl border-2 border-dotted border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-4 sm:p-6 hover:shadow-lg transition-all duration-300 group flex flex-col h-full">
       <header className="flex items-start justify-between mb-2 sm:mb-3 gap-2">
-        <h3 className="text-base sm:text-lg font-semibold text-neutral-100 group-hover:text-neutral-200 transition-colors min-w-0 flex-1">
+        <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors min-w-0 flex-1">
           {project.title}
         </h3>
         <nav
@@ -47,7 +47,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </a>
         </nav>
       </header>
-      <p className="text-xs text-neutral-400 mb-2 sm:mb-4 line-clamp-2 grow">
+      <p className="text-xs text-neutral-600 dark:text-neutral-400 mb-2 sm:mb-4 line-clamp-2 grow">
         {project.description}
       </p>
     </article>
