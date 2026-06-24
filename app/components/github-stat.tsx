@@ -2,22 +2,9 @@ import { useState, useEffect } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { SITE_CONFIG } from "~/lib/constants";
 
-// Calendar theme configuration - gray palette, same for both themes
 const CALENDAR_THEME = {
-  light: [
-    "#f3f4f6", // No contributions - very light gray
-    "#d1d5db", // Low - light gray
-    "#9ca3af", // Medium - medium gray
-    "#6b7280", // High - dark gray
-    "#374151", // Very high - darkest gray
-  ],
-  dark: [
-    "#f3f4f6", // No contributions - very light gray
-    "#d1d5db", // Low - light gray
-    "#9ca3af", // Medium - medium gray
-    "#6b7280", // High - dark gray
-    "#374151", // Very high - darkest gray
-  ],
+  light: ["#f5f5f5", "#d4d4d4", "#a3a3a3", "#525252", "#262626"],
+  dark:  ["#262626", "#404040", "#737373", "#d4d4d4", "#e5e5e5"],
 };
 
 // Tooltip configuration
@@ -44,9 +31,16 @@ const TOOLTIP_CONFIG = {
  */
 export function GithubStats() {
   const [isMounted, setIsMounted] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const docDark = () => document.documentElement.classList.contains("dark");
+    setIsDark(docDark() || mq.matches);
+    const observer = new MutationObserver(() => setIsDark(docDark()));
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -63,7 +57,7 @@ export function GithubStats() {
               fontSize={12}
               tooltips={TOOLTIP_CONFIG}
               theme={CALENDAR_THEME}
-              colorScheme="light"
+              colorScheme={isDark ? "dark" : "light"}
             />
           </div>
         ) : (

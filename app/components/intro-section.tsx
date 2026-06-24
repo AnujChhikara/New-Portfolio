@@ -7,12 +7,9 @@ export function IntroSection() {
     <section className="w-full" aria-label="About me">
       <div className="px-5 py-4 bg-white dark:bg-neutral-800/50 rounded-lg shadow-sm transition-all duration-300 ease-out hover:shadow-lg">
         <p className="text-sm sm:text-base text-neutral-900 dark:text-neutral-300 leading-relaxed">
-          Product-minded software engineer focused on solving real problems
-          through well-designed systems. I care about clean abstractions,
-          thoughtful user experiences, and architecture that scales gracefully.
-          I enjoy owning features end to end - from design decisions to
-          deployment - and shipping code that's readable, reliable, and built to
-          last.
+          I love building products, shipping fast, and learning through the
+          process. Fast-paced startup environments excite me because they offer
+          the chance to take ownership, experiment, and solve real problems.
         </p>
       </div>
     </section>

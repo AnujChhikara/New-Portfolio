@@ -6,6 +6,9 @@ import { IntroSection } from "~/components/intro-section";
 import { FooterSection } from "~/components/footer-section";
 import { SkillsMarquee } from "~/components/skills-marquee";
 import { ProjectsBento } from "~/components/projects-bento";
+import { StatsSection } from "~/components/stats-section";
+import { ToolboxSection } from "~/components/toolbox-section";
+import { BlogSection } from "~/components/blog-section";
 import { SITE_CONFIG } from "~/lib/constants";
 
 /**
@@ -58,13 +61,21 @@ export default function Home() {
       role="main"
       aria-label="Personal portfolio of Anuj Chhikara"
     >
-      <div className="flex flex-col items-center justify-center max-w-3xl mx-auto space-y-6 sm:space-y-8">
-        <HeaderSection />
-        <IntroSection />
-        <SocialLinks />
-        <SkillsMarquee />
+      <div className="flex flex-col items-center justify-center max-w-3xl mx-auto space-y-14 sm:space-y-20">
+        {/* Intro cluster */}
+        <div className="w-full flex flex-col gap-6">
+          <HeaderSection />
+          <IntroSection />
+          <SocialLinks />
+          <SkillsMarquee />
+        </div>
+
         <GithubStats />
+
+        <StatsSection />
         <ProjectsBento />
+        <ToolboxSection />
+        <BlogSection />
         <FooterSection />
       </div>
     </main>
