@@ -2,11 +2,17 @@ import { tech } from "./bento/tech";
 import { useMemo } from "react";
 
 export function SkillsMarquee() {
-  const duplicatedSkills = useMemo(() => [...tech, ...tech, ...tech], []);
+  const duplicatedSkills = useMemo(() => [...tech, ...tech], []);
 
   return (
-    <div className="relative w-full overflow-hidden py-4" aria-label="Skills">
-      <div className="flex animate-marquee-right-fast gap-6 sm:gap-8 whitespace-nowrap">
+    <div className="relative w-full overflow-hidden" aria-label="Skills">
+      <div
+        className="flex gap-6 sm:gap-8 whitespace-nowrap"
+        style={{
+          width: "max-content",
+          animation: "marquee-scroll 50s linear infinite",
+        }}
+      >
         {duplicatedSkills.map((skill, index) => (
           <div
             key={`skill-${skill.name}-${index}`}
