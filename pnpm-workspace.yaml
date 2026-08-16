@@ -3,6 +3,7 @@ packages:
   - "packages/*"
 
 allowBuilds:
+  core-js: false
   esbuild: false
   sharp: false
   workerd: false
