@@ -8,7 +8,7 @@ Convert the portfolio from runtime server rendering on a Cloudflare Worker to a 
 
 React Router remains in Framework Mode. Runtime SSR is disabled with `ssr: false`. The build configuration pre-renders the home page and every known blog URL, generating route-specific HTML and navigation data under `build/client`.
 
-The generated site is deployed directly to Cloudflare Pages. There is no Worker, Pages Function, server bundle, runtime loader, or other server-side code. A Pages rewrite serves React Router's generated SPA fallback for URLs without a generated static file so client-side routing can resolve them.
+The generated site is deployed directly to Cloudflare Pages. There is no Worker, Pages Function, server bundle, runtime loader, or other server-side code. React Router's generated SPA fallback is copied to `404.html`, allowing unknown URLs to hydrate the client router without rewriting requests for existing static assets.
 
 The blog catalog becomes the single source of truth for known post slugs and post metadata. Both the route module and the prerender configuration consume that catalog, preventing the deployed route list from drifting away from the rendered posts.
 
@@ -33,7 +33,7 @@ Cloudflare Pages uses:
 - Output directory: `build/client`
 - No Worker or Pages Function
 
-The repository contains the Pages rewrite file required to map non-static URLs to React Router's generated SPA fallback. The README documents these settings and local build/preview commands.
+The build copies React Router's SPA fallback to the custom Pages `404.html`. The README documents the Pages settings and local build/preview commands.
 
 ## Cleanup
 
@@ -42,7 +42,7 @@ Remove infrastructure and code that exist only for Worker SSR:
 - Worker request handler and Wrangler configuration
 - Cloudflare Vite plugin configuration
 - Worker type generation scripts and TypeScript references
-- Custom server entry and its bot-detection dependency
+- Custom server entry; React Router's build-time rendering dependencies remain
 - Worker/Cloudflare development dependencies that no longer serve the static build
 
 Remove components that have no imports anywhere in the application, then remove dependencies that become unreferenced as a direct result. Preserve live portfolio content, styling, analytics, and components reachable from the route tree. The cleanup does not include speculative refactors or content redesign.

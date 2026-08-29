@@ -26,13 +26,15 @@ export function meta({}: Route.MetaArgs) {
     { name: "title", content: title },
     { name: "description", content: description },
     { name: "keywords", content: SITE_CONFIG.keywords.join(", ") },
+    { name: "robots", content: "index, follow" },
+    { tagName: "link", rel: "canonical", href: url },
 
     // Open Graph / Facebook
     { property: "og:type", content: "website" },
     { property: "og:url", content: url },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:image", content: `${url}/og-image.png` },
+    { property: "og:image", content: `${url}/header.webp` },
     { property: "og:site_name", content: SITE_CONFIG.name },
     { property: "og:locale", content: SITE_CONFIG.locale },
 
@@ -41,7 +43,7 @@ export function meta({}: Route.MetaArgs) {
     { name: "twitter:url", content: url },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
-    { name: "twitter:image", content: `${url}/og-image.png` },
+    { name: "twitter:image", content: `${url}/header.webp` },
     { name: "twitter:creator", content: "@anujchhikara07" },
 
     // Additional SEO

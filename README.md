@@ -1,79 +1,40 @@
-# Welcome to React Router!
+# Anuj Chhikara's Portfolio
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A React Router 7 portfolio built as a statically pre-rendered single-page application. Known routes ship complete HTML for search engines and social previews, then hydrate for client-side navigation.
 
-## Features
+## Development
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Previewing the Production Build
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-Deployment is done using the Wrangler CLI.
-
-To build and deploy directly to production:
+Install dependencies and start the development server:
 
 ```sh
-npm run deploy
+pnpm install
+pnpm dev
 ```
 
-To deploy a preview URL:
+The app is available at `http://localhost:5173`.
+
+## Verification
 
 ```sh
-npx wrangler versions upload
+pnpm typecheck
+pnpm test:static
+pnpm format:check
 ```
 
-You can then promote a version to production after verification or roll it out progressively.
+`pnpm test:static` creates the production build and verifies the generated route HTML, SEO metadata, and SPA fallback.
+
+## Cloudflare Pages
+
+Connect the repository to Cloudflare Pages with these settings:
+
+- Build command: `pnpm build`
+- Build output directory: `build/client`
+- Root directory: `/`
+
+No Worker or Pages Function is required. React Router pre-renders the home page and every path listed in `app/lib/blog-posts.ts`. A generated `404.html` hydrates the React Router fallback for unknown URLs without rewriting requests for existing pages or assets.
+
+To inspect the production build locally:
 
 ```sh
-npx wrangler versions deploy
+pnpm preview
 ```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.

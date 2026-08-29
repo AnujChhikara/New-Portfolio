@@ -216,7 +216,13 @@ export const PROJECTS: readonly Project[] = [
 export interface Tool {
   readonly name: string;
   readonly description: string;
-  readonly category: "AI" | "Dev" | "Infra" | "Design" | "Terminal" | "Planning";
+  readonly category:
+    | "AI"
+    | "Dev"
+    | "Infra"
+    | "Design"
+    | "Terminal"
+    | "Planning";
   readonly link: string;
 }
 
@@ -235,19 +241,22 @@ export const TOOLS: readonly Tool[] = [
   },
   {
     name: "Datadog",
-    description: "APM, logs, dashboards. First thing I check when prod acts up.",
+    description:
+      "APM, logs, dashboards. First thing I check when prod acts up.",
     category: "Infra",
     link: "https://datadog.com",
   },
   {
     name: "SigNoz",
-    description: "Open-source observability. Traces and logs without the bill shock.",
+    description:
+      "Open-source observability. Traces and logs without the bill shock.",
     category: "Infra",
     link: "https://signoz.io",
   },
   {
     name: "Warp",
-    description: "Terminal that doesn't make me want to cry. AI completions built in.",
+    description:
+      "Terminal that doesn't make me want to cry. AI completions built in.",
     category: "Terminal",
     link: "https://warp.dev",
   },
@@ -259,7 +268,8 @@ export const TOOLS: readonly Tool[] = [
   },
   {
     name: "Postman",
-    description: "API testing, collections, mocking. Muscle memory at this point.",
+    description:
+      "API testing, collections, mocking. Muscle memory at this point.",
     category: "Dev",
     link: "https://postman.com",
   },
@@ -272,44 +282,10 @@ export const TOOLS: readonly Tool[] = [
 ] as const;
 
 // ============================================================================
-// Blog
-// ============================================================================
-
-export interface BlogPost {
-  readonly slug: string;
-  readonly title: string;
-  readonly excerpt: string;
-  readonly date: string;
-  readonly readTime: string;
-  readonly tags: readonly string[];
-}
-
-export const BLOG_POSTS: readonly BlogPost[] = [
-  {
-    slug: "how-database-indexes-work",
-    title: "How Database Indexes Actually Work",
-    excerpt:
-      "You've added indexes to speed up queries. But do you know what happens the moment you hit CREATE INDEX? What's being built, where it lives, and why it sometimes makes things worse?",
-    date: "2025-06-24",
-    readTime: "12 min",
-    tags: ["PostgreSQL", "Backend", "Performance"],
-  },
-] as const;
-
-// ============================================================================
 // External Links
 // ============================================================================
 
 export const EXTERNAL_LINKS = {
   reactRouter: "https://reactrouter.com",
   cloudflare: "https://cloudflare.com",
-} as const;
-
-// ============================================================================
-// Location
-// ============================================================================
-
-export const LOCATION = {
-  coordinates: [77.2065, 28.5245] as [number, number],
-  name: "New Delhi, India",
 } as const;

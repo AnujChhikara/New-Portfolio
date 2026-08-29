@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import posthog from "posthog-js";
 
 /**
- * PostHog analytics for React Router v7 (SSR on Cloudflare Workers).
+ * PostHog analytics for the React Router SPA.
  *
  * PostHog is browser-only, so init runs inside an effect (client-only) and we
  * disable automatic pageviews — React Router does client-side navigation, so we

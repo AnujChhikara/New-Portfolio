@@ -12,6 +12,14 @@ import "./app.css";
 import { SITE_CONFIG } from "./lib/constants";
 import { PostHogProvider } from "./lib/posthog";
 
+export function meta() {
+  return [
+    { title: SITE_CONFIG.title },
+    { name: "description", content: SITE_CONFIG.description },
+    { name: "robots", content: "noindex, nofollow" },
+  ];
+}
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -23,7 +31,6 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
-  { rel: "canonical", href: SITE_CONFIG.url },
   { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
 ];
 
@@ -37,7 +44,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
         <meta name="author" content={SITE_CONFIG.author.name} />
-        <meta name="robots" content="index, follow" />
         {/* Blocking script to prevent theme flash - runs before React hydration */}
         <script
           dangerouslySetInnerHTML={{
@@ -79,6 +85,14 @@ export default function App() {
     <PostHogProvider>
       <Outlet />
     </PostHogProvider>
+  );
+}
+
+export function HydrateFallback() {
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-white text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">
+      <p>Loading portfolio…</p>
+    </main>
   );
 }
 

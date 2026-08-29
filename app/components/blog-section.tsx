@@ -1,6 +1,6 @@
 import { ArrowUpRight, Clock, BookOpen } from "lucide-react";
 import { Link } from "react-router";
-import { BLOG_POSTS } from "~/lib/constants";
+import { BLOG_POSTS } from "~/lib/blog-posts";
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-US", {
@@ -32,7 +32,7 @@ export function BlogSection() {
         {BLOG_POSTS.map((post) => (
           <Link
             key={post.slug}
-            to={`/blog/${post.slug}`}
+            to={post.path}
             className="group flex flex-col sm:flex-row sm:items-start gap-3 p-4 rounded-xl border border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-neutral-200 dark:hover:border-neutral-700 hover:shadow-sm transition-all duration-200"
           >
             <div className="flex-1 min-w-0">
