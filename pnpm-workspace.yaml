@@ -2,7 +2,7 @@ packages:
   - "apps/*"
   - "packages/*"
 
-autoInstallPeers: false
+autoInstallPeers: true
 
 allowBuilds:
   core-js: false
