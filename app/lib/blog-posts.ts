@@ -12,9 +12,9 @@ export const BLOG_POSTS = [
   {
     slug: "how-database-indexes-work",
     path: "/blog/how-database-indexes-work/",
-    title: "How Database Indexes Actually Work",
+    title: "Why Can't We Just Add an Index?",
     excerpt:
-      "You've added indexes to speed up queries. But do you know what happens the moment you hit CREATE INDEX? What's being built, where it lives, and why it sometimes makes things worse?",
+      "A slow API, a quick PR, and a lesson in how PostgreSQL indexes actually work.",
     date: "2025-06-24",
     readTime: "12 min",
     tags: ["PostgreSQL", "Backend", "Performance"],

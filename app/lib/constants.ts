@@ -215,70 +215,27 @@ export const PROJECTS: readonly Project[] = [
 
 export interface Tool {
   readonly name: string;
-  readonly description: string;
-  readonly category:
-    | "AI"
-    | "Dev"
-    | "Infra"
-    | "Design"
-    | "Terminal"
-    | "Planning";
   readonly link: string;
+  readonly purpose?: string;
 }
 
 export const TOOLS: readonly Tool[] = [
+  { name: "Claude", link: "https://claude.ai" },
+  { name: "Codex", link: "https://chatgpt.com/codex" },
+  { name: "OpenCode", link: "https://opencode.ai" },
   {
-    name: "Claude Code",
-    description: "My primary AI coding assistant. I live in it.",
-    category: "AI",
-    link: "https://claude.ai/code",
+    name: "ChatGPT",
+    link: "https://chatgpt.com",
+    purpose: "Research and learning",
   },
-  {
-    name: "Linear",
-    description: "Issues, projects, cycles — cleanest PM tool I've used.",
-    category: "Planning",
-    link: "https://linear.app",
-  },
-  {
-    name: "Datadog",
-    description:
-      "APM, logs, dashboards. First thing I check when prod acts up.",
-    category: "Infra",
-    link: "https://datadog.com",
-  },
-  {
-    name: "SigNoz",
-    description:
-      "Open-source observability. Traces and logs without the bill shock.",
-    category: "Infra",
-    link: "https://signoz.io",
-  },
-  {
-    name: "Warp",
-    description:
-      "Terminal that doesn't make me want to cry. AI completions built in.",
-    category: "Terminal",
-    link: "https://warp.dev",
-  },
-  {
-    name: "Figma",
-    description: "For when I need to think in shapes, not words.",
-    category: "Design",
-    link: "https://figma.com",
-  },
-  {
-    name: "Postman",
-    description:
-      "API testing, collections, mocking. Muscle memory at this point.",
-    category: "Dev",
-    link: "https://postman.com",
-  },
-  {
-    name: "VS Code",
-    description: "Still home base. Extensions make it what I need it to be.",
-    category: "Dev",
-    link: "https://code.visualstudio.com",
-  },
+  { name: "cmux", link: "https://cmux.com" },
+  { name: "Zed", link: "https://zed.dev" },
+  { name: "Linear", link: "https://linear.app" },
+  { name: "Notion", link: "https://www.notion.so" },
+  { name: "Datadog", link: "https://datadog.com" },
+  { name: "SigNoz", link: "https://signoz.io" },
+  { name: "Figma", link: "https://figma.com" },
+  { name: "Postman", link: "https://postman.com" },
 ] as const;
 
 // ============================================================================

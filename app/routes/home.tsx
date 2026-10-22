@@ -2,11 +2,9 @@ import type { Route } from "./+types/home";
 import { GithubStats } from "~/components/github-stat";
 import { HeaderSection } from "~/components/header-section";
 import { SocialLinks } from "~/components/social-links";
-import { IntroSection } from "~/components/intro-section";
 import { FooterSection } from "~/components/footer-section";
 import { SkillsMarquee } from "~/components/skills-marquee";
 import { ProjectsBento } from "~/components/projects-bento";
-import { StatsSection } from "~/components/stats-section";
 import { ToolboxSection } from "~/components/toolbox-section";
 import { BlogSection } from "~/components/blog-section";
 import { SITE_CONFIG } from "~/lib/constants";
@@ -67,14 +65,12 @@ export default function Home() {
         {/* Intro cluster */}
         <div className="w-full flex flex-col gap-6">
           <HeaderSection />
-          <IntroSection />
           <SocialLinks />
           <SkillsMarquee />
         </div>
 
         <GithubStats />
 
-        <StatsSection />
         <ProjectsBento />
         <ToolboxSection />
         <BlogSection />

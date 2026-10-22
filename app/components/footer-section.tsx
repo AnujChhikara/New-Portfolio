@@ -4,7 +4,6 @@ import {
   SITE_CONFIG,
   FOOTER_SOCIAL_LINKS,
   QUICK_LINKS,
-  EXTERNAL_LINKS,
   type SocialLink,
 } from "~/lib/constants";
 
@@ -133,30 +132,6 @@ export function FooterSection() {
                   © 2026 All rights reserved.
                 </small>
               </p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 text-center">
-              <a
-                href={EXTERNAL_LINKS.reactRouter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors underline-offset-2 hover:underline"
-              >
-                Made with React Router
-              </a>
-              <span
-                className="hidden sm:inline text-neutral-400 dark:text-neutral-600"
-                aria-hidden="true"
-              >
-                •
-              </span>
-              <a
-                href={EXTERNAL_LINKS.cloudflare}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors underline-offset-2 hover:underline"
-              >
-                Deployed on Cloudflare
-              </a>
             </div>
           </div>
         </div>

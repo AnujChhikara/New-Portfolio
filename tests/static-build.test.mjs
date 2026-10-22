@@ -58,7 +58,7 @@ test("pre-rendered routes contain route-specific content and metadata", () => {
 
   assert.match(
     blogHtml,
-    /<title>How Database Indexes Actually Work — Anuj Chhikara<\/title>/
+    /<title>Why Can(?:&#x27;|')t We Just Add an Index\? — Anuj Chhikara<\/title>/
   );
   assert.match(
     blogHtml,
@@ -68,5 +68,5 @@ test("pre-rendered routes contain route-specific content and metadata", () => {
     blogHtml,
     /<meta property="og:url" content="https:\/\/anujchhikara\.com\/blog\/how-database-indexes-work\/"\/>/
   );
-  assert.match(blogHtml, /What is an index, really\?/);
+  assert.match(blogHtml, /First, what even is an index\?/);
 });
