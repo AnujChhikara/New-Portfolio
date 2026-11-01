@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { GitHubCalendar } from "react-github-calendar";
 import { SITE_CONFIG } from "~/lib/constants";
 
 const CALENDAR_THEME = {
   light: ["#f5f5f5", "#d4d4d4", "#a3a3a3", "#525252", "#262626"],
-  dark:  ["#262626", "#404040", "#737373", "#d4d4d4", "#e5e5e5"],
+  dark: ["#262626", "#404040", "#737373", "#d4d4d4", "#e5e5e5"],
 };
 
 // Tooltip configuration
@@ -35,20 +36,33 @@ export function GithubStats() {
 
   useEffect(() => {
     setIsMounted(true);
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const docDark = () => document.documentElement.classList.contains("dark");
-    setIsDark(docDark() || mq.matches);
+    setIsDark(docDark());
     const observer = new MutationObserver(() => setIsDark(docDark()));
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
     return () => observer.disconnect();
   }, []);
 
   return (
     <section
-      className="w-full overflow-x-auto"
+      className="portfolio-section"
       aria-label="GitHub contribution activity"
     >
-      <div className="min-w-[280px]">
+      <div className="portfolio-heading">
+        <h2 className="portfolio-section-title">On GitHub</h2>
+        <a
+          className="quiet-link"
+          href={`https://github.com/${SITE_CONFIG.author.github}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Profile <ArrowUpRight size={14} aria-hidden="true" />
+        </a>
+      </div>
+      <div className="github-calendar-scroll">
         {isMounted ? (
           <div className="text-neutral-900 dark:text-neutral-100">
             <GitHubCalendar

@@ -99,7 +99,7 @@ export const QUICK_LINKS: readonly SocialLink[] = [
   },
   {
     name: "Source Code",
-    url: "https://github.com/anujchhikara/portfolio",
+    url: "https://github.com/AnujChhikara/New-Portfolio",
     icon: Code2,
     ariaLabel: "View source code on GitHub",
   },
@@ -149,20 +149,62 @@ export interface Project {
   readonly description: string;
   readonly tech: readonly string[];
   readonly link: string;
-  readonly github: string;
+  readonly github?: string;
   readonly category: ProjectCategory;
   readonly year: string;
   readonly status: "live" | "in-progress" | "coming-soon";
   readonly highlight?: string;
+  readonly featured?: boolean;
   readonly playStoreLink?: string;
   readonly appStoreLink?: string;
 }
 
 export const PROJECTS: readonly Project[] = [
   {
+    title: "dg",
+    description:
+      "Describe systems, sequences, schemas, and more in a small typed language. dg lays out each diagram automatically, then exports SVG, PDF, or Mermaid for docs and repos.",
+
+    tech: [
+      "Typed DSL",
+      "Automatic layout",
+      "Live editor",
+      "CLI & MCP",
+      "SVG/PNG/PDF/Mermaid",
+    ],
+    link: "https://diagrams.madebetter.dev",
+    category: "web",
+    year: "",
+    status: "live",
+    highlight: "Diagrams as text",
+    featured: true,
+  },
+  {
+    title: "Runloom",
+    description:
+      "Preview a startup plan, confirm it, then follow logs, readiness, and resource use in one terminal. Also monitor Docker Compose stacks.",
+
+    tech: [
+      "Rust",
+      "Terminal UI",
+      "Service runner",
+      "Readiness",
+      "Unified logs",
+      "Docker/Compose",
+    ],
+    link: "https://runloom.madebetter.dev",
+    github: "https://github.com/AnujChhikara/rescope",
+    category: "web",
+    year: "",
+    status: "live",
+    highlight: "Local service runner",
+    featured: true,
+  },
+  {
     title: "Impact Player",
     description:
-      "Engineering impact visualized. Analyze GitHub contributions with deep metrics, AI-powered insights, and detailed visualizations of PRs, reviews, and collaboration patterns.",
+      "See where your GitHub contributions land: explore PRs, reviews, and collaboration through focused metrics, AI insights, and visual summaries.",
+
     tech: ["Next.js", "TypeScript", "GitHub API", "AI Analytics", "Tailwind"],
     link: "https://impact-player.vercel.app/",
     github: "https://github.com/AnujChhikara/impact-player",
@@ -172,33 +214,10 @@ export const PROJECTS: readonly Project[] = [
     highlight: "AI-powered dev analytics",
   },
   {
-    title: "Vidloom",
-    description:
-      "Full-stack video sharing platform with upload, transcoding, and playback. Built REST API from scratch with JWT auth, cloud storage, and paginated feeds.",
-    tech: ["React", "Redux", "Express", "MongoDB", "Cloudinary"],
-    link: "https://vidloom.vercel.app/",
-    github: "https://github.com/AnujChhikara/frontend-yt",
-    category: "web",
-    year: "2023",
-    status: "live",
-    highlight: "Custom backend API",
-  },
-  {
-    title: "DevVault",
-    description:
-      "Platform for storing and sharing reusable code snippets with syntax highlighting, tagging, and search. Backend handles multi-user access and versioning.",
-    tech: ["Next.js", "Redux", "MongoDB", "Aceternity UI"],
-    link: "https://devvault.vercel.app/",
-    github: "https://github.com/AnujChhikara/Vault",
-    category: "web",
-    year: "2023",
-    status: "live",
-    highlight: "Snippet versioning",
-  },
-  {
     title: "Extensionhub",
     description:
-      "Marketplace connecting users who need niche browser extensions with developers who can build them. Handles listings, requests, and developer matching.",
+      "Find a developer for a niche browser extension—or discover requests that match what you can build.",
+
     tech: ["Next.js", "Appwrite", "TypeScript"],
     link: "https://extensionhub-lilac.vercel.app/",
     github: "https://github.com/AnujChhikara/Extensionhub",

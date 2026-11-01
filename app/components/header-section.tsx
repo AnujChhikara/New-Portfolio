@@ -1,6 +1,7 @@
 import { SITE_CONFIG } from "~/lib/constants";
 import { ThemeToggle } from "./theme-toggle";
 import { IntroSection } from "./intro-section";
+import { SocialLinks } from "./social-links";
 
 const MASK_STYLE = {
   maskImage:
@@ -42,6 +43,7 @@ export function HeaderSection() {
           <ThemeToggle />
         </div>
         <IntroSection />
+        <SocialLinks />
       </div>
     </header>
   );

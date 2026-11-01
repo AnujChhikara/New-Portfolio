@@ -10,7 +10,7 @@ function SocialLinkItem({ link }: { link: SocialLink }) {
   return (
     <LinkPreview url={link.url} width={280} height={175}>
       <span
-        className="inline-flex items-center gap-3 px-6 py-2.5 text-sm sm:text-base font-medium text-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-800/50 rounded-xl shadow-sm transition-all duration-300 ease-out hover:shadow-md hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:-translate-y-0.5 group backdrop-blur-sm"
+        className="inline-flex items-center gap-2 px-4 py-2.5 min-h-11 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-800/50 rounded-xl shadow-sm transition-all duration-300 ease-out hover:shadow-md hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:-translate-y-0.5 group backdrop-blur-sm"
         aria-label={link.ariaLabel}
       >
         <Icon
@@ -30,7 +30,7 @@ function SocialLinkItem({ link }: { link: SocialLink }) {
  */
 export function SocialLinks() {
   return (
-    <nav className="w-full" aria-label="Social links">
+    <nav className="profile-socials w-full" aria-label="Social links">
       <ul className="flex flex-row items-start justify-start gap-3 sm:gap-4 flex-wrap list-none p-0 m-0">
         {SOCIAL_LINKS.map((link) => (
           <li key={link.name}>
