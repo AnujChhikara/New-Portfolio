@@ -55,6 +55,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <main
+      id="top"
       className="portfolio-home min-h-screen bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100"
       role="main"
       aria-label="Personal portfolio of Anuj Chhikara"
@@ -69,8 +70,8 @@ export default function Home() {
         <BlogSection />
         <ToolboxSection />
         <GithubStats />
-        <FooterSection />
       </div>
+      <FooterSection />
     </main>
   );
 }

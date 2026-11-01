@@ -2,6 +2,7 @@ import { SITE_CONFIG } from "~/lib/constants";
 import { ThemeToggle } from "./theme-toggle";
 import { IntroSection } from "./intro-section";
 import { SocialLinks } from "./social-links";
+import { LocalTime } from "./local-time";
 
 const MASK_STYLE = {
   maskImage:
@@ -39,6 +40,7 @@ export function HeaderSection() {
           <div className="profile-name">
             <h1>{name}</h1>
             <p>{role}</p>
+            <LocalTime />
           </div>
           <ThemeToggle />
         </div>
