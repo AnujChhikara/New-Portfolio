@@ -239,22 +239,47 @@ export interface Tool {
 }
 
 export const TOOLS: readonly Tool[] = [
-  { name: "Claude", link: "https://claude.ai" },
-  { name: "Codex", link: "https://chatgpt.com/codex" },
-  { name: "OpenCode", link: "https://opencode.ai" },
+  {
+    name: "Codex",
+    link: "https://chatgpt.com/codex",
+    purpose: "Agentic coding, from the terminal to the cloud",
+  },
+  {
+    name: "Claude",
+    link: "https://claude.ai",
+    purpose: "Long-form thinking and code review",
+  },
+  {
+    name: "OpenCode",
+    link: "https://opencode.ai",
+    purpose: "Open-source coding agent",
+  },
   {
     name: "ChatGPT",
     link: "https://chatgpt.com",
     purpose: "Research and learning",
   },
-  { name: "cmux", link: "https://cmux.com" },
-  { name: "Zed", link: "https://zed.dev" },
-  { name: "Linear", link: "https://linear.app" },
-  { name: "Notion", link: "https://www.notion.so" },
-  { name: "Datadog", link: "https://datadog.com" },
-  { name: "SigNoz", link: "https://signoz.io" },
-  { name: "Figma", link: "https://figma.com" },
-  { name: "Postman", link: "https://postman.com" },
+  {
+    name: "cmux",
+    link: "https://cmux.com",
+    purpose: "Parallel agent workspaces",
+  },
+  { name: "Zed", link: "https://zed.dev", purpose: "Fast, focused editor" },
+  {
+    name: "Notion",
+    link: "https://www.notion.so",
+    purpose: "Notes, docs, and half-formed ideas",
+  },
+  {
+    name: "Datadog",
+    link: "https://datadog.com",
+    purpose: "Metrics and production signals",
+  },
+  {
+    name: "SigNoz",
+    link: "https://signoz.io",
+    purpose: "Open-source observability",
+  },
 ] as const;
 
 // ============================================================================
