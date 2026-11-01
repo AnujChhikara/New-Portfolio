@@ -34,36 +34,67 @@ const TOOL_APPEARANCE: Record<string, { icon: LucideIcon; color: string }> = {
 };
 
 export function ToolboxSection() {
+  const codexTool = TOOLS.find((tool) => tool.name === "Codex");
+  const remainingTools = TOOLS.filter((tool) => tool.name !== "Codex");
+  const codexAppearance = codexTool
+    ? (TOOL_APPEARANCE[codexTool.name] ?? {
+        icon: Braces,
+        color: "text-neutral-500 dark:text-neutral-400",
+      })
+    : null;
+  const CodexIcon = codexAppearance?.icon;
+
   return (
-    <section className="w-full" aria-labelledby="toolbox-title">
-      <h2
-        id="toolbox-title"
-        className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-4"
-      >
-        Daily drivers
-      </h2>
-      <ul className="tool-links">
-        {TOOLS.map((tool) => {
-          const { icon: Icon, color } = TOOL_APPEARANCE[tool.name] ?? {
-            icon: Braces,
-            color: "text-neutral-500 dark:text-neutral-400",
-          };
-          return (
-            <li key={tool.name}>
-              <a
-                className="tool-link"
-                href={tool.link}
-                title={tool.purpose}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon size={17} className={color} aria-hidden="true" />
-                <span>{tool.name}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+    <section className="portfolio-section" aria-labelledby="toolbox-title">
+      <div className="portfolio-heading">
+        <h2 id="toolbox-title" className="portfolio-section-title">
+          Daily drivers
+        </h2>
+      </div>
+      <div className="tool-feature-layout">
+        {codexTool && CodexIcon ? (
+          <a
+            className="tools-primary-card"
+            href={codexTool.link}
+            title={codexTool.purpose}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={codexTool.name}
+          >
+            <CodexIcon
+              size={28}
+              className={codexAppearance.color}
+              aria-hidden="true"
+            />
+            <span className="tools-primary-name">{codexTool.name}</span>
+          </a>
+        ) : null}
+        <ul
+          className="tool-links tool-feature-secondary-grid"
+          aria-label="Other daily drivers"
+        >
+          {remainingTools.map((tool) => {
+            const { icon: Icon, color } = TOOL_APPEARANCE[tool.name] ?? {
+              icon: Braces,
+              color: "text-neutral-500 dark:text-neutral-400",
+            };
+            return (
+              <li key={tool.name}>
+                <a
+                  className="tool-link"
+                  href={tool.link}
+                  title={tool.purpose}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon size={17} className={color} aria-hidden="true" />
+                  <span>{tool.name}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 }

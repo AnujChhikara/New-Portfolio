@@ -107,6 +107,7 @@ export const LinkPreview = ({
         </a>
 
         <div
+          hidden={!isOpen}
           className={`absolute bottom-full left-1/2 mb-2 pointer-events-none z-50 ${
             isOpen
               ? "opacity-100 scale-100"

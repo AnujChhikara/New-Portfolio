@@ -1,9 +1,7 @@
 import type { Route } from "./+types/home";
 import { GithubStats } from "~/components/github-stat";
 import { HeaderSection } from "~/components/header-section";
-import { SocialLinks } from "~/components/social-links";
 import { FooterSection } from "~/components/footer-section";
-import { SkillsMarquee } from "~/components/skills-marquee";
 import { ProjectsBento } from "~/components/projects-bento";
 import { ToolboxSection } from "~/components/toolbox-section";
 import { BlogSection } from "~/components/blog-section";
@@ -57,23 +55,20 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <main
-      className="min-h-screen px-4 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 transition-colors duration-300"
+      className="portfolio-home min-h-screen bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100"
       role="main"
       aria-label="Personal portfolio of Anuj Chhikara"
     >
-      <div className="flex flex-col items-center justify-center max-w-3xl mx-auto space-y-14 sm:space-y-20">
+      <div className="portfolio-shell">
         {/* Intro cluster */}
         <div className="w-full flex flex-col gap-6">
           <HeaderSection />
-          <SocialLinks />
-          <SkillsMarquee />
         </div>
 
-        <GithubStats />
-
         <ProjectsBento />
-        <ToolboxSection />
         <BlogSection />
+        <ToolboxSection />
+        <GithubStats />
         <FooterSection />
       </div>
     </main>
