@@ -31,7 +31,9 @@ Connect the repository to Cloudflare Pages with these settings:
 - Build output directory: `build/client`
 - Root directory: `/`
 
-No Worker or Pages Function is required. React Router pre-renders the home page and every path listed in `app/lib/blog-posts.ts`. A generated `404.html` hydrates the React Router fallback for unknown URLs without rewriting requests for existing pages or assets.
+Pages serves the pre-rendered routes as static assets; a generated Worker handles only `/api/pageview`. React Router pre-renders the home page and every path listed in `app/lib/blog-posts.ts`. A generated `404.html` hydrates the React Router fallback for unknown URLs without rewriting requests for existing pages or assets.
+
+Anonymous pageviews use a same-origin `/api/pageview` request handled by the generated `_worker.js`. No browser analytics SDK, cookies, localStorage, sessionStorage, fingerprinting, or visitor identifiers are used; tracking respects Do Not Track and Global Privacy Control. Cloudflare Pages runtime environment variables `POSTHOG_PROJECT_TOKEN` and `POSTHOG_HOST` configure the server-side PostHog request. If they are missing, pageviews are disabled. Each event gets a new random ID; visitor counts, sessions, and retention are not measured. Only allowlisted public paths are sent, without query strings, referrers, visitor IPs, or user agents.
 
 To inspect the production build locally:
 

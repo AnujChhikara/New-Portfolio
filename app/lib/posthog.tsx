@@ -1,45 +1,44 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router";
-import posthog from "posthog-js";
 
-/**
- * PostHog analytics for the React Router SPA.
- *
- * PostHog is browser-only, so init runs inside an effect (client-only) and we
- * disable automatic pageviews — React Router does client-side navigation, so we
- * capture `$pageview` manually on every location change instead.
- */
+import { BLOG_POST_PATHS } from "./blog-posts";
 
-const POSTHOG_KEY = import.meta.env.VITE_POSTHOG_KEY as string | undefined;
-const POSTHOG_HOST =
-  (import.meta.env.VITE_POSTHOG_HOST as string | undefined) ??
-  "https://us.i.posthog.com";
+const ALLOWED_PATHS: readonly string[] = ["/", ...BLOG_POST_PATHS];
+
+const ALLOWED_ORIGINS = new Set([
+  "https://anujchhikara.com",
+  "https://www.anujchhikara.com",
+]);
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const initialized = useRef(false);
+  const lastPathRef = useRef<string | null>(null);
 
-  // Initialize once, on the client only.
   useEffect(() => {
-    if (initialized.current || !POSTHOG_KEY) return;
-    initialized.current = true;
+    if (typeof window === "undefined") return;
 
-    posthog.init(POSTHOG_KEY, {
-      api_host: POSTHOG_HOST,
-      capture_pageview: false, // handled manually below for SPA navigation
-      capture_pageleave: true,
-      autocapture: true,
-      person_profiles: "identified_only",
-    });
-  }, []);
+    if (!ALLOWED_ORIGINS.has(window.location.origin)) return;
 
-  // Capture a pageview on every route change (including the first render).
-  useEffect(() => {
-    if (!POSTHOG_KEY) return;
-    posthog.capture("$pageview", {
-      $current_url: window.location.href,
-    });
-  }, [location.pathname, location.search]);
+    const nav = navigator as unknown as {
+      doNotTrack?: string;
+      globalPrivacyControl?: boolean;
+    };
+    if (nav.doNotTrack === "1" || nav.globalPrivacyControl === true) return;
+
+    const path = location.pathname;
+    if (lastPathRef.current === path) return;
+    lastPathRef.current = path;
+
+    if (!ALLOWED_PATHS.includes(path)) return;
+
+    fetch("/api/pageview", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ path }),
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+    }).catch(() => {});
+  }, [location.pathname]);
 
   return <>{children}</>;
 }
