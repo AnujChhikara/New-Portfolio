@@ -186,7 +186,10 @@ export default {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(payload),
       signal: controller.signal,
-      redirect: "error",
+      // Cloudflare Workers does not implement redirect: "error" (it throws
+      // TypeError before any network request). "manual" is supported and
+      // refuses to follow redirects, surfacing them as a 3xx response.
+      redirect: "manual",
     })
       .then(
         () => undefined,

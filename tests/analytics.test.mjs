@@ -529,10 +529,49 @@ test("worker outbound PostHog fetch disables redirects and forwards no sensitive
     await new Promise((resolve) => setTimeout(resolve, 0));
 
     assert.equal(calls.length, 1);
-    assert.equal(calls[0].init.redirect, "error");
+    assert.equal(calls[0].init.redirect, "manual");
     const headers = calls[0].init.headers;
     assert.equal(headers["content-type"], "application/json");
     assert.equal(Object.keys(headers).length, 1);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("worker does not follow a redirect from PostHog", async () => {
+  const worker = await loadWorker();
+  const calls = [];
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    calls.push({ url, init });
+    return new Response(null, {
+      status: 302,
+      headers: { location: "https://evil.example/redirect" },
+    });
+  };
+
+  try {
+    const env = makeEnv();
+    let waitPromise;
+    const ctx = {
+      waitUntil: (promise) => {
+        waitPromise = promise;
+      },
+    };
+
+    const response = await worker.fetch(
+      makeRequest("/", { body: JSON.stringify({ path: "/" }) }),
+      env,
+      ctx
+    );
+
+    assert.equal(response.status, 204);
+    assert.ok(waitPromise, "waitUntil should receive the PostHog fetch");
+    await waitPromise;
+
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].url, "https://us.i.posthog.com/i/v0/e/");
+    assert.equal(calls[0].init.redirect, "manual");
   } finally {
     globalThis.fetch = originalFetch;
   }
